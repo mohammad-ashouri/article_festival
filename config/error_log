@@ -1,0 +1,51 @@
+[30-Nov-2021 13:31:21 Asia/Tehran] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 2
+[30-Nov-2021 13:32:01 Asia/Tehran] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 2
+[30-Nov-2021 13:32:32 Asia/Tehran] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 2
+[30-Nov-2021 13:32:41 Asia/Tehran] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 2
+[30-Nov-2021 13:33:15 Asia/Tehran] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 2
+[30-Nov-2021 13:33:15 Asia/Tehran] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/pooyagra/helli.pooyagram.com/config/connection_close.php:2) in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 3
+[30-Nov-2021 13:33:34 Asia/Tehran] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 2
+[30-Nov-2021 13:33:34 Asia/Tehran] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/pooyagra/helli.pooyagram.com/config/connection_close.php:2) in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 3
+[30-Nov-2021 13:33:37 Asia/Tehran] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 2
+[30-Nov-2021 13:33:37 Asia/Tehran] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/pooyagra/helli.pooyagram.com/config/connection_close.php:2) in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 3
+[30-Nov-2021 13:33:42 Asia/Tehran] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 2
+[30-Nov-2021 13:33:42 Asia/Tehran] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/pooyagra/helli.pooyagram.com/config/connection_close.php:2) in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 3
+[30-Nov-2021 13:37:37 Asia/Tehran] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, null given in /home/pooyagra/helli.pooyagram.com/config/connection_close.php on line 2
+[27-Jul-2022 11:55:32 Asia/Tehran] PHP Warning:  include(PHPExcel/IOFactory.php): failed to open stream: No such file or directory in /home/pooyagra/helli.pooyagram.com/config/test.php on line 5
+[27-Jul-2022 11:55:32 Asia/Tehran] PHP Warning:  include(PHPExcel/IOFactory.php): failed to open stream: No such file or directory in /home/pooyagra/helli.pooyagram.com/config/test.php on line 5
+[27-Jul-2022 11:55:32 Asia/Tehran] PHP Warning:  include(): Failed opening 'PHPExcel/IOFactory.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/pooyagra/helli.pooyagram.com/config/test.php on line 5
+[27-Jul-2022 11:55:32 Asia/Tehran] PHP Warning:  include(PHPExcel.php): failed to open stream: No such file or directory in /home/pooyagra/helli.pooyagram.com/config/test.php on line 6
+[27-Jul-2022 11:55:32 Asia/Tehran] PHP Warning:  include(PHPExcel.php): failed to open stream: No such file or directory in /home/pooyagra/helli.pooyagram.com/config/test.php on line 6
+[27-Jul-2022 11:55:32 Asia/Tehran] PHP Warning:  include(): Failed opening 'PHPExcel.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/pooyagra/helli.pooyagram.com/config/test.php on line 6
+[27-Jul-2022 11:55:32 Asia/Tehran] PHP Fatal error:  Uncaught Error: Class 'PHPExcel_IOFactory' not found in /home/pooyagra/helli.pooyagram.com/config/test.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/pooyagra/helli.pooyagram.com/config/test.php on line 12
+[27-Jul-2022 11:57:35 Asia/Tehran] PHP Fatal error:  Uncaught PHPExcel_Reader_Exception: Could not open file-nemoone-asar - Copy.xls for reading! File does not exist. in /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/Reader/Excel5.php:433
+Stack trace:
+#0 /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/IOFactory.php(269): PHPExcel_Reader_Excel5->canRead('file-nemoone-as...')
+#1 /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/IOFactory.php(191): PHPExcel_IOFactory::createReaderForFile('file-nemoone-as...')
+#2 /home/pooyagra/helli.pooyagram.com/config/test.php(12): PHPExcel_IOFactory::load('file-nemoone-as...')
+#3 {main}
+  thrown in /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/Reader/Excel5.php on line 433
+[27-Jul-2022 11:58:02 Asia/Tehran] PHP Fatal error:  Uncaught PHPExcel_Reader_Exception: Could not open file-nemoone-asarCopy.xls for reading! File does not exist. in /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/Reader/Excel5.php:433
+Stack trace:
+#0 /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/IOFactory.php(269): PHPExcel_Reader_Excel5->canRead('file-nemoone-as...')
+#1 /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/IOFactory.php(191): PHPExcel_IOFactory::createReaderForFile('file-nemoone-as...')
+#2 /home/pooyagra/helli.pooyagram.com/config/test.php(12): PHPExcel_IOFactory::load('file-nemoone-as...')
+#3 {main}
+  thrown in /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/Reader/Excel5.php on line 433
+[27-Jul-2022 11:58:19 Asia/Tehran] PHP Fatal error:  Uncaught PHPExcel_Reader_Exception: Could not open file-nemoone-asar.xls for reading! File does not exist. in /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/Reader/Excel5.php:433
+Stack trace:
+#0 /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/IOFactory.php(269): PHPExcel_Reader_Excel5->canRead('file-nemoone-as...')
+#1 /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/IOFactory.php(191): PHPExcel_IOFactory::createReaderForFile('file-nemoone-as...')
+#2 /home/pooyagra/helli.pooyagram.com/config/test.php(12): PHPExcel_IOFactory::load('file-nemoone-as...')
+#3 {main}
+  thrown in /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/Reader/Excel5.php on line 433
+[27-Jul-2022 11:58:32 Asia/Tehran] PHP Fatal error:  Uncaught PHPExcel_Reader_Exception: Could not open file-nemoone-asarCopy.xls for reading! File does not exist. in /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/Reader/Excel5.php:433
+Stack trace:
+#0 /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/IOFactory.php(269): PHPExcel_Reader_Excel5->canRead('file-nemoone-as...')
+#1 /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/IOFactory.php(191): PHPExcel_IOFactory::createReaderForFile('file-nemoone-as...')
+#2 /home/pooyagra/helli.pooyagram.com/config/test.php(12): PHPExcel_IOFactory::load('file-nemoone-as...')
+#3 {main}
+  thrown in /home/pooyagra/helli.pooyagram.com/config/PHPExcel/Classes/PHPExcel/Reader/Excel5.php on line 433
