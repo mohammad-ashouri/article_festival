@@ -611,11 +611,10 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                             جزئیات و ویرایش
                                         </button>
                                         <button type="button" class="btn btn-danger d-inline-block" data-toggle="modal"
-                                                onclick="getInfo(<?php echo $mag_info['id'] ?>)"
-                                                data-target="#editModal">
+                                                data-mag-id="<?php echo $mag_info['id'] ?>"
+                                                data-target="#deleteMagModal" id="deleteMag">
                                             حذف
                                         </button>
-
                                         <form id="editMagForm">
                                             <div class="modal fade" id="editModal" tabindex="-1"
                                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1103,10 +1102,12 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
 
                                                         <input type="hidden" value="" id="postID">
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" aria-hidden="true" id="closeModal"
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    aria-hidden="true" id="closeModal"
                                                                     data-bs-dismiss="modal">بستن
                                                             </button>
-                                                            <button type="button" id="updateJournal" class="btn btn-primary">
+                                                            <button type="button" id="updateJournal"
+                                                                    class="btn btn-primary">
                                                                 ذخیره تغییرات
                                                             </button>
                                                         </div>
@@ -1142,8 +1143,9 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
     <script src="build/js/SearchInMagManagerTable.js"></script>
     <script src="build/js/ChangeTabsInMagManager.js"></script>
     <script src="build/js/Mag_Manager_Check_Fields.js"></script>
-    <script src="build/js/getMagInfo.js"></script>
-    <script src="build/js/setUpdatedMagInfo.js"></script>
+    <script src="build/js/GetMagInfo.js"></script>
+    <script src="build/js/UpdateMagInfo.js"></script>
+    <script src="build/js/Delete_Mag.js"></script>
 <?php
 endif;
 include_once __DIR__ . '/footer.php'; ?>

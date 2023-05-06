@@ -310,7 +310,7 @@
                                 echo mysqli_num_rows($query);
                                 ?></h3>
 
-                            <p>مدیر</p>
+                            <p>مدیر کل</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-ios-person-outline"></i>

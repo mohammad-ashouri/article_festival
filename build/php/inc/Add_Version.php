@@ -1,17 +1,18 @@
 <?php
 session_start();
 include_once __DIR__ . '/../../../config/connection.php';
-
-//echo '<pre>';
-//print_r($_POST);
-//echo '</pre>';
+function convertPersianToEnglish($number) {
+    $persianNumbers = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+    $englishNumbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+    return str_replace($persianNumbers, $englishNumbers, $number);
+}
 
 if (isset($_POST['Sub_Mag_Version']) and isset($_POST['mag_name'])) {
     $mag_id = $_POST['mag_name'];
     $publication_period_year = $_POST['publication_period_year'];
     $publication_period_number = $_POST['publication_period_number'];
     $publication_number = $_POST['publication_number'];
-    $publication_year = $_POST['publication_year'];
+    $publication_year = convertPersianToEnglish($_POST['publication_year']);
     $number_of_pages = $_POST['number_of_pages'];
     $number_of_articles = $_POST['number_of_articles'];
 
@@ -51,11 +52,13 @@ if (isset($_POST['Sub_Mag_Version']) and isset($_POST['mag_name'])) {
                 $file_address = "Files/Mag_Files/$folder_name/" . $file_url_name;
                 $cover_address = "Files/Mag_Files/$folder_name/" . $cover_url_name;
                 mysqli_query($connection_mag, "insert into mag_versions(mag_info_id,mag_admins_id,publication_period_year,publication_period_number,publication_number,
-                                                    publication_year,number_of_pages,number_of_articles,folder_name,file_url,cover_url,adder,added_date) values 
+                                                    publication_year,number_of_pages,number_of_articles,folder_name,file_url,cover_url,adder,added_date) values
                                                     ('$mag_id','$admin_id','$publication_period_year','$publication_period_number','$publication_number',
                                                     '$publication_year','$number_of_pages','$number_of_articles','$folder_name','$file_address','$cover_address','$adhesive','$datewithtime')");
 
-                mkdir(__DIR__ . "/../../../Files/Mag_Files/" . $folder_name);
+                if (!mkdir($concurrentDirectory = __DIR__ . "/../../../Files/Mag_Files/" . $folder_name) && !is_dir($concurrentDirectory)) {
+                    throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+                }
                 move_uploaded_file($cover_url_tmpname, __DIR__ . "/../../../Files/Mag_Files/$folder_name/" . $cover_url_name);
                 move_uploaded_file($file_url_tmpname, __DIR__ . "/../../../Files/Mag_Files/$folder_name/" . $file_url_name);
                 header("location: ../../../version_manager.php?VersionAdded&version_name=$version_name");

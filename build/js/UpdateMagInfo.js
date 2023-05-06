@@ -1,8 +1,8 @@
 const updateJournal = document.querySelector('#updateJournal');
 updateJournal.addEventListener('click', function () {
-    if (confirm('اطلاعات قبلی در مورد نشریه: ' +
+    if (confirm("اطلاعات قبلی در مورد نشریه: '" +
         $("#editedName").val() +
-        ' پس از تایید شما دیگر قابل استفاده نمی باشد. آیا تایید می کنید؟')) {
+        "' پس از تایید شما دیگر قابل استفاده نمی باشد. آیا تایید می کنید؟")) {
         $.ajax({
             url: "build/php/inc/EditJournal.php",
             type: "POST",
@@ -54,8 +54,8 @@ updateJournal.addEventListener('click', function () {
                 editedAdministrationManagerAddress: $("#editedAdministrationManagerAddress").val(),
             },
             success: function (response) {
-                console.log(response);
-                // کد مربوط به پردازش پاسخ از سمت سرور را اینجا بنویسید
+                alert('نشریه انتخاب شده با موفقیت ویرایش شد');
+                location.reload();
             }
         });
     }

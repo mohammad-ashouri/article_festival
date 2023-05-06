@@ -165,7 +165,7 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                         <i class="fa fa-calendar"></i>
                       </span>
                                     </div>
-                                    <input class="normal-example form-control" name="publication_year" id="publication_year" style="">
+                                    <input class="publicationYear form-control" name="publication_year" id="publication_year">
                                 </div>
                             </td>
                         </tr>
