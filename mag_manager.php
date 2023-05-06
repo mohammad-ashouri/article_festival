@@ -558,19 +558,18 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
                         <table class="table table-bordered table-striped" id="myTable">
-                            <tr>
+                            <tr style="text-align: center">
                                 <th>ردیف</th>
                                 <th>نام</th>
                                 <th>رتبه علمی</th>
-                                <th>گروه علمی</th>
-                                <th>جایگاه بین المللی</th>
+                                <th style="width: 100px;">گروه علمی</th>
                                 <th>نوع نشریه</th>
                                 <th>دوره انتشار</th>
                                 <th>عملیات</th>
                             </tr>
                             <?php
                             $a = 1;
-                            $SelectAllMagInfos = mysqli_query($connection_mag, "select * from mag_info order by name asc");
+                            $SelectAllMagInfos = mysqli_query($connection_mag, "select * from mag_info where deleted =0 order by active desc,name asc");
                             foreach ($SelectAllMagInfos as $mag_info):
                                 $admin_id = $mag_info['admin_id'];
                                 $query = mysqli_query($connection_mag, "select * from mag_admins where id='$admin_id'");
@@ -597,11 +596,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                     </td>
                                     <td>
                                         <?php
-                                        echo $mag_info['international_position'];
-                                        ?>
-                                    </td>
-                                    <td>
-                                        <?php
                                         echo $mag_info['mag_type'];
                                         ?>
                                     </td>
@@ -616,475 +610,510 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                 data-target="#editModal">
                                             جزئیات و ویرایش
                                         </button>
+                                        <button type="button" class="btn btn-danger d-inline-block" data-toggle="modal"
+                                                onclick="getInfo(<?php echo $mag_info['id'] ?>)"
+                                                data-target="#editModal">
+                                            حذف
+                                        </button>
 
-                                        <div class="modal fade" id="editModal" tabindex="-1"
-                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content" style="width: 800px">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">ویرایش
-                                                            اطلاعات نشریه</h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <table style="width: 100%" class="table table-bordered">
-                                                            <tr>
-                                                                <th colspan="2"
-                                                                    style="text-align: center;background-color: #dee2e6">
-                                                                    اطلاعات نشریه
-                                                                </th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>نام نشریه*</th>
-                                                                <td>
-                                                                    <input type="text" class="form-control"
-                                                                           id="editedName"
-                                                                           placeholder="نام نشریه را وارد کنید"
-                                                                           name="name">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>رتبه علمی مجله*</th>
-                                                                <td>
-                                                                    <select name="science_rank" id="editedScienceRank"
-                                                                            class="form-control select2"
-                                                                            title="نسخه نشریه را انتخاب کنید">
-                                                                        <option disabled>انتخاب کنید</option>
-                                                                        <option value="علمی پژوهشی">علمی پژوهشی</option>
-                                                                        <option value="علمی ترویجی">علمی ترویجی</option>
-                                                                    </select>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>گروه علمی*</th>
-                                                                <td>
-                                                                    <select class="form-control select2"
-                                                                            multiple="multiple"
-                                                                            title="گروه علمی نشریه را انتخاب کنید (با گرفتن کلید ctrl می توانید چند گروه علمی انتخاب نمایید)"
-                                                                            style="width: 100%;text-align: right"
-                                                                            name="scientific_group[]"
-                                                                            id="editedScientificGroup">
-                                                                        <?php
-                                                                        $query = mysqli_query($connection_maghalat, 'select * from scientific_group order by name asc');
-                                                                        foreach ($query as $group_items):
-                                                                            ?>
-                                                                            <option
-                                                                                value="<?php echo $group_items['name'] ?>"><?php echo $group_items['name']; ?></option>
-                                                                        <?php endforeach; ?>
-                                                                    </select>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>جایگاه بین المللی*</th>
-                                                                <td>
-                                                                    <select id="editedInternationalPosition"
-                                                                            name="international_position[]"
-                                                                            class="form-control select2"
-                                                                            multiple="multiple"
-                                                                            title="جایگاه بین المللی را انتخاب کنید (با گرفتن کلید ctrl می توانید چند جایگاه بین المللی انتخاب نمایید)">
-                                                                        <?php
-                                                                        $query = mysqli_query($connection_variables, 'select * from international_position order by subject asc');
-                                                                        foreach ($query as $international_position_items):
-                                                                            ?>
-                                                                            <option
-                                                                                value="<?php echo $international_position_items['subject'] ?>"><?php echo $international_position_items['subject']; ?></option>
-                                                                        <?php endforeach; ?>
-                                                                    </select>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>نوع نشریه*</th>
-                                                                <td>
-                                                                    <select class="form-control select2" id="editedMagType"
-                                                                            name="type"
-                                                                            title="نوع نشریه را انتخاب کنید">
-                                                                        <option selected disabled>انتخاب کنید</option>
-                                                                        <option>دانشگاهی</option>
-                                                                        <option>حوزوی</option>
-                                                                    </select>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>دوره انتشار*</th>
-                                                                <td>
-                                                                    <select class="form-control select2"
-                                                                            id="editedPublicationPeriod"
-                                                                            name="publication_period"
-                                                                            title="دوره انتشار نشریه را انتخاب کنید">
-                                                                        <option selected disabled>انتخاب کنید</option>
-                                                                        <?php
-                                                                        $query = mysqli_query($connection_variables, 'select * from publication_period order by subject asc');
-                                                                        foreach ($query as $publication_period_items):
-                                                                            ?>
-                                                                            <option
-                                                                                value="<?php echo $publication_period_items['subject'] ?>"><?php echo $publication_period_items['subject']; ?></option>
-                                                                        <?php endforeach; ?>
-                                                                    </select>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>شاپا*</th>
-                                                                <td>
-                                                                    <input type="text" class="form-control" id="editedISSN"
-                                                                           placeholder="شاپا را وارد کنید"
-                                                                           name="ISSN">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>استان*</th>
-                                                                <td>
-                                                                    <input type="text" class="form-control"
-                                                                           id="editedMagState"
-                                                                           placeholder="استان را وارد کنید"
-                                                                           name="mag_state">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>شهر*</th>
-                                                                <td>
-                                                                    <input type="text" class="form-control"
-                                                                           id="editedMagCity" placeholder="شهر را وارد کنید"
-                                                                           name="mag_city">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>آدرس کامل</th>
-                                                                <td>
-                                                                    <textarea class="form-control" rows="3" placeholder="آدرس کامل را وارد نمایید" id="editedMagAddress" name="mag_address"></textarea>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>تلفن ثابت*</th>
-                                                                <td>
-                                                                    <input type="text" class="form-control"
-                                                                           id="editedMagPhone"
-                                                                           placeholder="تلفن ثابت را وارد کنید"
-                                                                           name="mag_phone">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>دورنگار</th>
-                                                                <td>
-                                                                    <input type="text" class="form-control" id="editedMagFax"
-                                                                           placeholder="دورنگار را وارد کنید"
-                                                                           name="mag_fax">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>ایمیل*</th>
-                                                                <td>
-                                                                    <input type="email" class="form-control"
-                                                                           id="editedMagEmail"
-                                                                           placeholder="ایمیل را وارد کنید"
-                                                                           name="mag_email">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>پایگاه اینترنتی</th>
-                                                                <td>
-                                                                    <input type="" class="form-control" id="editedWebsite"
-                                                                           placeholder="پایگاه اینترنتی را وارد کنید"
-                                                                           name="mag_website">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>نوع کاربری صاحب امتیاز*</th>
-                                                                <td>
-                                                                    <select class="form-control select2"
-                                                                            title="نوع کاربری صاحب امتیاز را انتخاب کنید"
-                                                                            style="width: 100%;text-align: right"
-                                                                            name="editedConcessionaireType"
-                                                                            id="editedConcessionaireType">
-                                                                        <option disabled>انتخاب کنید</option>
-                                                                        <option value="حقیقی">حقیقی</option>
-                                                                        <option value="حقوقی">حقوقی</option>
-                                                                    </select>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>صاحب امتیاز*</th>
-                                                                <td>
-                                                                    <input type="text" class="form-control"
-                                                                           id="editedConcessionaire"
-                                                                           placeholder="اطلاعات صاحب امتیاز را وارد کنید"
-                                                                           name="concessionaire">
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <div class="card-body">
-                                                            <div class="card-header" style="background-color: #dee2e6;text-align: center; color: #212529; font-weight: bold ">
-                                                                اطلاعات مدیر مسئول
-                                                            </div>
-                                                                    <table style="width: 100%" class="table table-bordered">
+                                        <form id="editMagForm">
+                                            <div class="modal fade" id="editModal" tabindex="-1"
+                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content" style="width: 800px">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">ویرایش
+                                                                اطلاعات نشریه</h1>
+                                                            <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <table style="width: 100%" class="table table-bordered">
+                                                                <tr>
+                                                                    <th colspan="2"
+                                                                        style="text-align: center;background-color: #dee2e6">
+                                                                        اطلاعات نشریه
+                                                                    </th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>نام نشریه*</th>
+                                                                    <td>
+                                                                        <input type="text" class="form-control"
+                                                                               id="editedName"
+                                                                               placeholder="نام نشریه را وارد کنید"
+                                                                               name="name">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>رتبه علمی مجله*</th>
+                                                                    <td>
+                                                                        <select name="science_rank"
+                                                                                id="editedScienceRank"
+                                                                                class="form-control select2"
+                                                                                title="نسخه نشریه را انتخاب کنید">
+                                                                            <option disabled>انتخاب کنید</option>
+                                                                            <option value="علمی پژوهشی">علمی پژوهشی
+                                                                            </option>
+                                                                            <option value="علمی ترویجی">علمی ترویجی
+                                                                            </option>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>گروه علمی*</th>
+                                                                    <td>
+                                                                        <select class="form-control select2"
+                                                                                multiple="multiple"
+                                                                                title="گروه علمی نشریه را انتخاب کنید (با گرفتن کلید ctrl می توانید چند گروه علمی انتخاب نمایید)"
+                                                                                style="width: 100%;text-align: right"
+                                                                                name="scientific_group[]"
+                                                                                id="editedScientificGroup">
+                                                                            <?php
+                                                                            $query = mysqli_query($connection_maghalat, 'select * from scientific_group order by name asc');
+                                                                            foreach ($query as $group_items):
+                                                                                ?>
+                                                                                <option
+                                                                                    value="<?php echo $group_items['name'] ?>"><?php echo $group_items['name']; ?></option>
+                                                                            <?php endforeach; ?>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>جایگاه بین المللی*</th>
+                                                                    <td>
+                                                                        <select id="editedInternationalPosition"
+                                                                                name="international_position[]"
+                                                                                class="form-control select2"
+                                                                                multiple="multiple"
+                                                                                title="جایگاه بین المللی را انتخاب کنید (با گرفتن کلید ctrl می توانید چند جایگاه بین المللی انتخاب نمایید)">
+                                                                            <?php
+                                                                            $query = mysqli_query($connection_variables, 'select * from international_position order by subject asc');
+                                                                            foreach ($query as $international_position_items):
+                                                                                ?>
+                                                                                <option
+                                                                                    value="<?php echo $international_position_items['subject'] ?>"><?php echo $international_position_items['subject']; ?></option>
+                                                                            <?php endforeach; ?>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>نوع نشریه*</th>
+                                                                    <td>
+                                                                        <select class="form-control select2"
+                                                                                id="editedMagType"
+                                                                                name="type"
+                                                                                title="نوع نشریه را انتخاب کنید">
+                                                                            <option selected disabled>انتخاب کنید
+                                                                            </option>
+                                                                            <option>دانشگاهی</option>
+                                                                            <option>حوزوی</option>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>دوره انتشار*</th>
+                                                                    <td>
+                                                                        <select class="form-control select2"
+                                                                                id="editedPublicationPeriod"
+                                                                                name="publication_period"
+                                                                                title="دوره انتشار نشریه را انتخاب کنید">
+                                                                            <option selected disabled>انتخاب کنید
+                                                                            </option>
+                                                                            <?php
+                                                                            $query = mysqli_query($connection_variables, 'select * from publication_period order by subject asc');
+                                                                            foreach ($query as $publication_period_items):
+                                                                                ?>
+                                                                                <option
+                                                                                    value="<?php echo $publication_period_items['subject'] ?>"><?php echo $publication_period_items['subject']; ?></option>
+                                                                            <?php endforeach; ?>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>شاپا*</th>
+                                                                    <td>
+                                                                        <input type="text" class="form-control"
+                                                                               id="editedISSN"
+                                                                               placeholder="شاپا را وارد کنید"
+                                                                               name="ISSN">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>استان*</th>
+                                                                    <td>
+                                                                        <input type="text" class="form-control"
+                                                                               id="editedMagState"
+                                                                               placeholder="استان را وارد کنید"
+                                                                               name="mag_state">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>شهر*</th>
+                                                                    <td>
+                                                                        <input type="text" class="form-control"
+                                                                               id="editedMagCity"
+                                                                               placeholder="شهر را وارد کنید"
+                                                                               name="mag_city">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>آدرس کامل</th>
+                                                                    <td>
+                                                                        <textarea class="form-control" rows="3"
+                                                                                  placeholder="آدرس کامل را وارد نمایید"
+                                                                                  id="editedMagAddress"
+                                                                                  name="mag_address"></textarea>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>تلفن ثابت*</th>
+                                                                    <td>
+                                                                        <input type="text" class="form-control"
+                                                                               id="editedMagPhone"
+                                                                               placeholder="تلفن ثابت را وارد کنید"
+                                                                               name="mag_phone">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>دورنگار</th>
+                                                                    <td>
+                                                                        <input type="text" class="form-control"
+                                                                               id="editedMagFax"
+                                                                               placeholder="دورنگار را وارد کنید"
+                                                                               name="mag_fax">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>ایمیل*</th>
+                                                                    <td>
+                                                                        <input type="email" class="form-control"
+                                                                               id="editedMagEmail"
+                                                                               placeholder="ایمیل را وارد کنید"
+                                                                               name="mag_email">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>پایگاه اینترنتی</th>
+                                                                    <td>
+                                                                        <input type="" class="form-control"
+                                                                               id="editedWebsite"
+                                                                               placeholder="پایگاه اینترنتی را وارد کنید"
+                                                                               name="mag_website">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>نوع کاربری صاحب امتیاز*</th>
+                                                                    <td>
+                                                                        <select class="form-control select2"
+                                                                                title="نوع کاربری صاحب امتیاز را انتخاب کنید"
+                                                                                style="width: 100%;text-align: right"
+                                                                                name="editedConcessionaireType"
+                                                                                id="editedConcessionaireType">
+                                                                            <option disabled>انتخاب کنید</option>
+                                                                            <option value="حقیقی">حقیقی</option>
+                                                                            <option value="حقوقی">حقوقی</option>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>صاحب امتیاز*</th>
+                                                                    <td>
+                                                                        <input type="text" class="form-control"
+                                                                               id="editedConcessionaire"
+                                                                               placeholder="اطلاعات صاحب امتیاز را وارد کنید"
+                                                                               name="concessionaire">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <div class="card-body">
+                                                                <div class="card-header"
+                                                                     style="background-color: #dee2e6;text-align: center; color: #212529; font-weight: bold ">
+                                                                    اطلاعات مدیر مسئول
+                                                                </div>
+                                                                <table style="width: 100%" class="table table-bordered">
 
-                                                                        <tr>
-                                                                            <th>عنوان*</th>
-                                                                            <td>
-                                                                                <select class="form-control select2"
-                                                                                        title="عنوان مدیر مسئول را انتخاب کنید"
-                                                                                        style="width: 100%;text-align: right"
-                                                                                        name="responsible_manager_owner_subject"
-                                                                                        id="editedResponsibleManagerOwnerSubject">
-                                                                                    <option disabled selected>انتخاب کنید</option>
-                                                                                    <?php
-                                                                                    $query = mysqli_query($connection_variables, 'select * from person_subjects order by subject asc');
-                                                                                    foreach ($query as $person_subjects_items):
-                                                                                        ?>
-                                                                                        <option
-                                                                                            value="<?php echo $person_subjects_items['subject'] ?>"><?php echo $person_subjects_items['subject']; ?></option>
-                                                                                    <?php endforeach; ?>
-                                                                                </select>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>نام و نام خانوادگی*</th>
-                                                                            <td>
-                                                                                <input type="text"
-                                                                                       style="width: 49%; display: inline-block"
-                                                                                       class="form-control"
-                                                                                       id="editedResponsibleManagerOwnerName"
-                                                                                       placeholder="نام"
-                                                                                       name="responsible_manager_owner_name">
-                                                                                <input type="text"
-                                                                                       style="width: 49%; display: inline-block"
-                                                                                       class="form-control"
-                                                                                       id="editedResponsibleManagerOwnerFamily"
-                                                                                       placeholder="نام خانوادگی"
-                                                                                       name="responsible_manager_owner_family">
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>مدرک*</th>
-                                                                            <td>
-                                                                                <select class="form-control"
-                                                                                        title="مدرک مدیر مسئول را انتخاب کنید"
-                                                                                        id="editedResponsibleManagerOwnerDegree"
-                                                                                        name="responsible_manager_owner_degree">
-                                                                                    <option selected disabled>انتخاب کنید</option>
-                                                                                    <?php
-                                                                                    $query = mysqli_query($connection_variables, 'select * from degree order by subject asc');
-                                                                                    foreach ($query as $degree_items):
-                                                                                        ?>
-                                                                                        <option
-                                                                                            value="<?php echo $degree_items['subject'] ?>"><?php echo $degree_items['subject']; ?></option>
-                                                                                    <?php endforeach; ?>
-                                                                                </select>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>تلفن ثابت*</th>
-                                                                            <td>
-                                                                                <input type="text" class="form-control"
-                                                                                       id="editedResponsibleManagerOwnerPhone"
-                                                                                       placeholder="تلفن ثابت مدیر مسئول را وارد کنید"
-                                                                                       name="responsible_manager_owner_phone">
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>تلفن همراه*</th>
-                                                                            <td>
-                                                                                <input type="text" class="form-control"
-                                                                                       id="editedResponsibleManagerOwnerMobile"
-                                                                                       placeholder="تلفن همراه مدیر مسئول را وارد کنید"
-                                                                                       name="responsible_manager_owner_mobile">
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>آدرس</th>
-                                                                            <td>
+                                                                    <tr>
+                                                                        <th>عنوان*</th>
+                                                                        <td>
+                                                                            <select class="form-control select2"
+                                                                                    title="عنوان مدیر مسئول را انتخاب کنید"
+                                                                                    style="width: 100%;text-align: right"
+                                                                                    name="responsible_manager_owner_subject"
+                                                                                    id="editedResponsibleManagerOwnerSubject">
+                                                                                <option disabled selected>انتخاب کنید
+                                                                                </option>
+                                                                                <?php
+                                                                                $query = mysqli_query($connection_variables, 'select * from person_subjects order by subject asc');
+                                                                                foreach ($query as $person_subjects_items):
+                                                                                    ?>
+                                                                                    <option
+                                                                                        value="<?php echo $person_subjects_items['subject'] ?>"><?php echo $person_subjects_items['subject']; ?></option>
+                                                                                <?php endforeach; ?>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>نام و نام خانوادگی*</th>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   style="width: 49%; display: inline-block"
+                                                                                   class="form-control"
+                                                                                   id="editedResponsibleManagerOwnerName"
+                                                                                   placeholder="نام"
+                                                                                   name="responsible_manager_owner_name">
+                                                                            <input type="text"
+                                                                                   style="width: 49%; display: inline-block"
+                                                                                   class="form-control"
+                                                                                   id="editedResponsibleManagerOwnerFamily"
+                                                                                   placeholder="نام خانوادگی"
+                                                                                   name="responsible_manager_owner_family">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>مدرک*</th>
+                                                                        <td>
+                                                                            <select class="form-control"
+                                                                                    title="مدرک مدیر مسئول را انتخاب کنید"
+                                                                                    id="editedResponsibleManagerOwnerDegree"
+                                                                                    name="responsible_manager_owner_degree">
+                                                                                <option selected disabled>انتخاب کنید
+                                                                                </option>
+                                                                                <?php
+                                                                                $query = mysqli_query($connection_variables, 'select * from degree order by subject asc');
+                                                                                foreach ($query as $degree_items):
+                                                                                    ?>
+                                                                                    <option
+                                                                                        value="<?php echo $degree_items['subject'] ?>"><?php echo $degree_items['subject']; ?></option>
+                                                                                <?php endforeach; ?>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>تلفن ثابت*</th>
+                                                                        <td>
+                                                                            <input type="text" class="form-control"
+                                                                                   id="editedResponsibleManagerOwnerPhone"
+                                                                                   placeholder="تلفن ثابت مدیر مسئول را وارد کنید"
+                                                                                   name="responsible_manager_owner_phone">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>تلفن همراه*</th>
+                                                                        <td>
+                                                                            <input type="text" class="form-control"
+                                                                                   id="editedResponsibleManagerOwnerMobile"
+                                                                                   placeholder="تلفن همراه مدیر مسئول را وارد کنید"
+                                                                                   name="responsible_manager_owner_mobile">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>آدرس</th>
+                                                                        <td>
                                                                 <textarea class="form-control" rows="3"
                                                                           placeholder="آدرس مدیر مسئول را وارد نمایید"
                                                                           id="editedResponsibleManagerOwnerAddress"
                                                                           name="responsible_manager_owner_address"></textarea>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                            <br/>
-                                                            <div class="card-header" style="background-color: #dee2e6;text-align: center; color: #212529; font-weight: bold ">
-                                                                اطلاعات سردبیر
-                                                            </div>
-                                                                    <table style="width: 100%" class="table table-bordered">
-                                                                        <tr>
-                                                                            <th>عنوان*</th>
-                                                                            <td>
-                                                                                <select class="form-control select2"
-                                                                                        title="عنوان سردبیر را انتخاب کنید"
-                                                                                        style="width: 100%;text-align: right"
-                                                                                        name="chief_editor_subject"
-                                                                                        id="editedChiefEditorSubject">
-                                                                                    <option disabled selected>انتخاب کنید</option>
-                                                                                    <?php
-                                                                                    $query = mysqli_query($connection_variables, 'select * from person_subjects order by subject asc');
-                                                                                    foreach ($query as $person_subjects_items):
-                                                                                        ?>
-                                                                                        <option
-                                                                                            value="<?php echo $person_subjects_items['subject'] ?>"><?php echo $person_subjects_items['subject']; ?></option>
-                                                                                    <?php endforeach; ?>
-                                                                                </select>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>نام و نام خانوادگی*</th>
-                                                                            <td>
-                                                                                <input type="text"
-                                                                                       style="width: 49%; display: inline-block"
-                                                                                       class="form-control" id="editedChiefEditorName"
-                                                                                       placeholder="نام" name="chief_editor_name">
-                                                                                <input type="text"
-                                                                                       style="width: 50%; display: inline-block"
-                                                                                       class="form-control" id="editedChiefEditorFamily"
-                                                                                       placeholder="نام خانوادگی"
-                                                                                       name="chief_editor_family">
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>مدرک*</th>
-                                                                            <td>
-                                                                                <select class="form-control"
-                                                                                        title="مدرک سردبیر را انتخاب کنید"
-                                                                                        id="editedChiefEditorDegree"
-                                                                                        name="chief_editor_degree">
-                                                                                    <option selected disabled>انتخاب کنید</option>
-                                                                                    <?php
-                                                                                    $query = mysqli_query($connection_variables, 'select * from degree order by subject asc');
-                                                                                    foreach ($query as $degree_items):
-                                                                                        ?>
-                                                                                        <option
-                                                                                            value="<?php echo $degree_items['subject'] ?>"><?php echo $degree_items['subject']; ?></option>
-                                                                                    <?php endforeach; ?>
-                                                                                </select>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>تلفن ثابت*</th>
-                                                                            <td>
-                                                                                <input type="text" class="form-control"
-                                                                                       id="editedChiefEditorPhone"
-                                                                                       placeholder="تلفن ثابت سردبیر را وارد کنید"
-                                                                                       name="chief_editor_phone">
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>تلفن همراه*</th>
-                                                                            <td>
-                                                                                <input type="text" class="form-control"
-                                                                                       id="editedChiefEditorMobile"
-                                                                                       placeholder="تلفن همراه سردبیر را وارد کنید"
-                                                                                       name="chief_editor_mobile">
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>آدرس</th>
-                                                                            <td>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                                <br/>
+                                                                <div class="card-header"
+                                                                     style="background-color: #dee2e6;text-align: center; color: #212529; font-weight: bold ">
+                                                                    اطلاعات سردبیر
+                                                                </div>
+                                                                <table style="width: 100%" class="table table-bordered">
+                                                                    <tr>
+                                                                        <th>عنوان*</th>
+                                                                        <td>
+                                                                            <select class="form-control select2"
+                                                                                    title="عنوان سردبیر را انتخاب کنید"
+                                                                                    style="width: 100%;text-align: right"
+                                                                                    name="chief_editor_subject"
+                                                                                    id="editedChiefEditorSubject">
+                                                                                <option disabled selected>انتخاب کنید
+                                                                                </option>
+                                                                                <?php
+                                                                                $query = mysqli_query($connection_variables, 'select * from person_subjects order by subject asc');
+                                                                                foreach ($query as $person_subjects_items):
+                                                                                    ?>
+                                                                                    <option
+                                                                                        value="<?php echo $person_subjects_items['subject'] ?>"><?php echo $person_subjects_items['subject']; ?></option>
+                                                                                <?php endforeach; ?>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>نام و نام خانوادگی*</th>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   style="width: 49%; display: inline-block"
+                                                                                   class="form-control"
+                                                                                   id="editedChiefEditorName"
+                                                                                   placeholder="نام"
+                                                                                   name="chief_editor_name">
+                                                                            <input type="text"
+                                                                                   style="width: 50%; display: inline-block"
+                                                                                   class="form-control"
+                                                                                   id="editedChiefEditorFamily"
+                                                                                   placeholder="نام خانوادگی"
+                                                                                   name="chief_editor_family">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>مدرک*</th>
+                                                                        <td>
+                                                                            <select class="form-control"
+                                                                                    title="مدرک سردبیر را انتخاب کنید"
+                                                                                    id="editedChiefEditorDegree"
+                                                                                    name="chief_editor_degree">
+                                                                                <option selected disabled>انتخاب کنید
+                                                                                </option>
+                                                                                <?php
+                                                                                $query = mysqli_query($connection_variables, 'select * from degree order by subject asc');
+                                                                                foreach ($query as $degree_items):
+                                                                                    ?>
+                                                                                    <option
+                                                                                        value="<?php echo $degree_items['subject'] ?>"><?php echo $degree_items['subject']; ?></option>
+                                                                                <?php endforeach; ?>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>تلفن ثابت*</th>
+                                                                        <td>
+                                                                            <input type="text" class="form-control"
+                                                                                   id="editedChiefEditorPhone"
+                                                                                   placeholder="تلفن ثابت سردبیر را وارد کنید"
+                                                                                   name="chief_editor_phone">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>تلفن همراه*</th>
+                                                                        <td>
+                                                                            <input type="text" class="form-control"
+                                                                                   id="editedChiefEditorMobile"
+                                                                                   placeholder="تلفن همراه سردبیر را وارد کنید"
+                                                                                   name="chief_editor_mobile">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>آدرس</th>
+                                                                        <td>
                                                                 <textarea class="form-control" rows="3"
                                                                           placeholder="آدرس سردبیر را وارد نمایید"
                                                                           id="editedChiefEditorAddress"
                                                                           name="chief_editor_address"></textarea>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
-                                                            <br/>
-                                                            <div class="card-header" style="background-color: #dee2e6;text-align: center; color: #212529; font-weight: bold ">
-                                                                اطلاعات مدیر اجرایی
-                                                            </div>
-                                                                    <table style="width: 100%" class="table table-bordered">
-                                                                        <tr>
-                                                                            <th>عنوان*</th>
-                                                                            <td>
-                                                                                <select class="form-control select2"
-                                                                                        title="عنوان مدیر اجرایی را انتخاب کنید"
-                                                                                        style="width: 100%;text-align: right"
-                                                                                        name="administration_manager_subject"
-                                                                                        id="editedAdministrationManagerSubject">
-                                                                                    <option disabled selected>انتخاب کنید</option>
-                                                                                    <?php
-                                                                                    $query = mysqli_query($connection_variables, 'select * from person_subjects order by subject asc');
-                                                                                    foreach ($query as $person_subjects_items):
-                                                                                        ?>
-                                                                                        <option
-                                                                                            value="<?php echo $person_subjects_items['subject'] ?>"><?php echo $person_subjects_items['subject']; ?></option>
-                                                                                    <?php endforeach; ?>
-                                                                                </select>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>نام و نام خانوادگی*</th>
-                                                                            <td>
-                                                                                <input type="text"
-                                                                                       style="width: 49%; display: inline-block"
-                                                                                       class="form-control"
-                                                                                       id="editedAdministrationManagerName"
-                                                                                       placeholder="نام"
-                                                                                       name="administration_manager_name">
-                                                                                <input type="text"
-                                                                                       style="width: 50%; display: inline-block"
-                                                                                       class="form-control"
-                                                                                       id="editedAdministrationManagerFamily"
-                                                                                       placeholder="نام خانوادگی"
-                                                                                       name="administration_manager_family">
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>مدرک*</th>
-                                                                            <td>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                                <br/>
+                                                                <div class="card-header"
+                                                                     style="background-color: #dee2e6;text-align: center; color: #212529; font-weight: bold ">
+                                                                    اطلاعات مدیر اجرایی
+                                                                </div>
+                                                                <table style="width: 100%" class="table table-bordered">
+                                                                    <tr>
+                                                                        <th>عنوان*</th>
+                                                                        <td>
+                                                                            <select class="form-control select2"
+                                                                                    title="عنوان مدیر اجرایی را انتخاب کنید"
+                                                                                    style="width: 100%;text-align: right"
+                                                                                    name="administration_manager_subject"
+                                                                                    id="editedAdministrationManagerSubject">
+                                                                                <option disabled selected>انتخاب کنید
+                                                                                </option>
+                                                                                <?php
+                                                                                $query = mysqli_query($connection_variables, 'select * from person_subjects order by subject asc');
+                                                                                foreach ($query as $person_subjects_items):
+                                                                                    ?>
+                                                                                    <option
+                                                                                        value="<?php echo $person_subjects_items['subject'] ?>"><?php echo $person_subjects_items['subject']; ?></option>
+                                                                                <?php endforeach; ?>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>نام و نام خانوادگی*</th>
+                                                                        <td>
+                                                                            <input type="text"
+                                                                                   style="width: 49%; display: inline-block"
+                                                                                   class="form-control"
+                                                                                   id="editedAdministrationManagerName"
+                                                                                   placeholder="نام"
+                                                                                   name="administration_manager_name">
+                                                                            <input type="text"
+                                                                                   style="width: 50%; display: inline-block"
+                                                                                   class="form-control"
+                                                                                   id="editedAdministrationManagerFamily"
+                                                                                   placeholder="نام خانوادگی"
+                                                                                   name="administration_manager_family">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>مدرک*</th>
+                                                                        <td>
 
-                                                                                <select class="form-control"
-                                                                                        title="مدرک مدیر اجرایی را انتخاب کنید"
-                                                                                        id="editedAdministrationManagerDegree"
-                                                                                        name="administration_manager_degree">
-                                                                                    <option selected disabled>انتخاب کنید</option>
-                                                                                    <?php
-                                                                                    $query = mysqli_query($connection_variables, 'select * from degree order by subject asc');
-                                                                                    foreach ($query as $degree_items):
-                                                                                        ?>
-                                                                                        <option
-                                                                                            value="<?php echo $degree_items['subject'] ?>"><?php echo $degree_items['subject']; ?></option>
-                                                                                    <?php endforeach; ?>
-                                                                                </select>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>تلفن ثابت*</th>
-                                                                            <td>
-                                                                                <input type="text" class="form-control"
-                                                                                       id="editedAdministrationManagerPhone"
-                                                                                       placeholder="تلفن ثابت مدیر اجرایی را وارد کنید"
-                                                                                       name="administration_manager_phone">
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>تلفن همراه*</th>
-                                                                            <td>
-                                                                                <input type="text" class="form-control"
-                                                                                       id="editedAdministrationManagerMobile"
-                                                                                       placeholder="تلفن همراه مدیر اجرایی را وارد کنید"
-                                                                                       name="administration_manager_mobile">
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th>آدرس</th>
-                                                                            <td>
+                                                                            <select class="form-control"
+                                                                                    title="مدرک مدیر اجرایی را انتخاب کنید"
+                                                                                    id="editedAdministrationManagerDegree"
+                                                                                    name="administration_manager_degree">
+                                                                                <option selected disabled>انتخاب کنید
+                                                                                </option>
+                                                                                <?php
+                                                                                $query = mysqli_query($connection_variables, 'select * from degree order by subject asc');
+                                                                                foreach ($query as $degree_items):
+                                                                                    ?>
+                                                                                    <option
+                                                                                        value="<?php echo $degree_items['subject'] ?>"><?php echo $degree_items['subject']; ?></option>
+                                                                                <?php endforeach; ?>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>تلفن ثابت*</th>
+                                                                        <td>
+                                                                            <input type="text" class="form-control"
+                                                                                   id="editedAdministrationManagerPhone"
+                                                                                   placeholder="تلفن ثابت مدیر اجرایی را وارد کنید"
+                                                                                   name="administration_manager_phone">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>تلفن همراه*</th>
+                                                                        <td>
+                                                                            <input type="text" class="form-control"
+                                                                                   id="editedAdministrationManagerMobile"
+                                                                                   placeholder="تلفن همراه مدیر اجرایی را وارد کنید"
+                                                                                   name="administration_manager_mobile">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>آدرس</th>
+                                                                        <td>
                                                                 <textarea class="form-control" rows="3"
                                                                           placeholder="آدرس مدیر اجرایی را وارد نمایید"
                                                                           id="editedAdministrationManagerAddress"
                                                                           name="administration_manager_address"></textarea>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">بستن
-                                                        </button>
-                                                        <button type="button" class="btn btn-primary">ذخیره تغییرات
-                                                        </button>
+                                                        <input type="hidden" value="" id="postID">
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" aria-hidden="true" id="closeModal"
+                                                                    data-bs-dismiss="modal">بستن
+                                                            </button>
+                                                            <button type="button" id="updateJournal" class="btn btn-primary">
+                                                                ذخیره تغییرات
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

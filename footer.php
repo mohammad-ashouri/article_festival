@@ -54,7 +54,7 @@
 <script src="plugins/chartjs-old/Chart.min.js"></script>
 <script src="plugins/select2/select2.full.min.js"></script>
 <!-- PAGE SCRIPTS -->
-<script src="dist/js/pages/dashboard2.js"></script>
+<!--<script src="dist/js/pages/dashboard2.js"></script>-->
 <script src="build/js/NoLink.js"></script>
 <!-- Select2 -->
 <script src="plugins/select2/select2.full.min.js"></script>

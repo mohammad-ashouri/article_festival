@@ -124,7 +124,7 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                                     <option selected disabled>انتخاب کنید</option>
 
                                     <?php
-                                    $query = mysqli_query($connection_mag, 'select * from mag_info order by name asc');
+                                    $query = mysqli_query($connection_mag, 'select * from mag_info where active=1 and deleted=0 order by name asc');
                                     foreach ($query as $mag_items):
                                         ?>
                                         <option value="<?php echo $mag_items['id'] ?>"><?php echo $mag_items['name']; ?></option>

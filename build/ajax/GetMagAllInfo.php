@@ -11,6 +11,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3) {
     }
     header('Content-Type: application/json');
     echo json_encode([
+        'id' => $mag_info['id'] ,
         'name' => $mag_info['name'] ,
         'science_rank'=>$mag_info['science_rank'],
         'scientific_group'=>$mag_info['scientific_group'],

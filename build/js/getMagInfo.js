@@ -9,6 +9,7 @@ function getInfo(id) {
         success: function (response) {
             //Mag_Info
             $("#editedName").val(response.name);
+            $("#postID").val(response.id);
             $("#editedScienceRank").val(response.science_rank).trigger('change');
             $("#editedScientificGroup").val(response.scientific_group.split('/')).trigger('change');
             $("#editedInternationalPosition").val(response.international_position.split('/')).trigger('change');
