@@ -1,5 +1,5 @@
 <?php
-echo $_POST['editedPublicationPeriodYear'];
+echo $_POST['editedMagInfoId'];
 //include_once __DIR__ . '/../../../config/connection.php';
 //session_start();
 //if ($_SESSION['head'] == 3 or $_SESSION['head']==4) {

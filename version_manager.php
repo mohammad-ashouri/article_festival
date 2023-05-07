@@ -228,15 +228,15 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                         <form action="#versions_list" method="post" id="search_form">
                             <h3 class="card-title">نمایش و مدیریت نسخه های نشریه:
 
-                                <select id="mag_id" name="mag_id" class="form-control select2"
+                                <select id="mag_name" name="mag_name" class="form-control select2"
                                         style="width: 450px;display: inline-block">
                                     <option disabled selected>انتخاب کنید</option>
                                     <?php
                                     $query = mysqli_query($connection_mag, "select * from mag_info where active=1 ORDER BY name asc");
                                     foreach ($query as $mag_info):
                                         ?>
-                                        <option <?php if (@$_POST['mag_id'] == $mag_info['id']) echo 'selected' ?>
-                                            value="<?php echo $mag_info['id'] ?>"><?php echo $mag_info['publication_period'] . ' ' . $mag_info['name'] ?></option>
+                                        <option <?php if (@$_POST['mag_name'] == $mag_info['name']) echo 'selected' ?>
+                                            value="<?php echo $mag_info['name'] ?>"><?php echo $mag_info['publication_period'] . ' ' . $mag_info['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <button name="Search_Mag_Version" type="submit" class="btn btn-primary">نمایش</button>
@@ -262,7 +262,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                 </tr>
                                 <?php
                                 $a = 1;
-                                $mag_id = $_POST['mag_id'];
+                                echo $mag_name = $_POST['mag_name'];
                                 $SelectAllMagVersions = mysqli_query($connection_mag, "select * from mag_versions where mag_info_id='$mag_id' order by publication_year desc");
                                 foreach ($SelectAllMagVersions as $Mag_Version):
                                     ?>
@@ -344,14 +344,11 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                                     <tr>
                                                                         <th>نام نشریه*</th>
                                                                         <td>
-                                                                            <select class="form-control select2"
+                                                                            <select disabled class="form-control select2"
                                                                                     title="نام نشریه را انتخاب کنید"
                                                                                     style="width: 100%;text-align: right"
                                                                                     name="mag_name"
                                                                                     id="editedMagInfoId">
-                                                                                <option selected disabled>انتخاب کنید
-                                                                                </option>
-
                                                                                 <?php
                                                                                 $query = mysqli_query($connection_mag, 'select * from mag_info where active=1 and deleted=0 order by name asc');
                                                                                 foreach ($query as $mag_items):
@@ -480,7 +477,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                                 </table>
                                                             </div>
 
-                                                            <input type="hidden" value="" id="postID">
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
                                                                         aria-hidden="true" id="closeModal"

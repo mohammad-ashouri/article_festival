@@ -4,6 +4,7 @@ updateVersion.addEventListener('click', function () {
         " پس از تایید شما دیگر قابل استفاده نمی باشد. آیا تایید می کنید؟")) {
         var formData = new FormData();
 
+        formData.append('editedMagInfoId',$('#editedMagInfoId').val())
         formData.append('editedPublicationPeriodYear', $('#editedPublicationPeriodYear').val());
         formData.append('editedPublicationPeriodNumber', $('#editedPublicationPeriodNumber').val());
         formData.append('editedPublicationNumber', $('#editedPublicationNumber').val());
