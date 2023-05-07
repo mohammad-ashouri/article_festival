@@ -32,132 +32,132 @@ function Check_Fields() {
     var administration_manager_phone = document.getElementById('administration_manager_phone');
     var administration_manager_mobile = document.getElementById('administration_manager_mobile');
 
-    if (name.value==''){
+    if (name.value===''){
         alert('نام نشریه وارد نشده است');
         name.style.backgroundColor='yellow';
         return false;
     }
-    else if(science_rank.value=='انتخاب کنید'){
+    else if(science_rank.value==='انتخاب کنید'){
         alert('رتبه علمی نشریه انتخاب نشده است');
         science_rank.style.backgroundColor='yellow';
         return false;
-    }else if(scientific_group.value=='انتخاب کنید'){
-        alert('رتبه علمی نشریه انتخاب نشده است');
+    }else if(scientific_group.value==='انتخاب کنید'){
+        alert('گروه علمی نشریه انتخاب نشده است');
         scientific_group.style.backgroundColor='yellow';
         return false;
-    }else if(international_position.value=='انتخاب کنید'){
+    }else if(international_position.value==='انتخاب کنید'){
         alert('جایگاه بین المللی نشریه انتخاب نشده است');
         international_position.style.backgroundColor='yellow';
         return false;
-    }else if(type.value=='انتخاب کنید'){
+    }else if(type.value==='انتخاب کنید'){
         alert('نوع نشریه نشده است');
         type.style.backgroundColor='yellow';
         return false;
-    }else if(publication_period.value=='انتخاب کنید'){
+    }else if(publication_period.value==='انتخاب کنید'){
         alert('دوره انتشار انتخاب نشده است');
         publication_period.style.backgroundColor='yellow';
         return false;
-    }else if(ISSN.value==''){
+    }else if(ISSN.value===''){
         alert('شاپا وارد نشده است');
         ISSN.style.backgroundColor='yellow';
         return false;
-    }else if(mag_state.value==''){
+    }else if(mag_state.value===''){
         alert('استان وارد نشده است');
         mag_state.style.backgroundColor='yellow';
         return false;
-    }else if(mag_city.value==''){
+    }else if(mag_city.value===''){
         alert('شهر وارد نشده است');
         mag_city.style.backgroundColor='yellow';
         return false;
-    }else if(mag_address.value==''){
+    }else if(mag_address.value===''){
         alert('آدرس وارد نشده است');
         mag_address.style.backgroundColor='yellow';
         return false;
-    }else if(mag_phone.value==''){
+    }else if(mag_phone.value===''){
         alert('شماره ثابت وارد نشده است');
         mag_phone.style.backgroundColor='yellow';
         return false;
-    }else if(mag_email.value==''){
+    }else if(mag_email.value===''){
         alert('ایمیل وارد نشده است');
         mag_email.style.backgroundColor='yellow';
         return false;
-    }else if(concessionaire_type.value=='انتخاب کنید'){
+    }else if(concessionaire_type.value==='انتخاب کنید'){
         alert('نوع کاربری صاحب امتیاز وارد نشده است');
         concessionaire_type.style.backgroundColor='yellow';
         return false;
-    }else if(concessionaire.value==''){
+    }else if(concessionaire.value===''){
         alert('اطلاعات صاحب امتیاز وارد نشده است');
         concessionaire.style.backgroundColor='yellow';
         return false;
-    }else if(responsible_manager_owner_subject.value=='انتخاب کنید'){
+    }else if(responsible_manager_owner_subject.value==='انتخاب کنید'){
         alert('عنوان مدیر مسئول انتخاب نشده است');
         responsible_manager_owner_subject.style.backgroundColor='yellow';
         return false;
-    }else if(responsible_manager_owner_name.value==''){
+    }else if(responsible_manager_owner_name.value===''){
         alert('نام مدیر مسئول وارد نشده است');
         responsible_manager_owner_name.style.backgroundColor='yellow';
         return false;
-    }else if(responsible_manager_owner_family.value==''){
+    }else if(responsible_manager_owner_family.value===''){
         alert('نام خانوادگی مدیر مسئول وارد نشده است');
         responsible_manager_owner_family.style.backgroundColor='yellow';
         return false;
-    }else if(responsible_manager_owner_degree.value=='انتخاب کنید'){
+    }else if(responsible_manager_owner_degree.value==='انتخاب کنید'){
         alert('مدرک علمی مدیر مسئول انتخاب نشده است');
         responsible_manager_owner_degree.style.backgroundColor='yellow';
         return false;
-    }else if(responsible_manager_owner_phone.value==''){
+    }else if(responsible_manager_owner_phone.value===''){
         alert('تلفن همراه مدیر مسئول وارد نشده است');
         responsible_manager_owner_phone.style.backgroundColor='yellow';
         return false;
-    }else if(responsible_manager_owner_mobile.value==''){
+    }else if(responsible_manager_owner_mobile.value===''){
         alert('تلفن همراه مدیر مسئول وارد نشده است');
         responsible_manager_owner_mobile.style.backgroundColor='yellow';
         return false;
-    }else if(chief_editor_subject.value=='انتخاب کنید'){
+    }else if(chief_editor_subject.value==='انتخاب کنید'){
         alert('عنوان سردبیر انتخاب نشده است');
         chief_editor_subject.style.backgroundColor='yellow';
         return false;
-    }else if(chief_editor_name.value==''){
+    }else if(chief_editor_name.value===''){
         alert('نام سردبیر وارد نشده است');
         chief_editor_name.style.backgroundColor='yellow';
         return false;
-    }else if(chief_editor_family.value==''){
+    }else if(chief_editor_family.value===''){
         alert('نام خانوادگی سردبیر وارد نشده است');
         chief_editor_family.style.backgroundColor='yellow';
         return false;
-    }else if(chief_editor_degree.value=='انتخاب کنید'){
+    }else if(chief_editor_degree.value==='انتخاب کنید'){
         alert('مدرک سردبیر انتخاب نشده است');
         chief_editor_degree.style.backgroundColor='yellow';
         return false;
-    }else if(chief_editor_phone.value==''){
+    }else if(chief_editor_phone.value===''){
         alert('شماره ثابت سردبیر وارد نشده است');
         chief_editor_phone.style.backgroundColor='yellow';
         return false;
-    }else if(chief_editor_mobile.value==''){
+    }else if(chief_editor_mobile.value===''){
         alert('شماره همراه سردبیر وارد نشده است');
         chief_editor_mobile.style.backgroundColor='yellow';
         return false;
-    }else if(administration_manager_subject.value=='انتخاب کنید'){
+    }else if(administration_manager_subject.value==='انتخاب کنید'){
         alert('عنوان مدیر اجرایی وارد نشده است');
         administration_manager_subject.style.backgroundColor='yellow';
         return false;
-    }else if(administration_manager_name.value==''){
+    }else if(administration_manager_name.value===''){
         alert('نام مدیر اجرایی وارد نشده است');
         administration_manager_name.style.backgroundColor='yellow';
         return false;
-    }else if(administration_manager_family.value==''){
+    }else if(administration_manager_family.value===''){
         alert('نام خانوادگی مدیر اجرایی وارد نشده است');
         administration_manager_family.style.backgroundColor='yellow';
         return false;
-    }else if(administration_manager_degree.value=='انتخاب کنید'){
+    }else if(administration_manager_degree.value==='انتخاب کنید'){
         alert('مدرک مدیر اجرایی انتخاب نشده است');
         administration_manager_degree.style.backgroundColor='yellow';
         return false;
-    }else if(administration_manager_phone.value==''){
+    }else if(administration_manager_phone.value===''){
         alert('شماره ثابت مدیر اجرایی وارد نشده است');
         administration_manager_phone.style.backgroundColor='yellow';
         return false;
-    }else if(administration_manager_mobile.value==''){
+    }else if(administration_manager_mobile.value===''){
         alert('شماره همراه مدیر اجرایی وارد نشده است');
         administration_manager_mobile.style.backgroundColor='yellow';
         return false;
