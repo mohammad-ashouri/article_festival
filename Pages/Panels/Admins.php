@@ -13,7 +13,7 @@
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3><?php
-                                $query=mysqli_query($connection_mag,"select * from mag_info");
+                                $query=mysqli_query($connection_mag,"select * from mag_info where active=1");
                                 echo mysqli_num_rows($query);
                                 ?></h3>
 
