@@ -7,6 +7,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3) {
     }
     header('Content-Type: application/json');
     echo json_encode([
+        'mag_versions_id' => $version_info['id'] ,
         'mag_info_id' => $version_info['mag_info_id'] ,
         'publication_period_year' => $version_info['publication_period_year'] ,
         'publication_period_number'=>$version_info['publication_period_number'],

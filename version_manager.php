@@ -250,7 +250,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                             <table class="table table-bordered table-striped" id="myTable">
                                 <tr class="text-center">
                                     <th style="width: 35px;">ردیف</th>
-                                    <th>دوره انتشار (سال)</th>
+                                    <th style="width: 50px;">دوره انتشار (سال)</th>
                                     <th style="width: 50px;">دوره نشریه در سال</th>
                                     <th style="width: 50px;">نسخه نشریه</th>
                                     <th style="width: 50px;">سال انتشار</th>
@@ -262,13 +262,15 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                 </tr>
                                 <?php
                                 $a = 1;
-                                echo $mag_name = $_POST['mag_name'];
-                                $SelectAllMagVersions = mysqli_query($connection_mag, "select * from mag_versions where mag_info_id='$mag_id' order by publication_year desc");
+                                $mag_name = $_POST['mag_name'];
+                                $SelectAllMagVersions = mysqli_query($connection_mag, "select mag_versions.id,mag_versions.publication_period_year,mag_versions.publication_period_number,mag_versions.publication_number,
+                                                                    mag_versions.publication_year,mag_versions.number_of_pages,mag_versions.number_of_articles,mag_versions.cover_url,mag_versions.file_url,mag_versions.article_submitted from mag_versions inner join mag_info on mag_versions.mag_info_id = mag_info.id where mag_info.name='$mag_name' and (mag_versions.active=1 or mag_versions.deleted=0) order by mag_versions.publication_year desc");
                                 foreach ($SelectAllMagVersions as $Mag_Version):
                                     ?>
                                     <tr>
-                                        <td><?php echo $a;
-                                            $a++; ?></td>
+                                        <th><?php echo $a;
+                                            $a++; ?>
+                                        </th>
                                         <td>
                                             <?php
                                             echo $Mag_Version['publication_period_year'];
@@ -314,183 +316,204 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                             </a>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary d-inline-block"
-                                                    data-toggle="modal"
-                                                    onclick="getInfo(<?php echo $Mag_Version['id'] ?>)"
-                                                    data-target="#editModal">
-                                                جزئیات و ویرایش
-                                            </button>
-                                            <button type="button" class="btn btn-danger d-inline-block"
-                                                    data-toggle="modal"
-                                                    data-mag-id="<?php echo $Mag_Version['id'] ?>"
-                                                    data-target="#deleteMagModal" id="deleteMag">
-                                                حذف
-                                            </button>
-                                            <form id="editVersionForm">
-                                                <div class="modal fade" id="editModal" tabindex="-1"
-                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content" style="width: 800px">
-                                                            <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                                                    ویرایش
-                                                                    اطلاعات نسخه نشریه</h1>
-                                                                <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <table style="width: 100%" class="table table-bordered">
-                                                                    <tr>
-                                                                        <th>نام نشریه*</th>
-                                                                        <td>
-                                                                            <select disabled class="form-control select2"
-                                                                                    title="نام نشریه را انتخاب کنید"
-                                                                                    style="width: 100%;text-align: right"
-                                                                                    name="mag_name"
-                                                                                    id="editedMagInfoId">
-                                                                                <?php
-                                                                                $query = mysqli_query($connection_mag, 'select * from mag_info where active=1 and deleted=0 order by name asc');
-                                                                                foreach ($query as $mag_items):
-                                                                                    ?>
-                                                                                    <option
-                                                                                        value="<?php echo $mag_items['id'] ?>"><?php echo $mag_items['name']; ?></option>
-                                                                                <?php endforeach; ?>
-                                                                            </select>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>شماره دوره انتشار (سال)*</th>
-                                                                        <td>
-                                                                            <input title="شماره دوره انتشار (سال)"
-                                                                                   type="number" class="form-control"
-                                                                                   id="editedPublicationPeriodYear"
-                                                                                   placeholder="شماره دوره انتشار (سال) را وارد کنید. (به عنوان مثال: سال 24)"
-                                                                                   name="publication_period_year">
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>شماره دوره نشریه در سال*</th>
-                                                                        <td>
-                                                                            <input title="شماره دوره نشریه در سال"
-                                                                                   type="number" class="form-control"
-                                                                                   id="editedPublicationPeriodNumber"
-                                                                                   placeholder="مثلا شماره 2"
-                                                                                   name="publication_period_number">
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>شماره نسخه نشریه*</th>
-                                                                        <td>
-                                                                            <input title="شماره نسخه نشریه" type="text"
-                                                                                   class="form-control"
-                                                                                   id="editedPublicationNumber"
-                                                                                   placeholder="شماره نسخه نشریه را وارد کنید"
-                                                                                   name="publication_number">
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>سال انتشار*</th>
-                                                                        <td>
-                                                                            <div class="input-group"
-                                                                                 style="width: 100%">
-                                                                                <div class="input-group-prepend">
+                                            <?php if ($Mag_Version['article_submitted'] != 1): ?>
+                                                <button type="button" class="btn btn-primary d-inline-block"
+                                                        data-toggle="modal"
+                                                        onclick="getInfo(<?php echo $Mag_Version['id'] ?>)"
+                                                        data-target="#editModal">
+                                                    جزئیات و ویرایش
+                                                </button>
+                                                <button type="button" class="btn btn-danger d-inline-block"
+                                                        data-toggle="modal"
+                                                        data-mag-id="<?php echo $Mag_Version['id'] ?>"
+                                                        data-target="#deleteMagModal" id="deleteMag">
+                                                    حذف
+                                                </button>
+                                                <form id="editVersionForm">
+                                                    <div class="modal fade" id="editModal" tabindex="-1"
+                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content" style="width: 800px">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                        ویرایش
+                                                                        اطلاعات نسخه نشریه</h1>
+                                                                    <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <table style="width: 100%"
+                                                                           class="table table-bordered">
+                                                                        <tr>
+                                                                            <th>نام نشریه*</th>
+                                                                            <td>
+                                                                                <select disabled
+                                                                                        class="form-control select2"
+                                                                                        title="نام نشریه را انتخاب کنید"
+                                                                                        style="width: 100%;text-align: right"
+                                                                                        name="mag_name"
+                                                                                        id="editedMagInfoId">
+                                                                                    <?php
+                                                                                    $query = mysqli_query($connection_mag, 'select * from mag_info');
+                                                                                    foreach ($query as $mag_items):
+                                                                                        ?>
+                                                                                        <option
+                                                                                            value="<?php echo $mag_items['id'] ?>"><?php echo $mag_items['name']; ?></option>
+                                                                                    <?php endforeach; ?>
+                                                                                </select>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>شماره دوره انتشار (سال)*</th>
+                                                                            <td>
+                                                                                <input title="شماره دوره انتشار (سال)"
+                                                                                       type="number"
+                                                                                       class="form-control"
+                                                                                       id="editedPublicationPeriodYear"
+                                                                                       placeholder="شماره دوره انتشار (سال) را وارد کنید. (به عنوان مثال: سال 24)"
+                                                                                       name="publication_period_year">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>شماره دوره نشریه در سال*</th>
+                                                                            <td>
+                                                                                <input title="شماره دوره نشریه در سال"
+                                                                                       type="number"
+                                                                                       class="form-control"
+                                                                                       id="editedPublicationPeriodNumber"
+                                                                                       placeholder="مثلا شماره 2"
+                                                                                       name="publication_period_number">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>شماره نسخه نشریه*</th>
+                                                                            <td>
+                                                                                <input title="شماره نسخه نشریه"
+                                                                                       type="text"
+                                                                                       class="form-control"
+                                                                                       id="editedPublicationNumber"
+                                                                                       placeholder="شماره نسخه نشریه را وارد کنید"
+                                                                                       name="publication_number">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>سال انتشار*</th>
+                                                                            <td>
+                                                                                <div class="input-group"
+                                                                                     style="width: 100%">
+                                                                                    <div class="input-group-prepend">
                                                                                   <span class="input-group-text">
                                                                                     <i class="fa fa-calendar"></i>
                                                                                   </span>
+                                                                                    </div>
+                                                                                    <input
+                                                                                        class="publicationYear form-control"
+                                                                                        name="publication_year"
+                                                                                        id="editedPublicationYear">
                                                                                 </div>
-                                                                                <input
-                                                                                    class="publicationYear form-control"
-                                                                                    name="publication_year"
-                                                                                    id="editedPublicationYear">
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>شمارگان صفحه*</th>
-                                                                        <td>
-                                                                            <input title="شمارگان صفحه" type="number"
-                                                                                   class="form-control"
-                                                                                   id="editedNumberOfPages"
-                                                                                   placeholder="شمارگان صفحه نشریه را وارد کنید"
-                                                                                   name="number_of_pages">
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th>تعداد مقالات*</th>
-                                                                        <td>
-                                                                            <input title="تعداد مقالات" type="number"
-                                                                                   class="form-control"
-                                                                                   id="editedNumberOfArticles"
-                                                                                   placeholder="تعداد مقاله نشریه را وارد کنید"
-                                                                                   name="number_of_articles">
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th rowspan="2">فایل جلد نشریه*</th>
-                                                                        <td>
-                                                                            <a href="" id='no-link' style="color: #0a53be" class="editedCoverUrl"
-                                                                               target="_blank">
-                                                                                دانلود فایل بارگذاری شده
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>شمارگان صفحه*</th>
+                                                                            <td>
+                                                                                <input title="شمارگان صفحه"
+                                                                                       type="number"
+                                                                                       class="form-control"
+                                                                                       id="editedNumberOfPages"
+                                                                                       placeholder="شمارگان صفحه نشریه را وارد کنید"
+                                                                                       name="number_of_pages">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>تعداد مقالات*</th>
+                                                                            <td>
+                                                                                <input title="تعداد مقالات"
+                                                                                       type="number"
+                                                                                       class="form-control"
+                                                                                       id="editedNumberOfArticles"
+                                                                                       placeholder="تعداد مقاله نشریه را وارد کنید"
+                                                                                       name="number_of_articles">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th rowspan="2">فایل جلد نشریه*</th>
+                                                                            <td>
+                                                                                <a href="" id='no-link'
+                                                                                   style="color: #0a53be"
+                                                                                   class="editedCoverUrl"
+                                                                                   target="_blank">
+                                                                                    دانلود فایل بارگذاری شده
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
 
-                                                                        <td>
-                                                                            <div class="custom-file">
-                                                                                <input title="فایل جلد نشریه"
-                                                                                       accept="application/pdf,.jpg,.jpeg"
-                                                                                       type="file"
-                                                                                       class="custom-file-input"
-                                                                                       id="editedCoverUrl2" name="cover_url">
-                                                                                <label id="cover_url_label"
-                                                                                       class="custom-file-label">انتخاب
-                                                                                    فایل</label>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
+                                                                            <td>
+                                                                                <div class="custom-file">
+                                                                                    <input title="فایل جلد نشریه"
+                                                                                           accept="application/pdf,.jpg,.jpeg"
+                                                                                           type="file"
+                                                                                           class="custom-file-input"
+                                                                                           id="editedCoverUrl2"
+                                                                                           name="cover_url">
+                                                                                    <label id="cover_url_label"
+                                                                                           class="custom-file-label">انتخاب
+                                                                                        فایل</label>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
 
-                                                                    <tr>
-                                                                        <th rowspan="2">فایل نشریه*</th>
-                                                                        <td>
-                                                                            <a href="" id='no-link' style="color: #0a53be" class="editedFileUrl"
-                                                                               target="_blank">
-                                                                                دانلود فایل بارگذاری شده
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="custom-file">
-                                                                                <input title="فایل نشریه"
-                                                                                       accept="application/pdf,.doc,.docx"
-                                                                                       type="file"
-                                                                                       class="custom-file-input"
-                                                                                       id="editedFileUrl2" name="file_url">
-                                                                                <label id="file_url_label"
-                                                                                       class="custom-file-label">انتخاب
-                                                                                    فایل</label>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </div>
-
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                        aria-hidden="true" id="closeModal"
-                                                                        data-bs-dismiss="modal">بستن
-                                                                </button>
-                                                                <button type="button" id="updateVersion"
-                                                                        class="btn btn-primary">
-                                                                    ذخیره تغییرات
-                                                                </button>
+                                                                        <tr>
+                                                                            <th rowspan="2">فایل نشریه*</th>
+                                                                            <td>
+                                                                                <a href="" id='no-link'
+                                                                                   style="color: #0a53be"
+                                                                                   class="editedFileUrl"
+                                                                                   target="_blank">
+                                                                                    دانلود فایل بارگذاری شده
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div class="custom-file">
+                                                                                    <input title="فایل نشریه"
+                                                                                           accept="application/pdf,.doc,.docx"
+                                                                                           type="file"
+                                                                                           class="custom-file-input"
+                                                                                           id="editedFileUrl2"
+                                                                                           name="file_url">
+                                                                                    <label id="file_url_label"
+                                                                                           class="custom-file-label">انتخاب
+                                                                                        فایل</label>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                <input type="hidden" id="editedVersionID">
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                            aria-hidden="true" id="closeModal"
+                                                                            data-bs-dismiss="modal">بستن
+                                                                    </button>
+                                                                    <button type="button" id="updateVersion"
+                                                                            class="btn btn-primary">
+                                                                        ذخیره تغییرات
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </form>
+                                            <?php else: ?>
+                                                <div
+                                                    title="به دلیل ثبت مقاله برای این نسخه، امکان ویرایش اطلاعات وجود ندارد."
+                                                    class="alert alert-danger d-inline-block" role="alert">
+                                                    امکان ویرایش وجود ندارد
                                                 </div>
-                                            </form>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -518,7 +541,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
     </script>
     <script src="build/js/Set_Mag_Version_Scripts.js"></script>
     <script src="build/js/GetVersionInfo.js"></script>
-        <script src="build/js/UpdateVersionInfo.js"></script>
+    <script src="build/js/UpdateVersionInfo.js"></script>
     <!--    <script src="build/js/Delete_Mag.js"></script>-->
 <?php
 endif;

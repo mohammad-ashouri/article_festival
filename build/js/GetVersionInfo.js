@@ -8,6 +8,7 @@ function getInfo(id) {
         success: function (response) {
             //Version_Info
             $("#editedMagInfoId").val(response.mag_info_id).trigger('change');
+            $("#editedVersionID").val(response.mag_versions_id);
             $("#editedPublicationPeriodYear").val(response.publication_period_year);
             $("#editedPublicationPeriodNumber").val(response.publication_period_number);
             $("#editedPublicationNumber").val(response.publication_number);
