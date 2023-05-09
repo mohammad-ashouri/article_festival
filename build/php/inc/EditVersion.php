@@ -17,7 +17,7 @@ if ($_SESSION['head'] == 3 or $_SESSION['head'] == 4) {
     $editedNumberOfPages = $_POST['editedNumberOfPages'];
     $editedNumberOfArticles = $_POST['editedNumberOfArticles'];
 
-    $query="update mag_versions set publication_period_year='$editedPublicationNumber',publication_period_number='$editedPublicationPeriodNumber',
+    $query="update mag_versions set publication_period_year='$editedPublicationPeriodYear',publication_period_number='$editedPublicationPeriodNumber',
                         publication_number='$editedPublicationNumber',publication_year='$editedPublicationYear',
                         number_of_pages='$editedNumberOfPages',number_of_articles='$editedNumberOfArticles',editor='$editor',edited_date='$datewithtime' where
                                                                                id='$versionID'";

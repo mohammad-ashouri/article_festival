@@ -247,7 +247,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                     <?php if (isset($_POST['Search_Mag_Version'])): ?>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-bordered table-striped" id="myTable">
+                            <table class="table table-bordered table-striped text-center" id="myTable">
                                 <tr class="text-center">
                                     <th style="width: 35px;">ردیف</th>
                                     <th style="width: 50px;">دوره انتشار (سال)</th>
@@ -264,7 +264,11 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                 $a = 1;
                                 $mag_name = $_POST['mag_name'];
                                 $SelectAllMagVersions = mysqli_query($connection_mag, "select mag_versions.id,mag_versions.publication_period_year,mag_versions.publication_period_number,mag_versions.publication_number,
-                                                                    mag_versions.publication_year,mag_versions.number_of_pages,mag_versions.number_of_articles,mag_versions.cover_url,mag_versions.file_url,mag_versions.article_submitted from mag_versions inner join mag_info on mag_versions.mag_info_id = mag_info.id where mag_info.name='$mag_name' and (mag_versions.active=1 or mag_versions.deleted=0) order by mag_versions.publication_year desc");
+                                                                    mag_versions.publication_year,mag_versions.number_of_pages,mag_versions.number_of_articles,
+                                                                    mag_versions.cover_url,mag_versions.file_url,mag_versions.article_submitted 
+                                                                    from mag_versions inner join mag_info on mag_versions.mag_info_id = mag_info.id
+                                                                    where mag_info.name='$mag_name' and (mag_versions.active=1 or mag_versions.deleted=0)
+                                                                    order by mag_versions.publication_year,mag_versions.publication_number desc");
                                 foreach ($SelectAllMagVersions as $Mag_Version):
                                     ?>
                                     <tr>
@@ -323,10 +327,9 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                         data-target="#editModal">
                                                     جزئیات و ویرایش
                                                 </button>
-                                                <button type="button" class="btn btn-danger d-inline-block"
-                                                        data-toggle="modal"
-                                                        data-mag-id="<?php echo $Mag_Version['id'] ?>"
-                                                        data-target="#deleteMagModal" id="deleteMag">
+                                                <button type="button" class="btn btn-danger d-inline-block" data-toggle="modal"
+                                                        data-version-id="<?php echo $Mag_Version['id'] ?>"
+                                                        data-target="#deleteVersionModal" id="deleteVersion">
                                                     حذف
                                                 </button>
                                                 <form id="editVersionForm">
@@ -457,7 +460,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                                                            class="custom-file-input"
                                                                                            id="editedCoverUrl2"
                                                                                            name="cover_url">
-                                                                                    <label id="cover_url_label"
+                                                                                    <label id="editedCoverUrl2_label"
                                                                                            class="custom-file-label">انتخاب
                                                                                         فایل</label>
                                                                                 </div>
@@ -484,7 +487,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                                                            class="custom-file-input"
                                                                                            id="editedFileUrl2"
                                                                                            name="file_url">
-                                                                                    <label id="file_url_label"
+                                                                                    <label id="editedFileUrl2_label"
                                                                                            class="custom-file-label">انتخاب
                                                                                         فایل</label>
                                                                                 </div>
@@ -542,7 +545,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
     <script src="build/js/Set_Mag_Version_Scripts.js"></script>
     <script src="build/js/GetVersionInfo.js"></script>
     <script src="build/js/UpdateVersionInfo.js"></script>
-    <!--    <script src="build/js/Delete_Mag.js"></script>-->
+        <script src="build/js/Delete_Version.js"></script>
 <?php
 endif;
 include_once __DIR__ . '/footer.php'; ?>

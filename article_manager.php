@@ -70,7 +70,7 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                                         style="width: 100%;text-align: right" name="mag_version" id="mag_version">
                                     <option selected disabled>انتخاب کنید</option>
                                     <?php
-                                    $query = mysqli_query($connection_mag, 'select mag_versions.id,mag_info.name,mag_info.publication_period,mag_versions.publication_number,mag_versions.publication_year from mag_versions inner join mag_info on mag_versions.mag_info_id=mag_info.id where mag_versions.file_url is not null and mag_versions.article_submitted=0 order by mag_info.name asc');
+                                    $query = mysqli_query($connection_mag, 'select mag_versions.id,mag_info.name,mag_info.publication_period,mag_versions.publication_number,mag_versions.publication_year from mag_versions inner join mag_info on mag_versions.mag_info_id=mag_info.id where mag_versions.article_submitted=0 and (mag_versions.active=1 or mag_versions.deleted=0) order by mag_info.name asc');
                                     foreach ($query as $mag_items):
                                         ?>
                                         <option <?php if (@$_POST['mag_version'] == $mag_items['id']) echo 'selected'; ?>
