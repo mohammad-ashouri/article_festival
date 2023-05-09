@@ -10,6 +10,7 @@ $urlofthispage=$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 //type=2 => header
 //type=3 => admin
 //type=4 => super-admin
+//type=5 => journal-admin
 //approved=0 => کاربر غیر فعال شده
 $dateforinsertloglogins=$year.'/'.$month.'/'.$day.' '.$hour.':'.$min.':'.$sec;
 
@@ -84,6 +85,17 @@ if (isset($_POST) & !empty($_POST)) {
                     $_SESSION['start']=time();
                     $_SESSION['end']=$_SESSION['start']+(36000);
                     $operation="CityAdminLoginSuccess";
+                    logsend($operation,$urlofthispage,$connection_maghalat);
+                    header("location:panel.php");
+                }
+                elseif($user == $rows['username'] and $rows['type']==5){
+                    $_SESSION['username']=$rows['username'];
+                    $_SESSION['head']=$rows['type'];
+                    $_SESSION['islogin']=true;
+                    $_SESSION['id']=$rows['id'];
+                    $_SESSION['start']=time();
+                    $_SESSION['end']=$_SESSION['start']+(36000);
+                    $operation="JournalAdminLoginSuccess";
                     logsend($operation,$urlofthispage,$connection_maghalat);
                     header("location:panel.php");
                 }

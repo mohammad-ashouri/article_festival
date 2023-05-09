@@ -1,5 +1,5 @@
 <?php include_once __DIR__ . '/header.php';
-if ($_SESSION['head']==4):
+if ($_SESSION['head']==4 or $_SESSION['head']==3):
 
 ?>
 

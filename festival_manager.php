@@ -1,5 +1,5 @@
-<?php include_once __DIR__ . '/header.php'; ?>
-<?php
+<?php include_once __DIR__ . '/header.php';
+if ($_SESSION['head']==3 or $_SESSION['head']==4):
 if (isset($_GET['NewFestival'])):
     ?>
     <div class="card card-success">
@@ -184,4 +184,6 @@ elseif (isset($_GET['FestivalFounded'])):
 
 <script src="build/js/SearchInUserManagerTable.js"></script>
 
-<?php include_once __DIR__ . '/footer.php'; ?>
+<?php
+endif;
+include_once __DIR__ . '/footer.php'; ?>

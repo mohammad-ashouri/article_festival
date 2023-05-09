@@ -13,7 +13,7 @@
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3><?php
-                                $query=mysqli_query($connection_mag,"select * from mag_info where active=1");
+                                $query=mysqli_query($connection_mag,"select * from mag_info where active=1 or deleted=0");
                                 echo mysqli_num_rows($query);
                                 ?></h3>
 
@@ -30,7 +30,7 @@
                     <div class="small-box bg-success">
                         <div class="inner">
                             <h3><?php
-                                $query=mysqli_query($connection_mag,"select * from mag_versions");
+                                $query=mysqli_query($connection_mag,"select * from mag_versions where active=1 or deleted=0");
                                 echo mysqli_num_rows($query);
                                 ?></h3>
 

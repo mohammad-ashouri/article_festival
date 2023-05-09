@@ -1,5 +1,6 @@
-<?php include_once __DIR__ . '/header.php'; ?>
-<?php
+<?php include_once __DIR__ . '/header.php';
+if ($_SESSION['head']==3 or $_SESSION['head']==4 or $_SESSION['head']==5):
+
 if (isset($_GET['ArticleWrongFileSize>10485760'])):
     ?>
     <section class="content">
@@ -654,4 +655,6 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
 </script>
 <script src="build/js/DisplayRow_In_article_manager.js"></script>
 
-<?php include_once __DIR__ . '/footer.php'; ?>
+<?php
+endif;
+include_once __DIR__ . '/footer.php'; ?>

@@ -1,4 +1,7 @@
-<?php include_once __DIR__ . '/header.php'; ?>
+<?php include_once __DIR__ . '/header.php';
+if ($_SESSION['head']==3 or $_SESSION['head']==4):
+
+?>
 <!-- Main content -->
 <section class="content">
     <div class="card card-success">
@@ -257,4 +260,6 @@
 
 <!-- /.content-wrapper -->
 <script src="build/js/Catalogs.js"></script>
-<?php include_once __DIR__ . '/footer.php'; ?>
+<?php
+endif;
+include_once __DIR__ . '/footer.php'; ?>

@@ -84,7 +84,7 @@ elseif (isset($_GET['UserAdded'])):
                         </tr>
                         <tr>
                             <th>
-                                محل خدمت*
+                                محل خدمت
                             </th>
                             <td>
                                 <select class="form-control select2"
@@ -170,6 +170,7 @@ elseif (isset($_GET['UserAdded'])):
                                     <option value="2">سرگروه</option>
                                     <option value="3">کارشناس</option>
                                     <option value="4">مدیر</option>
+                                    <option value="5">کارشناس نشریه</option>
                                 </select>
                             </td>
                         </tr>
@@ -230,7 +231,11 @@ elseif (isset($_GET['UserAdded'])):
                                 <td><?php
                                     $groups = explode('||', $users['scientific_group']);
                                     foreach ($groups as $itemgroups) {
-                                        echo '<label style="width: 180px">' . '*' . $itemgroups . '</label>' . '<br>';
+                                        $id=$itemgroups;
+                                        $query=mysqli_query($connection_maghalat,"Select * from scientific_group where id='$id'");
+                                        foreach ($query as $scientific_group){
+                                            echo '<label style="width: 180px">' . ' - ' . $scientific_group['name'] . '</label>' . '<br>';
+                                        }
                                     }
                                     ?></td>
                                 <td><?php
@@ -238,7 +243,7 @@ elseif (isset($_GET['UserAdded'])):
                                     if ($service_location!=NULL){
                                         $query=mysqli_query($connection_variables,"Select * from service_location where id='$service_location'");
                                         foreach ($query as $Service_Location_Items){}
-                                        echo $Service_Location_Items['subject'];
+                                        echo @$Service_Location_Items['subject'];
                                     }
 
                                     ?></td>

@@ -1,5 +1,5 @@
 <?php include_once __DIR__ . '/header.php';
-if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
+if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
     if (isset($_GET['ArticleWrongFileSize>10485760'])):
         ?>
         <section class="content">
