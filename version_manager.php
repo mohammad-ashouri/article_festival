@@ -135,31 +135,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                 </td>
                             </tr>
                             <tr>
-                                <th>شماره دوره انتشار (سال)*</th>
-                                <td>
-                                    <input title="شماره دوره انتشار (سال)" type="number" class="form-control"
-                                           id="publication_period_year"
-                                           placeholder="شماره دوره انتشار (سال) را وارد کنید. (به عنوان مثال: سال 24)"
-                                           name="publication_period_year">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>شماره دوره نشریه در سال*</th>
-                                <td>
-                                    <input title="شماره دوره نشریه در سال" type="number" class="form-control"
-                                           id="publication_period_number" placeholder="مثلا شماره 2"
-                                           name="publication_period_number">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>شماره نسخه نشریه*</th>
-                                <td>
-                                    <input title="شماره نسخه نشریه" type="text" class="form-control"
-                                           id="publication_number"
-                                           placeholder="شماره نسخه نشریه را وارد کنید" name="publication_number">
-                                </td>
-                            </tr>
-                            <tr>
                                 <th>سال انتشار*</th>
                                 <td>
                                     <div class="input-group" style="width: 100%">
@@ -171,6 +146,31 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                         <input class="publicationYear form-control" name="publication_year"
                                                id="publication_year">
                                     </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>شماره مسلسل*</th>
+                                <td>
+                                    <input title="شماره نسخه نشریه" type="text" class="form-control"
+                                           id="publication_number"
+                                           placeholder="شماره نسخه نشریه را وارد کنید" name="publication_number">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>شماره دوره انتشار (سال)*</th>
+                                <td>
+                                    <input title="شماره دوره انتشار (سال)" type="number" class="form-control"
+                                           id="publication_period_year"
+                                           placeholder="شماره دوره انتشار (سال) را وارد کنید. (به عنوان مثال: سال 24)"
+                                           name="publication_period_year">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>نوبت انتشار در سال*</th>
+                                <td>
+                                    <input title="شماره دوره نشریه در سال" type="number" class="form-control"
+                                           id="publication_period_number" placeholder="مثلا شماره 2"
+                                           name="publication_period_number">
                                 </td>
                             </tr>
                             <tr>
@@ -250,10 +250,11 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                             <table class="table table-bordered table-striped text-center" id="myTable">
                                 <tr class="text-center">
                                     <th style="width: 35px;">ردیف</th>
-                                    <th style="width: 50px;">دوره انتشار (سال)</th>
-                                    <th style="width: 50px;">دوره نشریه در سال</th>
-                                    <th style="width: 50px;">نسخه نشریه</th>
                                     <th style="width: 50px;">سال انتشار</th>
+                                    <th style="width: 50px;">شماره مسلسل نشریه</th>
+                                    <th style="width: 50px;">دوره انتشار (سال)</th>
+                                    <th style="width: 50px;">نوبت انتشار در سال</th>
+
                                     <th style="width: 45px;">شمارگان صفحه</th>
                                     <th style="width: 50px;">تعداد مقالات</th>
                                     <th>فایل جلد نشریه</th>
@@ -277,6 +278,16 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                         </th>
                                         <td>
                                             <?php
+                                            echo $Mag_Version['publication_year'];
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            echo $Mag_Version['number_of_pages'];
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
                                             echo $Mag_Version['publication_period_year'];
                                             ?>
                                         </td>
@@ -288,16 +299,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                         <td>
                                             <?php
                                             echo $Mag_Version['publication_number'];
-                                            ?>
-                                        </td>
-                                        <td>
-                                            <?php
-                                            echo $Mag_Version['publication_year'];
-                                            ?>
-                                        </td>
-                                        <td>
-                                            <?php
-                                            echo $Mag_Version['number_of_pages'];
                                             ?>
                                         </td>
                                         <td>
@@ -327,7 +328,8 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                                         data-target="#editModal">
                                                     جزئیات و ویرایش
                                                 </button>
-                                                <button type="button" class="btn btn-danger d-inline-block" data-toggle="modal"
+                                                <button type="button" class="btn btn-danger d-inline-block"
+                                                        data-toggle="modal"
                                                         data-version-id="<?php echo $Mag_Version['id'] ?>"
                                                         data-target="#deleteVersionModal" id="deleteVersion">
                                                     حذف
@@ -545,7 +547,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
     <script src="build/js/Set_Mag_Version_Scripts.js"></script>
     <script src="build/js/GetVersionInfo.js"></script>
     <script src="build/js/UpdateVersionInfo.js"></script>
-        <script src="build/js/Delete_Version.js"></script>
+    <script src="build/js/Delete_Version.js"></script>
 <?php
 endif;
 include_once __DIR__ . '/footer.php'; ?>
