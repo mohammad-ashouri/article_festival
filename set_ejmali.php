@@ -28,7 +28,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                 </tr>
                 <?php
                 $a = 1;
-                $query = mysqli_query($connection_mag, "select * from jashnvareh_maghalat.article c inner join mag_base.mag_articles m on c.article_id = m.id where m.selected_for_jm=1 and c.rate_status='اجمالی' and (c.ejmali1_g1_done=0 or c.ejmali2_g1_done=0 or c.ejmali3_g1_done=0 or c.ejmali1_g2_done=0 or c.ejmali2_g2_done=0 or c.ejmali3_g2_done=0) order by m.id asc");
+                $query = mysqli_query($connection_mag, "select * from ssmp_jashnvarehmaghalat.article c inner join ssmp_magbase.mag_articles m on c.article_id = m.id where m.selected_for_jm=1 and c.rate_status='اجمالی' and (c.ejmali1_g1_done=0 or c.ejmali2_g1_done=0 or c.ejmali3_g1_done=0 or c.ejmali1_g2_done=0 or c.ejmali2_g2_done=0 or c.ejmali3_g2_done=0) order by m.id asc");
                 foreach ($query as $Ejmali_list):
                     ?>
                     <tr>
@@ -67,7 +67,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                             $query = mysqli_query($connection_maghalat, "select * from special_type where id='$special_type'");
                             foreach ($query as $Special_Type_Detail) {
                             }
-                            echo $Special_Type_Detail['subject'];
+                            echo @$Special_Type_Detail['subject'];
                             ?>
                         </td>
                         <td>
@@ -133,7 +133,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                             >
                                 <option disabled selected>انتخاب کنید</option>
                                 <?php
-                                $ej1g1r=$rater1_info['ejmali1_ratercode_g1'];
+                                $ej1g1r=@$rater1_info['ejmali1_ratercode_g1'];
                                 $query = mysqli_query($connection_maghalat, "select * from users where type=1 and approved=1 and id!='$ej1g1r'");
                                 foreach ($query as $raters_info):
                                     ?>
@@ -163,8 +163,8 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                     style="width: 100%;display: inline-block;margin-bottom: 8px" <?php if ($Ejmali_list['ejmali3_g1_done']==1) echo 'disabled'; ?>>
                                 <option disabled selected>انتخاب کنید</option>
                                 <?php
-                                $ej1g1r=$rater1_info['ejmali1_ratercode_g1'];
-                                $ej2g1r=$rater1_info['ejmali2_ratercode_g1'];
+                                $ej1g1r=@$rater1_info['ejmali1_ratercode_g1'];
+                                $ej2g1r=@$rater1_info['ejmali2_ratercode_g1'];
                                 $query = mysqli_query($connection_maghalat, "select * from users where type=1 and approved=1 and id!='$ej1g1r' and id!='$ej2g1r'");
                                 foreach ($query as $raters_info):
                                     ?>
@@ -231,7 +231,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                 foreach ($query as $raters_info):
                                     ?>
                                     <option <?php
-                                    $rater2 = $raters_info['id'];
+                                    $rater2 = @$raters_info['id'];
                                     $query = mysqli_query($connection_maghalat, "select * from article where article_id='$id'");
                                     foreach ($query as $rater2_info) {
                                     }
@@ -256,8 +256,8 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                     style="width: 100%;display: inline-block;margin-bottom: 8px" <?php if ($Ejmali_list['ejmali3_g2_done']==1) echo 'disabled'; ?>>
                                 <option disabled selected>انتخاب کنید</option>
                                 <?php
-                                $ej1g2r=$rater1_info['ejmali1_ratercode_g2'];
-                                $ej2g2r=$rater1_info['ejmali2_ratercode_g2'];
+                                $ej1g2r=@$rater1_info['ejmali1_ratercode_g2'];
+                                $ej2g2r=@$rater1_info['ejmali2_ratercode_g2'];
                                 $query = mysqli_query($connection_maghalat, "select * from users where type=1 and approved=1 and id!='$ej1g2r' and id!='$ej2g2r'");
                                 foreach ($query as $raters_info):
                                     ?>

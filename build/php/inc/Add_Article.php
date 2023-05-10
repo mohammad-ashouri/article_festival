@@ -79,6 +79,11 @@ if (isset($_POST['Sub_Articles'])) {
                                             number_of_page_in_mag_from,number_of_page_in_mag_to,language,special_type,author,cooperation_type,selected_for_jm,festival_id,file_url,adder,added_date)
                                             values ('$mag_version_id','$subject','$body','$type','$scientific_group1','$scientific_group2','$number_of_page_in_mag_from',
                                             '$number_of_page_in_mag_to','$language','$special_type','$author','$cooperation_type',1,'$festival_id','$file_url_table','$adder','$datewithtime')");
+                    $query = mysqli_query($connection_mag, "select max(id) from mag_articles where mag_version_id='$mag_version_id'");
+                    foreach ($query as $Last_Article) {
+                    }
+                    $LastID = $Last_Article['max(id)'];
+                    mysqli_query($connection_maghalat,"insert into article (article_id,festival_id) values ('$LastID','$festival_id')");
                 }
                 if ($cooperation_type == 'گروهی') {
                     for ($j = 1; $j <= 6; $j++) {

@@ -137,7 +137,7 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                                     $query = mysqli_query($connection_maghalat, 'select * from scientific_group order by name asc');
                                     foreach ($query as $group_items):
                                         ?>
-                                        <option value="<?php echo $group_items['name'] ?>"><?php echo $group_items['name']; ?></option>
+                                        <option value="<?php echo $group_items['id'] ?>"><?php echo $group_items['name']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </td>
@@ -153,7 +153,7 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                                     $query = mysqli_query($connection_maghalat, 'select * from scientific_group order by name asc');
                                     foreach ($query as $group_items):
                                         ?>
-                                        <option value="<?php echo $group_items['name'] ?>"><?php echo $group_items['name']; ?></option>
+                                        <option value="<?php echo $group_items['id'] ?>"><?php echo $group_items['name']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </td>
