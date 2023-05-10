@@ -415,7 +415,7 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                                         $special_type=$Mag_Articles['special_type'];
                                         $query=mysqli_query($connection_maghalat,"select * from special_type where id='$special_type'");
                                         foreach ($query as $Special_Type_Detail){}
-                                        echo $Special_Type_Detail['subject'];
+                                        echo @$Special_Type_Detail['subject'];
                                         ?>
                                     </td>
                                     <td>
