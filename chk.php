@@ -1,10 +1,10 @@
 <?php
-
-include_once 'config/connection.php';
-include_once 'build/php/functions.php';
+ini_set('display_errors', 1);
+include_once __DIR__.'/config/connection.php';
+include_once __DIR__. '/build/php/functions.php';
 session_start();
 
-$urlofthispage = $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+// $urlofthispage = $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
 
 //type=1 => rater
 //type=2 => header

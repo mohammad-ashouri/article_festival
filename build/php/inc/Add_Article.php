@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once __DIR__ . '/../../../config/connection.php';
-
+$adder = $_SESSION['id'];
 //echo '<pre>';
 //print_r($_POST);
 //echo '</pre>';
@@ -9,18 +9,20 @@ include_once __DIR__ . '/../../../config/connection.php';
 //print_r($_FILES);
 //echo '</pre>';
 //var_dump($_FILES['article_file_url_6']['size']);
+
 if (isset($_POST['Sub_Articles'])) {
     $mag_version = $_POST['mag_version'];
     $number_of_articles = $_POST['number_of_articles'];
-    $adder = $_SESSION['id'];
+
     $query = mysqli_query($connection_mag, "select * from mag_versions where id='$mag_version'");
     foreach ($query as $mag_version) {
     }
+
     $mag_folder_name = $mag_version['folder_name'];
     $mag_version_id = $mag_version['id'];
 
     for ($i = 1; $i <= $number_of_articles; $i++) {
-        if (isset($_POST['subject_' . $i]) and !empty($_POST['subject_' . $i])){
+        if (isset($_POST['subject_' . $i]) and !empty($_POST['subject_' . $i])) {
             $file_url = $_FILES['article_file_url_' . $i];
             $file_url_size = $_FILES['article_file_url_' . $i]['size'];
             $file_url_name = $_FILES['article_file_url_' . $i]['name'];
@@ -41,7 +43,7 @@ if (isset($_POST['Sub_Articles'])) {
     if (file_exists(__DIR__ . "/../../../Files/Mag_Files/" . $mag_folder_name)) {
 
         for ($i = 1; $i <= $number_of_articles; $i++) {
-            if (isset($_POST['subject_' . $i]) and !empty($_POST['subject_' . $i])){
+            if (isset($_POST['subject_' . $i]) and !empty($_POST['subject_' . $i])) {
                 $subject = $_POST['subject_' . $i];
                 $type = $_POST['type_' . $i];
                 $scientific_group1 = $_POST['scientific_group1_' . $i];
@@ -49,7 +51,10 @@ if (isset($_POST['Sub_Articles'])) {
                 $number_of_page_in_mag_from = $_POST['number_of_page_in_mag_from_' . $i];
                 $number_of_page_in_mag_to = $_POST['number_of_page_in_mag_to_' . $i];
                 $language = $_POST['language_' . $i];
-                $special_type = $_POST['special_type_' . $i];
+                $special_type = @$_POST['special_type_' . $i];
+                if ($special_type == 'انتخاب کنید') {
+                    $special_type = null;
+                }
                 $festival_id = @$_POST['select_for_jm_' . $i];
                 $file_url = $_FILES['article_file_url_' . $i];
                 $file_url_size = $_FILES['article_file_url_' . $i]['size'];
@@ -58,8 +63,10 @@ if (isset($_POST['Sub_Articles'])) {
                 $file_url_tmpname = $_FILES["article_file_url_" . $i]["tmp_name"];
                 $allowed_pdf = array('pdf');
                 $ext_pdf = pathinfo($file_url_name, PATHINFO_EXTENSION);
+                $bytes = random_bytes(20);
+                $encodedString = bin2hex($bytes);
 
-                $folder_name = 'Article' . $i . ' Mag-Ver ' . $mag_version_id;
+                $folder_name = $encodedString . 'Article' . $i . ' Mag-Ver ' . $mag_version_id;
                 mkdir(__DIR__ . "/../../../Files/Mag_Files/" . $mag_folder_name . '/' . $folder_name);
                 move_uploaded_file($file_url_tmpname, __DIR__ . "/../../../Files/Mag_Files/$mag_folder_name/$folder_name/" . $file_url_name);
                 $body = $_POST['body_' . $i];
@@ -83,7 +90,7 @@ if (isset($_POST['Sub_Articles'])) {
                     foreach ($query as $Last_Article) {
                     }
                     $LastID = $Last_Article['max(id)'];
-                    mysqli_query($connection_maghalat,"insert into article (article_id,festival_id) values ('$LastID','$festival_id')");
+                    mysqli_query($connection_maghalat, "insert into article (article_id,festival_id,adder,date_added) values ('$LastID','$festival_id','$adder','$datewithtime')");
                 }
                 if ($cooperation_type == 'گروهی') {
                     for ($j = 1; $j <= 6; $j++) {

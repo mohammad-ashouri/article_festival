@@ -129,7 +129,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                         foreach ($query as $mag_items):
                                             ?>
                                             <option
-                                                value="<?php echo $mag_items['id'] ?>"><?php echo $mag_items['name']; ?></option>
+                                                    value="<?php echo $mag_items['id'] ?>"><?php echo $mag_items['name']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </td>
@@ -209,42 +209,42 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                 </td>
                             </tr>
                         </table>
-                        <input type="file" id="preview" accept="application/pdf" onchange="previewPDF()">
-                        <iframe id="pdf-preview"></iframe>
-
-                        <script>
-                            function previewPDF() {
-                                const fileInput = document.querySelector('#preview');
-                                const file = fileInput.files[0];
-
-                                if (file.type.match('pdf.*')) {
-                                    const reader = new FileReader();
-                                    reader.onload = function(event) {
-                                        const buffer = event.target.result;
-                                        const typedArray = new Uint8Array(buffer);
-
-                                        PDFJS.getDocument(typedArray).then(function(pdf) {
-                                            pdf.getPage(1).then(function(page) {
-                                                const canvas = document.createElement('canvas');
-                                                const viewport = page.getViewport({ scale: 1.0 });
-                                                const context = canvas.getContext('2d');
-                                                canvas.width = viewport.width;
-                                                canvas.height = viewport.height;
-                                                const renderContext = {
-                                                    canvasContext: context,
-                                                    viewport: viewport
-                                                };
-                                                page.render(renderContext).then(function() {
-                                                    const previewContainer = document.querySelector('#pdf-preview');
-                                                    previewContainer.appendChild(canvas);
-                                                });
-                                            });
-                                        });
-                                    };
-                                    reader.readAsArrayBuffer(file);
-                                }
-                            }
-                        </script>
+                        <!--                        <input type="file" id="preview" accept="application/pdf" onchange="previewPDF()">-->
+                        <!--                        <iframe id="pdf-preview"></iframe>-->
+                        <!---->
+                        <!--                        <script>-->
+                        <!--                            function previewPDF() {-->
+                        <!--                                const fileInput = document.querySelector('#preview');-->
+                        <!--                                const file = fileInput.files[0];-->
+                        <!---->
+                        <!--                                if (file.type.match('pdf.*')) {-->
+                        <!--                                    const reader = new FileReader();-->
+                        <!--                                    reader.onload = function(event) {-->
+                        <!--                                        const buffer = event.target.result;-->
+                        <!--                                        const typedArray = new Uint8Array(buffer);-->
+                        <!---->
+                        <!--                                        PDFJS.getDocument(typedArray).then(function(pdf) {-->
+                        <!--                                            pdf.getPage(1).then(function(page) {-->
+                        <!--                                                const canvas = document.createElement('canvas');-->
+                        <!--                                                const viewport = page.getViewport({ scale: 1.0 });-->
+                        <!--                                                const context = canvas.getContext('2d');-->
+                        <!--                                                canvas.width = viewport.width;-->
+                        <!--                                                canvas.height = viewport.height;-->
+                        <!--                                                const renderContext = {-->
+                        <!--                                                    canvasContext: context,-->
+                        <!--                                                    viewport: viewport-->
+                        <!--                                                };-->
+                        <!--                                                page.render(renderContext).then(function() {-->
+                        <!--                                                    const previewContainer = document.querySelector('#pdf-preview');-->
+                        <!--                                                    previewContainer.appendChild(canvas);-->
+                        <!--                                                });-->
+                        <!--                                            });-->
+                        <!--                                        });-->
+                        <!--                                    };-->
+                        <!--                                    reader.readAsArrayBuffer(file);-->
+                        <!--                                }-->
+                        <!--                            }-->
+                        <!--                        </script>-->
                     </center>
 
                 </div>
@@ -266,16 +266,16 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
 
                                 <select id="mag_name" name="mag_name" class="form-control select2"
                                         style="width: 450px;display: inline-block">
-                                    <option disabled selected>انتخاب کنید</option>
+                                    <option disabled selected value="">انتخاب کنید</option>
                                     <?php
                                     $query = mysqli_query($connection_mag, "select * from mag_info where active=1 ORDER BY name asc");
                                     foreach ($query as $mag_info):
                                         ?>
                                         <option <?php if (@$_POST['mag_name'] == $mag_info['name']) echo 'selected' ?>
-                                            value="<?php echo $mag_info['name'] ?>"><?php echo $mag_info['publication_period'] . ' ' . $mag_info['name'] ?></option>
+                                                value="<?php echo $mag_info['name'] ?>"><?php echo $mag_info['publication_period'] . ' ' . $mag_info['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <button name="Search_Mag_Version" type="submit" class="btn btn-primary">نمایش</button>
+                                <input name="Search_Mag_Version" type="submit" class="btn btn-primary" value="نمایش">
 
                             </h3>
                         </form>
@@ -290,7 +290,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                     <th style="width: 50px;">شماره مسلسل نشریه</th>
                                     <th style="width: 50px;">دوره انتشار (سال)</th>
                                     <th style="width: 50px;">نوبت انتشار در سال</th>
-
                                     <th style="width: 45px;">شمارگان صفحه</th>
                                     <th style="width: 50px;">تعداد مقالات</th>
                                     <th>فایل جلد نشریه</th>
@@ -319,11 +318,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                         </td>
                                         <td>
                                             <?php
-                                            echo $Mag_Version['number_of_pages'];
-                                            ?>
-                                        </td>
-                                        <td>
-                                            <?php
                                             echo $Mag_Version['publication_period_year'];
                                             ?>
                                         </td>
@@ -335,6 +329,11 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                         <td>
                                             <?php
                                             echo $Mag_Version['publication_number'];
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            echo $Mag_Version['number_of_pages'];
                                             ?>
                                         </td>
                                         <td>
@@ -400,7 +399,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                                                                     foreach ($query as $mag_items):
                                                                                         ?>
                                                                                         <option
-                                                                                            value="<?php echo $mag_items['id'] ?>"><?php echo $mag_items['name']; ?></option>
+                                                                                                value="<?php echo $mag_items['id'] ?>"><?php echo $mag_items['name']; ?></option>
                                                                                     <?php endforeach; ?>
                                                                                 </select>
                                                                             </td>
@@ -449,9 +448,9 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                                                                   </span>
                                                                                     </div>
                                                                                     <input
-                                                                                        class="publicationYear form-control"
-                                                                                        name="publication_year"
-                                                                                        id="editedPublicationYear">
+                                                                                            class="publicationYear form-control"
+                                                                                            name="publication_year"
+                                                                                            id="editedPublicationYear">
                                                                                 </div>
                                                                             </td>
                                                                         </tr>
@@ -550,8 +549,8 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                                 </form>
                                             <?php else: ?>
                                                 <div
-                                                    title="به دلیل ثبت مقاله برای این نسخه، امکان ویرایش اطلاعات وجود ندارد."
-                                                    class="alert alert-danger d-inline-block" role="alert">
+                                                        title="به دلیل ثبت مقاله برای این نسخه، امکان ویرایش اطلاعات وجود ندارد."
+                                                        class="alert alert-danger d-inline-block" role="alert">
                                                     امکان ویرایش وجود ندارد
                                                 </div>
                                             <?php endif; ?>
@@ -560,6 +559,8 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                 <?php endforeach; ?>
                             </table>
                         </div>
+                        <script src="build/js/UpdateVersionInfo.js"></script>
+                        <script src="build/js/Delete_Version.js"></script>
                         <!-- /.card-body -->
                     <?php endif; ?>
                 </div>
@@ -582,8 +583,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
     </script>
     <script src="build/js/Set_Mag_Version_Scripts.js"></script>
     <script src="build/js/GetVersionInfo.js"></script>
-    <script src="build/js/UpdateVersionInfo.js"></script>
-    <script src="build/js/Delete_Version.js"></script>
+
 <?php
 endif;
 include_once __DIR__ . '/footer.php'; ?>

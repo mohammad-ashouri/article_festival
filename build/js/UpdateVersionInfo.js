@@ -1,3 +1,16 @@
+document.getElementById("editedCoverUrl2").onchange = function change_cover_url_label() {
+    var cover_url_label = document.getElementById("editedCoverUrl2_label");
+    if (editedCoverUrl2.value.length !== 0) {
+        cover_url_label.innerHTML = this.value.replace(/.*[\/\\]/, '');
+    }
+}
+document.getElementById("editedFileUrl2").onchange = function change_file_url_label() {
+    var file_url_label = document.getElementById("editedFileUrl2_label");
+    if (editedCoverUrl2.value.length !== 0) {
+        file_url_label.innerHTML = this.value.replace(/.*[\/\\]/, '');
+    }
+}
+
 const updateVersion = document.querySelector('#updateVersion');
 updateVersion.addEventListener('click', function () {
     var publication_period_year = $('#editedPublicationPeriodYear').val();

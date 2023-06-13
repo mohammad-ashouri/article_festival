@@ -311,14 +311,20 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
 </section>
 <section class="content">
     <script>
+        var storedVersion = localStorage.getItem("selectedVersion");
+        if (storedVersion) {
+            document.getElementById("version_id").value = storedVersion;
+        }
         function versionshow(str) {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("version_id").innerHTML = this.responseText;
+                    var selectedVersion = document.getElementById("version_id").value;
+                    localStorage.setItem("selectedVersion", selectedVersion);
                 }
             }
-            xmlhttp.open("GET", "build/ajax/showversions.php?magid=" + str, true);
+            xmlhttp.open("GET", "build/ajax/ShowVersions.php?magname=" + str, true);
             xmlhttp.send();
         }
     </script>
@@ -329,16 +335,16 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                     <form action="#article_list" method="post" id="search_form" onsubmit="return Check_Search_Submit()">
                         <h3 class="card-title">نمایش و مدیریت مقالات در نشریه:
 
-                            <select id="mag_id" name="mag_id" class="form-control select2"
-                                    onchange="versionshow(this.value)"
+                            <select id="mag_name" name="mag_name" class="form-control select2"
+                                    onchange="versionshow(this.value)" onselect="versionshow(this.value)" onloadeddata="versionshow(this.value)"
                                     style="width: 30%;display: inline-block">
                                 <option disabled selected>انتخاب کنید</option>
                                 <?php
-                                $query = mysqli_query($connection_mag, "select * from mag_info inner join mag_versions on mag_info.id=mag_versions.mag_info_id");
+                                $query = mysqli_query($connection_mag, "select distinct(mag_info.name) from mag_info inner join mag_versions on mag_info.id=mag_versions.mag_info_id");
                                 foreach ($query as $mag_info):
                                     ?>
-                                    <option <?php if (@$_POST['mag_id'] == $mag_info['id']) echo 'selected' ?>
-                                            value="<?php echo $mag_info['id'] ?>"><?php echo $mag_info['name'] ?></option>
+                                    <option <?php if (@$_POST['mag_name'] == $mag_info['name']) echo 'selected' ?>
+                                            value="<?php echo $mag_info['name'] ?>"><?php echo $mag_info['name'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <select id="version_id" name="version_id" class="form-control select2"
