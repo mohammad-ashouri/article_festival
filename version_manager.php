@@ -264,14 +264,14 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                         <form action="#versions_list" method="post" id="search_form">
                             <h3 class="card-title">نمایش و مدیریت نسخه های نشریه:
 
-                                <select id="mag_name" name="mag_name" class="form-control select2"
+                                <select id="magNameForSearch" name="magNameForSearch" class="form-control select2"
                                         style="width: 450px;display: inline-block">
                                     <option disabled selected value="">انتخاب کنید</option>
                                     <?php
                                     $query = mysqli_query($connection_mag, "select * from mag_info where active=1 ORDER BY name asc");
                                     foreach ($query as $mag_info):
                                         ?>
-                                        <option <?php if (@$_POST['mag_name'] == $mag_info['name']) echo 'selected' ?>
+                                        <option <?php if (@$_POST['magNameForSearch'] == $mag_info['name']) echo 'selected'; ?>
                                                 value="<?php echo $mag_info['name'] ?>"><?php echo $mag_info['publication_period'] . ' ' . $mag_info['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
@@ -298,7 +298,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                 </tr>
                                 <?php
                                 $a = 1;
-                                $mag_name = $_POST['mag_name'];
+                                $mag_name = $_POST['magNameForSearch'];
                                 $SelectAllMagVersions = mysqli_query($connection_mag, "select mag_versions.id,mag_versions.publication_period_year,mag_versions.publication_period_number,mag_versions.publication_number,
                                                                     mag_versions.publication_year,mag_versions.number_of_pages,mag_versions.number_of_articles,
                                                                     mag_versions.cover_url,mag_versions.file_url,mag_versions.article_submitted 

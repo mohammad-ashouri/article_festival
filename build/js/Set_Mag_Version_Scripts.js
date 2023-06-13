@@ -11,9 +11,9 @@ document.getElementById("file_url").onchange = function change_file_url_label() 
     }
 }
 
-document.getElementById("search_form").onsubmit = function search() {
-    var mag_name = document.getElementById("mag_name");
-    if (mag_name.value == 'انتخاب کنید' || mag_name.value == '' || mag_name.value == null) {
+document.getElementById("search_form").onsubmit = function () {
+    var mag_name = document.getElementById("magNameForSearch");
+    if (mag_name.value === 'انتخاب کنید' || mag_name.value===null || mag_name.value==='') {
         alert("لطفا نسخه نشریه را انتخاب نمایید");
         return false;
     } else {

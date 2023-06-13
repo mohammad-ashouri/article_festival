@@ -324,7 +324,7 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                     localStorage.setItem("selectedVersion", selectedVersion);
                 }
             }
-            xmlhttp.open("GET", "build/ajax/ShowMagVersions.php?magname=" + str, true);
+            xmlhttp.open("GET", "build/ajax/ShowVersions.php?magname=" + str, true);
             xmlhttp.send();
         }
     </script>
