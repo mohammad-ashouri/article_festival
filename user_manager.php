@@ -171,6 +171,7 @@ elseif (isset($_GET['UserAdded'])):
                                     <option value="3">کارشناس</option>
                                     <option value="4">مدیر</option>
                                     <option value="5">کارشناس نشریه</option>
+                                    <option value="6">گونه بند</option>
                                 </select>
                             </td>
                         </tr>
@@ -229,7 +230,7 @@ elseif (isset($_GET['UserAdded'])):
                                 <td><?php echo $users['username']; ?></td>
                                 <td><?php echo $users['name'] . ' ' . $users['family'] ?></td>
                                 <td><?php
-                                    $groups = explode('||', $users['scientific_group']);
+                                    @$groups = explode('||', $users['scientific_group']);
                                     foreach ($groups as $itemgroups) {
                                         $id=$itemgroups;
                                         $query=mysqli_query($connection_maghalat,"Select * from scientific_group where id='$id'");

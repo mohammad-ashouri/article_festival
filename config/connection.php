@@ -1,30 +1,32 @@
 <?php
+ini_set('display_errors', 1);
 include_once 'jdf.php';
 include_once 'GDate.php';
+// ini_set('');
 //include_once 'PHPExcel/Classes/PHPExcel.php';
 //ini_set('session.gc_maxlifetime', 36000);
-date_default_timezone_set("Asia/Tehran");
-$main_url="https://localhost/";
-$year=jdate('Y');
-$month=jdate('n');
-$day=jdate('j');
-$hour=jdate('H');
-$min=jdate('i');
-$sec=jdate('s');
-$date=$year."/".$month."/".$day;
-$datewithtime=$year."/".$month."/".$day.' '.$hour.":".$min.":".$sec;
+// date_default_timezone_set("Asia/Tehran");
+$main_url = "http://localhost/";
+$year = jdate('Y');
+$month = jdate('n');
+$day = jdate('j');
+$hour = jdate('H');
+$min = jdate('i');
+$sec = jdate('s');
+$date = $year . "/" . $month . "/" . $day;
+$datewithtime = $year . "/" . $month . "/" . $day . ' ' . $hour . ":" . $min . ":" . $sec;
 
-$connection_maghalat = @mysqli_connect('localhost', 'root', '', 'ssmp_jashnvarehmaghalat');
+$connection_maghalat = @mysqli_connect('127.0.0.1', 'root', '', 'ssmp_jashnvarehmaghalat');
 if (mysqli_connect_errno()) {
     echo 'ارتباط با دیتابیس دچار اختلال شده است. خطا به این صورت میباشد:' . mysqli_connect_error();
     exit();
 }
-$connection_mag = @mysqli_connect('localhost', 'root', '', 'ssmp_magbase');
+$connection_mag = @mysqli_connect('127.0.0.1', 'root', '', 'ssmp_magbase');
 if (mysqli_connect_errno()) {
     echo 'ارتباط با دیتابیس دچار اختلال شده است. خطا به این صورت میباشد:' . mysqli_connect_error();
     exit();
 }
-$connection_variables = @mysqli_connect('localhost', 'root', '', 'ssmp_variables');
+$connection_variables = @mysqli_connect('127.0.0.1', 'root', '', 'ssmp_variables');
 if (mysqli_connect_errno()) {
     echo 'ارتباط با دیتابیس دچار اختلال شده است. خطا به این صورت میباشد:' . mysqli_connect_error();
     exit();

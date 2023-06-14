@@ -91,6 +91,16 @@ if (isset($_POST) & !empty($_POST)) {
                     $operation = "JournalAdminLoginSuccess";
                     logsend($operation, $urlofthispage, $connection_maghalat);
                     header("location:panel.php");
+                }elseif ($user == $rows['username'] and $rows['type'] == 6) {
+                    $_SESSION['username'] = $rows['username'];
+                    $_SESSION['head'] = $rows['type'];
+                    $_SESSION['islogin'] = true;
+                    $_SESSION['id'] = $rows['id'];
+                    $_SESSION['start'] = time();
+                    $_SESSION['end'] = $_SESSION['start'] + (36000);
+                    $operation = "SorterLoginSuccess";
+                    logsend($operation, $urlofthispage, $connection_maghalat);
+                    header("location:panel.php");
                 }
             }
         }
