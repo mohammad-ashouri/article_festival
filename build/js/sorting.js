@@ -1,6 +1,6 @@
 function sortingG1(articleID, groupID) {
     $.ajax({
-        url: "build/php/inc/sorting.php",
+        url: "build/php/inc/Sorting.php",
         type: "POST",
         data: {
             work: "sortG1",
@@ -18,7 +18,7 @@ function sortingG1(articleID, groupID) {
 
 function sortingG2(articleID, groupID) {
     $.ajax({
-        url: "build/php/inc/sorting.php",
+        url: "build/php/inc/Sorting.php",
         type: "POST",
         data: {
             work: "sortG2",
