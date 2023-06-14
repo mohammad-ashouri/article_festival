@@ -40,38 +40,63 @@ if ($_SESSION['head'] == 6 or $_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                     echo $sortingPosts['subject'];
                                     ?>
                                 </a></td>
-                            <td>
-                                <select class="form-control"
-                                        onchange="sortingG1(<?php echo $sortingPosts['article_id']; ?>,this.value)"
-                                        title="گروه علمی اول را انتخاب کنید"
-                                        id="scientific_group1">
-                                    <option selected disabled>انتخاب کنید</option>
+                            <td id="group1TD_<?php echo $count; ?>">
+                                <?php if ($sortingPosts['sorted'] == 0) { ?>
+                                    <select class="form-control"
+                                            onchange="sortingG1(<?php echo $sortingPosts['article_id']; ?>,this.value)"
+                                            title="گروه علمی اول را انتخاب کنید"
+                                            id="groupSelect1_<?php echo $count; ?>">
+                                        <option selected disabled>انتخاب کنید</option>
+                                        <?php
+                                        $query = mysqli_query($connection_maghalat, 'select * from scientific_group order by name');
+                                        foreach ($query as $group_items):
+                                            ?>
+                                            <option <?php if ($sortingPosts['scientific_group_1'] == $group_items['id']) echo 'selected'; ?>
+                                                    value="<?php echo $group_items['id'] ?>"><?php echo $group_items['name']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                     <?php
-                                    $query = mysqli_query($connection_maghalat, 'select * from scientific_group order by name');
-                                    foreach ($query as $group_items):
-                                        ?>
-                                        <option <?php if ($sortingPosts['scientific_group_1'] == $group_items['id']) echo 'selected'; ?>
-                                                value="<?php echo $group_items['id'] ?>"><?php echo $group_items['name']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                } else {
+                                    $query = mysqli_query($connection_maghalat, "select * from scientific_group where id=" . $sortingPosts['scientific_group_1']);
+                                    foreach ($query as $SG1) {
+                                    }
+                                    echo "<label>" . $SG1['name'] . "</label>";
+                                }
+                                ?>
                             </td>
-                            <td>
-                                <select class="form-control"
-                                        onchange="sortingG2(<?php echo $sortingPosts['article_id']; ?>,this.value)"
-                                        title="گروه علمی اول را انتخاب کنید"
-                                        id="scientific_group2">
-                                    <option value="" selected>بدون گروه دوم</option>
+                            <td id="group2TD_<?php echo $count; ?>">
+                                <?php if ($sortingPosts['sorted'] == 0) { ?>
+                                    <select class="form-control"
+                                            onchange="sortingG2(<?php echo $sortingPosts['article_id']; ?>,this.value)"
+                                            title="گروه علمی اول را انتخاب کنید"
+                                            id="groupSelect2_<?php echo $count; ?>">
+                                        <option value="" selected>بدون گروه دوم</option>
+                                        <?php
+                                        $query = mysqli_query($connection_maghalat, 'select * from scientific_group order by name');
+                                        foreach ($query as $group_items):
+                                            ?>
+                                            <option <?php if ($sortingPosts['scientific_group_2'] == $group_items['id']) echo 'selected'; ?>
+                                                    value="<?php echo $group_items['id'] ?>"><?php echo $group_items['name']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                     <?php
-                                    $query = mysqli_query($connection_maghalat, 'select * from scientific_group order by name');
-                                    foreach ($query as $group_items):
-                                        ?>
-                                        <option <?php if ($sortingPosts['scientific_group_2'] == $group_items['id']) echo 'selected'; ?>
-                                                value="<?php echo $group_items['id'] ?>"><?php echo $group_items['name']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                } else {
+                                    $query = mysqli_query($connection_maghalat, "select * from scientific_group where id=" . $sortingPosts['scientific_group_2']);
+                                    foreach ($query as $SG2) {
+                                    }
+                                    echo "<label>" . $SG2['name'] . "</label>";
+                                }
+                                ?>
                             </td>
-                            <td>
-                                <button class="btn btn-block btn-success forApprove" value="<?php echo $sortingPosts['article_id']; ?>" id="approveSort<?php echo $count++; ?>">تایید گونه بندی</button>
+                            <td id="buttonTD<?php echo $count; ?>">
+                                <?php if ($sortingPosts['sorted'] == 0) { ?>
+                                    <button class="btn btn-block btn-warning forApprove"
+                                            value="<?php echo $sortingPosts['article_id']; ?>"
+                                            id="approveSort<?php echo $count++; ?>">تایید گونه بندی
+                                    </button>
+                                <?php } else {
+                                    echo "<button class='btn btn-block btn-success'>تایید شده</button>";
+                                } ?>
                             </td>
                         </tr>
 
