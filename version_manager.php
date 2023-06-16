@@ -209,42 +209,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                 </td>
                             </tr>
                         </table>
-                        <!--                        <input type="file" id="preview" accept="application/pdf" onchange="previewPDF()">-->
-                        <!--                        <iframe id="pdf-preview"></iframe>-->
-                        <!---->
-                        <!--                        <script>-->
-                        <!--                            function previewPDF() {-->
-                        <!--                                const fileInput = document.querySelector('#preview');-->
-                        <!--                                const file = fileInput.files[0];-->
-                        <!---->
-                        <!--                                if (file.type.match('pdf.*')) {-->
-                        <!--                                    const reader = new FileReader();-->
-                        <!--                                    reader.onload = function(event) {-->
-                        <!--                                        const buffer = event.target.result;-->
-                        <!--                                        const typedArray = new Uint8Array(buffer);-->
-                        <!---->
-                        <!--                                        PDFJS.getDocument(typedArray).then(function(pdf) {-->
-                        <!--                                            pdf.getPage(1).then(function(page) {-->
-                        <!--                                                const canvas = document.createElement('canvas');-->
-                        <!--                                                const viewport = page.getViewport({ scale: 1.0 });-->
-                        <!--                                                const context = canvas.getContext('2d');-->
-                        <!--                                                canvas.width = viewport.width;-->
-                        <!--                                                canvas.height = viewport.height;-->
-                        <!--                                                const renderContext = {-->
-                        <!--                                                    canvasContext: context,-->
-                        <!--                                                    viewport: viewport-->
-                        <!--                                                };-->
-                        <!--                                                page.render(renderContext).then(function() {-->
-                        <!--                                                    const previewContainer = document.querySelector('#pdf-preview');-->
-                        <!--                                                    previewContainer.appendChild(canvas);-->
-                        <!--                                                });-->
-                        <!--                                            });-->
-                        <!--                                        });-->
-                        <!--                                    };-->
-                        <!--                                    reader.readAsArrayBuffer(file);-->
-                        <!--                                }-->
-                        <!--                            }-->
-                        <!--                        </script>-->
                     </center>
 
                 </div>

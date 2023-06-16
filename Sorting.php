@@ -67,7 +67,7 @@ if ($_SESSION['head'] == 6 or $_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                             <td id="group2TD_<?php echo $count; ?>">
                                 <?php if ($sortingPosts['sorted'] == 0) { ?>
                                     <select class="form-control"
-                                            onchange="sortingG2(<?php echo $sortingPosts['article_id']; ?>,this.value)"
+                                            onchange="sortingG2(<?php echo $sortingPosts['article_id']; ?>,this.value,<?php echo "groupSelect2_" . $count; ?>)"
                                             title="گروه علمی اول را انتخاب کنید"
                                             id="groupSelect2_<?php echo $count; ?>">
                                         <option value="" selected>بدون گروه دوم</option>
@@ -81,10 +81,14 @@ if ($_SESSION['head'] == 6 or $_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                     </select>
                                     <?php
                                 } else {
-                                    $query = mysqli_query($connection_maghalat, "select * from scientific_group where id=" . $sortingPosts['scientific_group_2']);
-                                    foreach ($query as $SG2) {
+                                    if ($sortingPosts['scientific_group_2']) {
+                                        $query = mysqli_query($connection_maghalat, "select * from scientific_group where id=" . $sortingPosts['scientific_group_2']);
+                                        foreach ($query as $SG2) {
+                                        }
+                                        if ($SG2) {
+                                            echo "<label>" . $SG2['name'] . "</label>";
+                                        }
                                     }
-                                    echo "<label>" . $SG2['name'] . "</label>";
                                 }
                                 ?>
                             </td>
@@ -92,16 +96,40 @@ if ($_SESSION['head'] == 6 or $_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                 <?php if ($sortingPosts['sorted'] == 0) { ?>
                                     <button class="btn btn-block btn-warning forApprove"
                                             value="<?php echo $sortingPosts['article_id']; ?>"
-                                            id="approveSort<?php echo $count++; ?>">تایید گونه بندی
+                                            id="approveSort<?php echo $count; ?>">تایید گونه بندی
                                     </button>
                                 <?php } else {
-                                    echo "<button class='btn btn-block btn-success'>تایید شده</button>";
+
+                                    echo "<button class='btn btn-block btn-success forApprove'>تایید شده</button>";
                                 } ?>
                             </td>
                         </tr>
-
-                    <?php endforeach; ?>
+                    <?php $count++; endforeach; ?>
                 </table>
+
+                <div class="card card-success mt-5">
+                    <div class="card-header">
+                        <h3 class="card-title">بایگانی صورتجلسه گونه بندی برای آثار تایید شده</h3>
+                        <!-- /.card-tools -->
+                    </div>
+                    <form role="form" method="post" id="SortingClassificationForm" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="custom-file d-inline-block" style="width: 50%;">
+                                <input title="فایل جلد نشریه" accept="application/pdf,image/jpeg" type="file"
+                                       class="custom-file-input" id="SortingClassificationFile"
+                                       name="SortingClassificationFile">
+
+                                <label class="custom-file-label">انتخاب
+                                    فایل تاییدیه</label>
+                            </div>
+                            <div class="d-inline-block">
+                                <button class="btn btn-primary mt-2" type="submit" id="uploadSortingClassificationFile">
+                                    بارگزاری فایل صورتجلسه
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
