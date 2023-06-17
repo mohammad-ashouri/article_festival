@@ -68,7 +68,7 @@ if ($_SESSION['head'] == 6 or $_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                 <?php if ($sortingPosts['sorted'] == 0) { ?>
                                     <select class="form-control"
                                             onchange="sortingG2(<?php echo $sortingPosts['article_id']; ?>,this.value,<?php echo "groupSelect2_" . $count; ?>)"
-                                            title="گروه علمی اول را انتخاب کنید"
+                                            title="گروه علمی دوم را انتخاب کنید"
                                             id="groupSelect2_<?php echo $count; ?>">
                                         <option value="" selected>بدون گروه دوم</option>
                                         <?php
@@ -114,12 +114,11 @@ if ($_SESSION['head'] == 6 or $_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                     </div>
                     <form role="form" method="post" id="SortingClassificationForm" enctype="multipart/form-data">
                         <div class="card-body">
-                            <div class="custom-file d-inline-block" style="width: 50%;">
-                                <input title="فایل جلد نشریه" accept="application/pdf,image/jpeg" type="file"
+                            <div class="custom-file d-inline-block" style="width: 70%;">
+                                <input title="فایل صورتجلسه" accept="application/pdf,image/jpeg" type="file"
                                        class="custom-file-input" id="SortingClassificationFile"
                                        name="SortingClassificationFile">
-
-                                <label class="custom-file-label">انتخاب
+                                <label id="SortingClassificationFileLabel" class="custom-file-label">انتخاب
                                     فایل تاییدیه</label>
                             </div>
                             <div class="d-inline-block">

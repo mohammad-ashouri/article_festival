@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__ . '/../../../config/connection.php';
+ini_set('display_errors', 1);
 session_start();
 if ($_SESSION['head'] == 6 or $_SESSION['head'] == 4 or $_SESSION['head'] == 3) {
     $work = @$_POST['work'];
@@ -57,12 +58,13 @@ if ($_SESSION['head'] == 6 or $_SESSION['head'] == 4 or $_SESSION['head'] == 3) 
         $query=mysqli_query($connection_mag,"insert into sorting_classifications (file_name, src, adder, added_date) values ('$SortingClassificationFile_name','$postFileDirectory','$user','$datewithtime')");
         if ($query){
             $lastInsertID =mysqli_insert_id($connection_mag);
-            $query=mysqli_query($connection_mag,"select * from mag_articles where sorted=0 and (sorting_classification_id=null or sorting_classification_id='')");
+            $query=mysqli_query($connection_mag,"select * from mag_articles where sorted=1 and sorting_classification_id is null");
             foreach ($query as $notSortedArticles) {
                 $articleID=$notSortedArticles['id'];
                 mysqli_query($connection_maghalat,"update article set rate_status='اجمالی' where article_id='$articleID'");
             }
-            mysqli_query($connection_mag, "update mag_articles set sorting_classification_id='$lastInsertID', where sorted=0 and (sorting_classification_id=null or sorting_classification_id='')");
+            mysqli_query($connection_mag, "update mag_articles set sorting_classification_id='$lastInsertID' where sorted=1 and (sorting_classification_id is null or sorting_classification_id='')");
+            echo 'Done';
         } else {
             echo "ErrorForSubmittingFile";
         }

@@ -36,6 +36,10 @@ function sortingG2(articleID, groupID, selectionID) {
     });
 }
 
+document.getElementById('SortingClassificationFile').onchange=function (){
+    SortingClassificationFileLabel.innerText= this.value.split('\\').pop();
+}
+
 var buttons = document.getElementsByClassName('forApprove');
 
 for (var i = 0; i < buttons.length; i++) {
@@ -106,9 +110,10 @@ document.getElementById("SortingClassificationForm").addEventListener("submit", 
                 contentType: false,
                 success: function (response) {
                     if (response === 'ErrorForSubmittingFile') {
-                        alert('خطا در دریافت/ثبت فایل اثر');
+                        alert('خطا در دریافت/ثبت فایل صورتجلسه');
                         return false;
                     } else {
+                        alert('فایل تاییدیه با موفقیت بارگزاری شد. صفحه مجددا بارگزاری خواهد شد.')
                         location.reload();
                     }
                 },
