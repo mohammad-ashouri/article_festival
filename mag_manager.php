@@ -658,6 +658,10 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                                             </option>
                                                                             <option value="علمی ترویجی">علمی ترویجی
                                                                             </option>
+                                                                            <option value="الف">الف</option>
+                                                                            <option value="ب">ب</option>
+                                                                            <option value="ج">ج</option>
+                                                                            <option value="د">د</option>
                                                                         </select>
                                                                     </td>
                                                                 </tr>
