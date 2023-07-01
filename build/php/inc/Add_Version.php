@@ -34,7 +34,7 @@ if (isset($_POST['Sub_Mag_Version']) and isset($_POST['mag_name'])) {
 
     $adhesive = $_SESSION['id'];
 
-    if ($cover_url_size > 10485760 or $file_url_size > 10485760) {
+    if ($cover_url_size > 20971520 or $file_url_size > 20971520) {
         header("location: ../../../version_manager.php?WrongFileSize>10485760");
     } elseif ($cover_url_size == 0 or $file_url_size == 0) {
         header("location: ../../../version_manager.php?WrongFileSize0");

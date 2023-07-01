@@ -171,7 +171,7 @@ elseif (isset($_GET['UserAdded'])):
                                     <option value="3">کارشناس</option>
                                     <option value="4">مدیر</option>
                                     <option value="5">کارشناس نشریه</option>
-                                    <option value="6">گونه بند</option>
+                                    <option value="6">کارشناس گونه بندی</option>
                                 </select>
                             </td>
                         </tr>
