@@ -78,6 +78,10 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                         <option disabled selected>انتخاب کنید</option>
                                         <option>علمی پژوهشی</option>
                                         <option>علمی ترویجی</option>
+                                        <option>الف</option>
+                                        <option>ب</option>
+                                        <option>ج</option>
+                                        <option>د</option>
                                     </select>
                                 </td>
                             </tr>

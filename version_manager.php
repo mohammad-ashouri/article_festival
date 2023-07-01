@@ -251,9 +251,9 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                 <tr class="text-center">
                                     <th style="width: 35px;">ردیف</th>
                                     <th style="width: 50px;">سال انتشار</th>
-                                    <th style="width: 50px;">شماره مسلسل نشریه</th>
                                     <th style="width: 50px;">دوره انتشار (سال)</th>
                                     <th style="width: 50px;">نوبت انتشار در سال</th>
+                                    <th style="width: 50px;">شماره مسلسل نشریه</th>
                                     <th style="width: 45px;">شمارگان صفحه</th>
                                     <th style="width: 50px;">تعداد مقالات</th>
                                     <th>فایل جلد نشریه</th>

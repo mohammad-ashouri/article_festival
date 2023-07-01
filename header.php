@@ -3,10 +3,10 @@ include_once 'config/connection.php';
 include_once 'build/php/functions.php';
 session_start();
 $urlofthispage=$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-if (!isset($_SESSION['islogin'])){
-    $operation="Access Denied";
-    logsend($operation,$urlofthispage,$connection_maghalat);
-    header("location: index.php?errorlog");
+if (!isset($_SESSION['id'])){
+//    $operation="Access Denied";
+//    logsend($operation,$urlofthispage,$connection_maghalat);
+    header("location: ./index.php?errorlog");
 }
 $user=$_SESSION['id'];
 $query=mysqli_query($connection_maghalat,"select * from users where id='$user'");
