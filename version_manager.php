@@ -339,9 +339,9 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3 or $_SESSION['head'] == 5):
                                                         <div class="modal-dialog">
                                                             <div class="modal-content" style="width: 800px">
                                                                 <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                    <h5 class="modal-title fs-5" id="exampleModalLabel">
                                                                         ویرایش
-                                                                        اطلاعات نسخه نشریه</h1>
+                                                                        اطلاعات نسخه نشریه</h5>
                                                                     <button type="button" class="btn-close"
                                                                             data-bs-dismiss="modal"
                                                                             aria-label="Close"></button>

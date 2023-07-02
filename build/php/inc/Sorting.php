@@ -33,7 +33,8 @@ if ($_SESSION['head'] == 6 or $_SESSION['head'] == 4 or $_SESSION['head'] == 3) 
                 }
                 break;
             case 'approveSort':
-                $query = mysqli_query($connection_mag, "update mag_articles set sorted=1 where sorted=0 and id=" . $articleID);
+                $user=$_SESSION['id'];
+                $query = mysqli_query($connection_mag, "update mag_articles set sorted=1,sorter='$user' where sorted=0 and id=" . $articleID);
                 if (!$query) {
                     echo 'Err';
                 }
