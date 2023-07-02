@@ -123,7 +123,7 @@ if ($_SESSION['head'] == 6 or $_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                             </div>
                             <div class="d-inline-block">
                                 <button class="btn btn-primary mt-2" type="submit" id="uploadSortingClassificationFile">
-                                    بارگزاری فایل صورتجلسه
+                                    بارگذاری فایل صورتجلسه
                                 </button>
                             </div>
                         </div>

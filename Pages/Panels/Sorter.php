@@ -120,7 +120,7 @@
                             </div>
                             <div class="d-inline-block">
                                 <button class="btn btn-primary mt-2" type="submit" id="uploadSortingClassificationFile">
-                                    بارگزاری فایل صورتجلسه
+                                    بارگذاری فایل صورتجلسه
                                 </button>
                             </div>
                         </div>
