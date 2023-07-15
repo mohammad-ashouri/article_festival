@@ -408,12 +408,20 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                                     </td>
                                     <td>
                                         <?php
-                                        echo $Mag_Articles['scientific_group_1'];
+                                        $group1=$Mag_Articles['scientific_group_1'];
+                                        $query=mysqli_query($connection_maghalat,"select * from scientific_group where id='$group1'");
+                                        foreach ($query as $group){}
+                                        echo $group['name'];
+                                        $group=null;
                                         ?>
                                     </td>
                                     <td>
                                         <?php
-                                        echo $Mag_Articles['scientific_group_2'];
+                                        $group1=$Mag_Articles['scientific_group_2'];
+                                        $query=mysqli_query($connection_maghalat,"select * from scientific_group where id='$group1'");
+                                        foreach ($query as $group){}
+                                        echo $group['name'];
+                                        $group=null;
                                         ?>
                                     </td>
                                     <td>
