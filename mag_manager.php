@@ -553,13 +553,12 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                         <div class="card-tools-user-manager">
                             <input type="search" name="table_search" class="form-control float-right"
                                    placeholder="لطفا برای جستجو، نام نشریه مورد نظر را تایپ نمایید"
-                                   onkeyup="myFunction()"
-                                   id="myInput">
+                                   id="Mag-Search">
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
-                        <table class="table table-bordered table-striped" id="myTable">
+                        <table class="table table-bordered table-striped" id="Mag-Table">
                             <tr style="text-align: center">
                                 <th>ردیف</th>
                                 <th>نام</th>
@@ -1146,12 +1145,8 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
         });
     </script>
 
-    <script src="build/js/SearchInMagManagerTable.js"></script>
-    <script src="build/js/ChangeTabsInMagManager.js"></script>
-    <script src="build/js/Mag_Manager_Check_Fields.js"></script>
-    <script src="build/js/GetMagInfo.js"></script>
+    <script src="build/js/MagManagerScripts.js"></script>
     <script src="build/js/UpdateMagInfo.js"></script>
-    <script src="build/js/Delete_Mag.js"></script>
 <?php
 endif;
 include_once __DIR__ . '/footer.php'; ?>
