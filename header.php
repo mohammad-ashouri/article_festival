@@ -22,39 +22,39 @@ foreach ($query as $User_Info){}
     <title>سامانه جشنواره مقالات علمی حوزه</title>
 <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">-->
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="./dist/css/adminlte.min.css">
     <!-- Select2 -->
-    <link rel="stylesheet" href="plugins/select2/select2.min.css">
+    <link rel="stylesheet" href="./plugins/select2/select2.min.css">
     <!-- bootstrap rtl -->
 <!--    <link rel="stylesheet" href="dist/css/bootstrap-rtl.min.css">-->
     <!-- template rtl version -->
-    <link rel="stylesheet" href="dist/css/custom-style.css">
+    <link rel="stylesheet" href="./dist/css/custom-style.css">
 <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
     <!-- daterange picker -->
-    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">
+    <link rel="stylesheet" href="./plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="plugins/iCheck/all.css">
+    <link rel="stylesheet" href="./plugins/iCheck/all.css">
     <!-- Bootstrap Color Picker -->
-    <link rel="stylesheet" href="plugins/colorpicker/bootstrap-colorpicker.min.css">
+    <link rel="stylesheet" href="./plugins/colorpicker/bootstrap-colorpicker.min.css">
     <!-- Bootstrap time Picker -->
-    <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+    <link rel="stylesheet" href="./plugins/timepicker/bootstrap-timepicker.min.css">
     <!-- Persian Data Picker -->
-    <link rel="stylesheet" href="dist/css/persian-datepicker.min.css">
+    <link rel="stylesheet" href="./dist/css/persian-datepicker.min.css">
 <!--    Select2 CSS-->
 <!--    <link rel="stylesheet" type="text/css" href="/bower_components/select2/dist/css/select2.min.css">-->
     <!-- jQuery -->
-    <script src="bower_components/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="./bower_components/jquery-3.3.1.min.js" type="text/javascript"></script>
     <!-- Select2 JS -->
-    <script src="bower_components/select2/dist/js/select2.min.js" type="text/javascript"></script>
+    <script src="./bower_components/select2/dist/js/select2.min.js" type="text/javascript"></script>
     <!-- Bootstrap time Picker -->
-    <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+    <link rel="stylesheet" href="./plugins/timepicker/bootstrap-timepicker.min.css">
 
     <!-- bootstrap rtl -->
-    <link rel="stylesheet" href="dist/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="./dist/css/bootstrap-rtl.min.css">
     <!-- template rtl version -->
-    <link rel="stylesheet" href="dist/css/custom-style.css">
+    <link rel="stylesheet" href="./dist/css/custom-style.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
