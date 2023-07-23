@@ -105,7 +105,6 @@
                                 $AllArticles=mysqli_query($connection_maghalat,"Select * from article where festival_id='$LastFestivalID'");
                                 echo mysqli_num_rows($AllArticles);
                                 ?></h3>
-
                             <p>مقاله</p>
                         </div>
                         <div class="icon">

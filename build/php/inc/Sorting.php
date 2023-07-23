@@ -69,5 +69,13 @@ if ($_SESSION['head'] == 6 or $_SESSION['head'] == 4 or $_SESSION['head'] == 3) 
         } else {
             echo "ErrorForSubmittingFile";
         }
+    }elseif (isset($_POST['ApproveSort'])){
+        $user=$_SESSION['id'];
+        $query=mysqli_query($connection_mag,"select * from mag_articles where sorted=1 and sorting_classification_id is null");
+        foreach ($query as $notSortedArticles) {
+            $articleID=$notSortedArticles['id'];
+            mysqli_query($connection_maghalat,"update article set rate_status='اجمالی' where article_id='$articleID'");
+        }
+        mysqli_query($connection_mag, "update mag_articles set sorted='1',sorter='$user',sort_date='$datewithtime' where sorted=1 and sort_date is null");
     }
 }

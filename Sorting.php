@@ -107,28 +107,35 @@ if ($_SESSION['head'] == 6 or $_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                     <?php $count++; endforeach; ?>
                 </table>
 
-                <div class="card card-success mt-5">
-                    <div class="card-header">
-                        <h3 class="card-title">بایگانی صورتجلسه گونه بندی برای آثار تایید شده</h3>
-                        <!-- /.card-tools -->
-                    </div>
-                    <form role="form" method="post" id="SortingClassificationForm" enctype="multipart/form-data">
-                        <div class="card-body">
-                            <div class="custom-file d-inline-block" style="width: 70%;">
-                                <input title="فایل صورتجلسه" accept="application/pdf,image/jpeg" type="file"
-                                       class="custom-file-input" id="SortingClassificationFile"
-                                       name="SortingClassificationFile">
-                                <label id="SortingClassificationFileLabel" class="custom-file-label">انتخاب
-                                    فایل تاییدیه</label>
-                            </div>
-                            <div class="d-inline-block">
-                                <button class="btn btn-primary mt-2" type="submit" id="uploadSortingClassificationFile">
-                                    بارگذاری فایل صورتجلسه
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+<!--                <div class="card card-success mt-5">-->
+<!--                    <div class="card-header">-->
+<!--                        <h3 class="card-title">بایگانی صورتجلسه گونه بندی برای آثار تایید شده</h3>-->
+<!--                    </div>-->
+<!--                    <form role="form" method="post" class="text-center" id="SortingClassificationForm">-->
+<!--                        <div class="card-body">-->
+<!--                            <div class="custom-file d-inline-block" style="width: 70%;">-->
+<!--                                <input title="فایل صورتجلسه" accept="application/pdf,image/jpeg" type="file"-->
+<!--                                       class="custom-file-input" id="SortingClassificationFile"-->
+<!--                                       name="SortingClassificationFile">-->
+<!--                                <label id="SortingClassificationFileLabel" class="custom-file-label">انتخاب-->
+<!--                                    فایل تاییدیه</label>-->
+<!--                            </div>-->
+<!--                            <div class="d-inline-block">-->
+<!--                                <button class="btn btn-primary mt-2" type="submit" id="uploadSortingClassificationFile">-->
+<!--                                    تایید نهایی گونه بندی-->
+<!--                                </button>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+            </div>
+            <div class="d-inline-block text-center">
+                <form role="form" method="post" class="text-center" id="ApproveSort">
+                <button class="btn btn-primary mt-2" type="submit">
+                    تایید نهایی گونه بندی
+                </button>
+                </form>
             </div>
         </div>
     </section>

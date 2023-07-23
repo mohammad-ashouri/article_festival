@@ -105,7 +105,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                     $query = mysqli_query($connection_maghalat, "select * from ejmali where level='ej1g1' and article_code=" . $Ejmali_list['id']);
                                     foreach ($query as $ejmali) {
                                     }
-                                    if ($ejmali['sum'] != null) {
+                                    if (@$ejmali['sum'] != null) {
                                         echo '| امتیاز: ' . $ejmali['sum'];
                                         $ejmali['sum']=null;
                                     }
@@ -133,9 +133,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                 value="<?php echo $raters_info['id']; ?>">
                                             <?php echo $raters_info['name'] . ' ' . $raters_info['family']; ?>
                                         </option>
-                                        <script>
-                                            //$('#rater_group_1_1').val('<?php //echo @$Ejmali_list['ejmali1_ratercode_g1']; ?>//');
-                                        </script>
                                     <?php endforeach;
                                     ?>
                                 </select>
@@ -145,7 +142,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                     $query = mysqli_query($connection_maghalat, "select * from ejmali where level='ej2g1' and article_code=" . $Ejmali_list['id']);
                                     foreach ($query as $ejmali) {
                                     }
-                                    if ($ejmali['sum'] != null) {
+                                    if (@$ejmali['sum'] != null) {
                                         echo '| امتیاز: ' . $ejmali['sum'];
                                         $ejmali['sum'] = null;
                                     }
@@ -174,9 +171,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                             <?php echo $raters_info['name'] . ' ' . $raters_info['family'];
                                             ?>
                                         </option>
-                                        <script>
-                                            //$('#rater_group_1_2').val('<?php //echo @$Ejmali_list['ejmali2_ratercode_g1']; ?>//');
-                                        </script>
                                     <?php endforeach;
                                     ?>
                                 </select>
@@ -187,7 +181,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                     $query = mysqli_query($connection_maghalat, "select * from ejmali where level='ej3g1' and article_code=" . $Ejmali_list['id']);
                                     foreach ($query as $ejmali) {
                                     }
-                                    if ($ejmali['sum'] != null) {
+                                    if (@$ejmali['sum'] != null) {
                                         echo '| امتیاز: ' . $ejmali['sum'];
                                         $ejmali['sum'] = null;
                                     }
@@ -216,9 +210,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                             <?php echo $raters_info['name'] . ' ' . $raters_info['family'];
                                             ?>
                                         </option>
-                                        <script>
-                                            //$('#rater_group_1_3').val('<?php //echo @$Ejmali_list['ejmali3_ratercode_g1']; ?>//');
-                                        </script>
                                     <?php endforeach;
                                     ?>
                                 </select>
@@ -230,7 +221,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                         $query = mysqli_query($connection_maghalat, "select * from ejmali where level='ej1g2' and article_code=" . $Ejmali_list['id']);
                                         foreach ($query as $ejmali) {
                                         }
-                                        if ($ejmali['sum'] != null) {
+                                        if (@$ejmali['sum'] != null) {
                                             echo '| امتیاز: ' . $ejmali['sum'];
                                             $ejmali['sum'] = null;
                                         }
@@ -258,9 +249,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
 
                                                 ?>
                                             </option>
-                                            <script>
-                                                //$('#rater_group_2_1').val('<?php //echo @$Ejmali_list['ejmali1_ratercode_g2']; ?>//');
-                                            </script>
                                         <?php endforeach;
                                         ?>
                                     </select>
@@ -270,7 +258,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                         $query = mysqli_query($connection_maghalat, "select * from ejmali where level='ej2g2' and article_code=" . $Ejmali_list['id']);
                                         foreach ($query as $ejmali) {
                                         }
-                                        if ($ejmali['sum'] != null) {
+                                        if (@$ejmali['sum'] != null) {
                                             echo '| امتیاز: ' . $ejmali['sum'];
                                             $ejmali['sum'] = null;
                                         }
@@ -298,9 +286,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                 <?php echo $raters_info['name'] . ' ' . $raters_info['family'];
                                                 ?>
                                             </option>
-                                            <script>
-                                                //$('#rater_group_2_2').val('<?php //echo @$Ejmali_list['ejmali2_ratercode_g2']; ?>//');
-                                            </script>
                                         <?php endforeach;
                                         ?>
                                     </select>
@@ -310,7 +295,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                         $query = mysqli_query($connection_maghalat, "select * from ejmali where level='ej3g2' and article_code=" . $Ejmali_list['id']);
                                         foreach ($query as $ejmali) {
                                         }
-                                        if ($ejmali['sum'] != null) {
+                                        if (@$ejmali['sum'] != null) {
                                             echo '| امتیاز: ' . $ejmali['sum'];
                                             $ejmali['sum'] = null;
                                         }
@@ -339,9 +324,6 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                 <?php echo $raters_info['name'] . ' ' . $raters_info['family'];
                                                 ?>
                                             </option>
-                                            <script>
-                                                //$('#rater_group_2_3').val('<?php //echo @$Ejmali_list['ejmali3_ratercode_g2']; ?>//');
-                                            </script>
                                         <?php endforeach;
                                         ?>
                                     </select>

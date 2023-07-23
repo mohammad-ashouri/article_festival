@@ -36,9 +36,9 @@ function sortingG2(articleID, groupID, selectionID) {
     });
 }
 
-document.getElementById('SortingClassificationFile').onchange=function (){
-    SortingClassificationFileLabel.innerText= this.value.split('\\').pop();
-}
+// document.getElementById('SortingClassificationFile').onchange=function (){
+//     SortingClassificationFileLabel.innerText= this.value.split('\\').pop();
+// }
 
 var buttons = document.getElementsByClassName('forApprove');
 
@@ -93,37 +93,62 @@ for (var i = 0; i < buttons.length; i++) {
     })(i);
 }
 
-document.getElementById("SortingClassificationForm").addEventListener("submit", function (event) {
+// document.getElementById("SortingClassificationForm").addEventListener("submit", function (event) {
+//     event.preventDefault();
+//     if (SortingClassificationFile.value) {
+//         if (confirm('توجه داشته باشید: پس از تایید شما تمامی آثاری که برای گونه بندی تایید کرده اید به مرحله اجمالی راه خواهند یافت. این عملیات قابل بازگشت نیست.' +
+//             '\n' +
+//             ' آیا مطمئن هستید؟')) {
+//             var formData = new FormData();
+//             let SortingClassificationFile = document.getElementById('SortingClassificationFile');
+//             formData.append("SortingClassificationFile", SortingClassificationFile.files[0]);
+//             $.ajax({
+//                 url: "build/php/inc/Sorting.php",
+//                 method: "POST",
+//                 data: formData,
+//                 processData: false,
+//                 contentType: false,
+//                 success: function (response) {
+//                     if (response === 'ErrorForSubmittingFile') {
+//                         alert('خطا در دریافت/ثبت فایل صورتجلسه');
+//                         return false;
+//                     } else {
+//                         alert('فایل تاییدیه با موفقیت بارگزاری شد. صفحه مجددا بارگزاری خواهد شد.')
+//                         location.reload();
+//                     }
+//                 },
+//                 error: function (xhr, status, error) {
+//                     console.log(xhr.responseText);
+//                 }
+//             });
+//         }
+//     } else {
+//         alert('فایل انتخاب نشده است.');
+//         return false;
+//     }
+// });
+
+document.getElementById("ApproveSort").addEventListener("submit", function (event) {
     event.preventDefault();
-    if (SortingClassificationFile.value) {
-        if (confirm('توجه داشته باشید: پس از تایید شما تمامی آثاری که برای گونه بندی تایید کرده اید به مرحله اجمالی راه خواهند یافت. این عملیات قابل بازگشت نیست.' +
-            '\n' +
-            ' آیا مطمئن هستید؟')) {
-            var formData = new FormData();
-            let SortingClassificationFile = document.getElementById('SortingClassificationFile');
-            formData.append("SortingClassificationFile", SortingClassificationFile.files[0]);
-            $.ajax({
-                url: "build/php/inc/Sorting.php",
-                method: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    if (response === 'ErrorForSubmittingFile') {
-                        alert('خطا در دریافت/ثبت فایل صورتجلسه');
-                        return false;
-                    } else {
-                        alert('فایل تاییدیه با موفقیت بارگزاری شد. صفحه مجددا بارگزاری خواهد شد.')
-                        location.reload();
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.log(xhr.responseText);
+    if (confirm('توجه داشته باشید: پس از تایید شما تمامی آثاری که برای گونه بندی تایید کرده اید به مرحله اجمالی راه خواهند یافت. این عملیات قابل بازگشت نیست.' +
+        '\n' +
+        ' آیا مطمئن هستید؟')) {
+        $.ajax({
+            url: "build/php/inc/Sorting.php",
+            method: "POST",
+            data: 'ApproveSort',
+            success: function (response) {
+                if (response === 'ErrorForSubmittingFile') {
+                    alert('خطا در دریافت/ثبت فایل صورتجلسه');
+                    return false;
+                } else {
+                    alert(' تاییدیه با موفقیت انجام شد. صفحه مجددا بارگزاری خواهد شد.')
+                    location.reload();
                 }
-            });
-        }
-    } else {
-        alert('فایل انتخاب نشده است.');
-        return false;
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        });
     }
 });
