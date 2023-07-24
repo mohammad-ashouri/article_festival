@@ -49,7 +49,7 @@
                                         foreach ($query as $group_items):
                                             ?>
                                             <option <?php if ($sortingPosts['scientific_group_1'] == $group_items['id']) echo 'selected'; ?>
-                                                value="<?php echo $group_items['id'] ?>"><?php echo $group_items['name']; ?></option>
+                                                    value="<?php echo $group_items['id'] ?>"><?php echo $group_items['name']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <?php
@@ -73,7 +73,7 @@
                                         foreach ($query as $group_items):
                                             ?>
                                             <option <?php if ($sortingPosts['scientific_group_2'] == $group_items['id']) echo 'selected'; ?>
-                                                value="<?php echo $group_items['id'] ?>"><?php echo $group_items['name']; ?></option>
+                                                    value="<?php echo $group_items['id'] ?>"><?php echo $group_items['name']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <?php
@@ -104,28 +104,36 @@
                         <?php $count++; endforeach; ?>
                 </table>
 
-                <div class="card card-success mt-5">
-                    <div class="card-header">
-                        <h3 class="card-title">بایگانی صورتجلسه گونه بندی برای آثار تایید شده</h3>
-                        <!-- /.card-tools -->
-                    </div>
-                    <form role="form" method="post" id="SortingClassificationForm" enctype="multipart/form-data">
-                        <div class="card-body">
-                            <div class="custom-file d-inline-block" style="width: 70%;">
-                                <input title="فایل صورتجلسه" accept="application/pdf,image/jpeg" type="file"
-                                       class="custom-file-input" id="SortingClassificationFile"
-                                       name="SortingClassificationFile">
-                                <label id="SortingClassificationFileLabel" class="custom-file-label">انتخاب
-                                    فایل تاییدیه</label>
-                            </div>
-                            <div class="d-inline-block">
-                                <button class="btn btn-primary mt-2" type="submit" id="uploadSortingClassificationFile">
-                                    بارگذاری فایل صورتجلسه
-                                </button>
-                            </div>
+                <!--                <div class="card card-success mt-5">-->
+                <!--                    <div class="card-header">-->
+                <!--                        <h3 class="card-title">بایگانی صورتجلسه گونه بندی برای آثار تایید شده</h3>-->
+                <!-- /.card-tools -->
+                <!--                    </div>-->
+<!--                <form role="form" method="post" id="SortingClassificationForm">-->
+                    <!--                        <div class="card-body">-->
+                    <!--                            <div class="custom-file d-inline-block" style="width: 70%;">-->
+                    <!--                                <input title="فایل صورتجلسه" accept="application/pdf,image/jpeg" type="file"-->
+                    <!--                                       class="custom-file-input" id="SortingClassificationFile"-->
+                    <!--                                       name="SortingClassificationFile">-->
+                    <!--                                <label id="SortingClassificationFileLabel" class="custom-file-label">انتخاب-->
+                    <!--                                    فایل تاییدیه</label>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="d-inline-block">-->
+                    <!--                                <button class="btn btn-primary mt-2" type="submit" id="uploadSortingClassificationFile">-->
+                    <!--                                    بارگذاری فایل صورتجلسه-->
+                    <!--                                </button>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+
+                        <div class="text-center">
+                            <form role="form" method="post" class="" id="ApproveSort">
+                            <button class="btn btn-primary mt-2" type="submit">
+                                تایید نهایی گونه بندی
+                            </button>
+                            </form>
                         </div>
-                    </form>
-                </div>
+
+                    <!--                </div>-->
             </div>
         </div>
         <script src="build/js/sorting.js"></script>

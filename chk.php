@@ -39,68 +39,38 @@ if (isset($_POST) & !empty($_POST)) {
                 logsend($operation, $urlofthispage, $connection_maghalat);
                 header("location:index.php?NotApprovedUser");
             } else {
-                if ($user == $rows['username'] and $rows['type'] == 1) {
-                    $_SESSION['username'] = $rows['username'];
-                    $_SESSION['head'] = $rows['type'];
-                    $_SESSION['group'] = $rows['scientific_group'];
-                    $_SESSION['islogin'] = true;
-                    $_SESSION['id'] = $rows['id'];
-                    $_SESSION['start'] = time();
-                    $_SESSION['end'] = $_SESSION['start'] + (36000);
-                    $operation = "RaterLoginSuccess";
-                    logsend($operation, $urlofthispage, $connection_maghalat);
-                    header("location:panel.php");
-                } elseif ($user == $rows['username'] and $rows['type'] == 2) {
+                if ($user==$rows['username']) {
                     $_SESSION['username'] = $rows['username'];
                     $_SESSION['head'] = $rows['type'];
                     $_SESSION['islogin'] = true;
                     $_SESSION['id'] = $rows['id'];
                     $_SESSION['start'] = time();
                     $_SESSION['end'] = $_SESSION['start'] + (36000);
-                    $operation = "AdminLoginSuccess";
-                    logsend($operation, $urlofthispage, $connection_maghalat);
-                    header("location:panel.php");
-                } elseif ($user == $rows['username'] and $rows['type'] == 3) {
-
-                    $_SESSION['username'] = $rows['username'];
-                    $_SESSION['head'] = $rows['type'];
-                    $_SESSION['islogin'] = true;
-                    $_SESSION['id'] = $rows['id'];
-                    $_SESSION['start'] = time();
-                    $_SESSION['end'] = $_SESSION['start'] + (36000);
-                    $operation = "HeaderLoginSuccess";
-                    logsend($operation, $urlofthispage, $connection_maghalat);
-                    header("location:panel.php");
-                } elseif ($user == $rows['username'] and $rows['type'] == 4) {
-                    $_SESSION['username'] = $rows['username'];
-                    $_SESSION['head'] = $rows['type'];
-                    $_SESSION['islogin'] = true;
-                    $_SESSION['id'] = $rows['id'];
-                    $_SESSION['start'] = time();
-                    $_SESSION['end'] = $_SESSION['start'] + (36000);
-                    $operation = "CityAdminLoginSuccess";
-                    logsend($operation, $urlofthispage, $connection_maghalat);
-                    header("location:panel.php");
-                } elseif ($user == $rows['username'] and $rows['type'] == 5) {
-                    $_SESSION['username'] = $rows['username'];
-                    $_SESSION['head'] = $rows['type'];
-                    $_SESSION['islogin'] = true;
-                    $_SESSION['id'] = $rows['id'];
-                    $_SESSION['start'] = time();
-                    $_SESSION['end'] = $_SESSION['start'] + (36000);
-                    $operation = "JournalAdminLoginSuccess";
-                    logsend($operation, $urlofthispage, $connection_maghalat);
-                    header("location:panel.php");
-                }elseif ($user == $rows['username'] and $rows['type'] == 6) {
-                    $_SESSION['username'] = $rows['username'];
-                    $_SESSION['head'] = $rows['type'];
-                    $_SESSION['islogin'] = true;
-                    $_SESSION['id'] = $rows['id'];
-                    $_SESSION['start'] = time();
-                    $_SESSION['end'] = $_SESSION['start'] + (36000);
-                    $operation = "SorterLoginSuccess";
-                    logsend($operation, $urlofthispage, $connection_maghalat);
-                    header("location:panel.php");
+                    if ($rows['type'] == 1) {
+                        $operation = "RaterLoginSuccess";
+                        logsend($operation, $urlofthispage, $connection_maghalat);
+                        header("location:panel.php");
+                    } elseif ($rows['type'] == 2) {
+                        $operation = "AdminLoginSuccess";
+                        logsend($operation, $urlofthispage, $connection_maghalat);
+                        header("location:panel.php");
+                    } elseif ($rows['type'] == 3) {
+                        $operation = "HeaderLoginSuccess";
+                        logsend($operation, $urlofthispage, $connection_maghalat);
+                        header("location:panel.php");
+                    } elseif ($rows['type'] == 4) {
+                        $operation = "CityAdminLoginSuccess";
+                        logsend($operation, $urlofthispage, $connection_maghalat);
+                        header("location:panel.php");
+                    } elseif ($rows['type'] == 5) {
+                        $operation = "JournalAdminLoginSuccess";
+                        logsend($operation, $urlofthispage, $connection_maghalat);
+                        header("location:panel.php");
+                    } elseif ($rows['type'] == 6) {
+                        $operation = "SorterLoginSuccess";
+                        logsend($operation, $urlofthispage, $connection_maghalat);
+                        header("location:panel.php");
+                    }
                 }
             }
         }
