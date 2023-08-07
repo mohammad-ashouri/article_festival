@@ -4,7 +4,7 @@
     <div class="card card-success">
         <form method="post">
             <div class="card-header d-flex ">
-                <h3 class="card-title ">فهرست تمامی آثار جشنواره در دوره</h3>
+                <h3 class="card-title ">گزارش وضعیت ارزیابی آثار جشنواره در دوره</h3>
                 <select class="form-control w-25 " required title="دوره را انتخاب کنید" id="festival_id"
                         name="festival_id">
                     <option value="" selected disabled>انتخاب کنید</option>
@@ -22,7 +22,7 @@
         <?php
         if (isset($_POST['festival']) and !empty($_POST['festival_id'])):
             $festival = $_POST['festival_id'];
-            $query = mysqli_query($connection_maghalat, "select * from article where festival_id='$festival' order by article_id");
+            $query = mysqli_query($connection_maghalat, "select * from article where festival_id='$festival' order by rate_status");
             ?>
             <div class="card-body">
                 <?php
@@ -37,11 +37,9 @@
                             <th>نویسنده</th>
                             <th>گروه علمی اول</th>
                             <th>گروه علمی دوم</th>
-                            <th>نشریه</th>
-                            <th>سال انتشار</th>
-                            <th>دوره انتشار (سال)</th>
-                            <th>نوبت انتشار در سال</th>
-                            <th>شماره مسلسل نشریه</th>
+                            <th>وضعیت</th>
+                            <th>رتبه</th>
+                            <th>امتیاز نهایی</th>
                         </tr>
                         <?php
                         $a = 1;
@@ -49,14 +47,6 @@
                             $article_id = $articles['article_id'];
                             $query = mysqli_query($connection_mag, "select * from mag_articles where id='$article_id'");
                             foreach ($query as $articleInfo) {
-                            }
-                            $mag_version_id=$articleInfo['mag_version_id'];
-                            $query = mysqli_query($connection_mag, "select * from mag_versions where id='$mag_version_id'");
-                            foreach ($query as $versionInfo) {
-                            }
-                            $mag_info_id=$versionInfo['mag_info_id'];
-                            $query = mysqli_query($connection_mag, "select * from mag_info where id='$mag_info_id'");
-                            foreach ($query as $magInfo) {
                             }
                             ?>
                             <tr>
@@ -84,11 +74,9 @@
                                     $sg2Info['name']=null;
                                     ?>
                                 </td>
-                                <td><?php echo $magInfo['name']; ?></td>
-                                <td><?php echo $versionInfo['publication_year']; ?></td>
-                                <td><?php echo $versionInfo['publication_period_year']; ?></td>
-                                <td><?php echo $versionInfo['publication_period_number']; ?></td>
-                                <td><?php echo $versionInfo['publication_number']; ?></td>
+                                <td style="white-space: nowrap"><?php echo $articles['rate_status']; ?></td>
+                                <td><?php if ($articles['chosen_status']==1) echo $articles['chosen_subject']; ?></td>
+                                <td><?php if ($articles['chosen_status']==1) echo $articles['grade']; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
