@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__.'/../../../config/connection.php';
+include_once '../../../config/connection.php';
 session_start();
 if (isset($_POST['Service_Location']) and !empty($_SESSION['id'])) {
     $user=$_SESSION['id'];

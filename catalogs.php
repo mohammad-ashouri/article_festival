@@ -33,7 +33,7 @@ if ($_SESSION['head']==3 or $_SESSION['head']==4):
                         </select>
                     </td>
                     <td>
-                        <form action="build/php/inc/Add_Special_Type.php" method="post" id="Special_Type_Form">
+                        <form action="./build/php/inc/Add_Special_Type.php" method="post" id="Special_Type_Form">
                             <input name="Special_Type" type="text" class="form-control" id="Special_Type"
                                    placeholder="لطفا قبل از ورود اطلاعات، چک نمایید که قبلا وارد نشده باشد">
                             <br/>
@@ -45,7 +45,7 @@ if ($_SESSION['head']==3 or $_SESSION['head']==4):
                             </center>
                         </form>
                         <br/>
-                        <form action="build/php/inc/Disable_Special_Type.php" method="post" id="Disable_Special_Type_Form">
+                        <form action="./build/php/inc/Disable_Special_Type.php" method="post" id="Disable_Special_Type_Form">
                             <select name="Special_Type" class="form-control select2" style="width: 100%;" id="Disable_Special_Type">
                                 <option disabled selected>انتخاب کنید</option>
                                 <?php
@@ -63,7 +63,7 @@ if ($_SESSION['head']==3 or $_SESSION['head']==4):
                             </center>
                         </form>
                         <br/>
-                        <form action="build/php/inc/Enable_Special_Type.php" method="post" id="Enable_Special_Type_Form">
+                        <form action="./build/php/inc/Enable_Special_Type.php" method="post" id="Enable_Special_Type_Form">
                             <select name="Special_Type" class="form-control select2" style="width: 100%;" id="Enable_Special_Type">
                                 <option disabled selected>انتخاب کنید</option>
                                 <?php
@@ -98,7 +98,7 @@ if ($_SESSION['head']==3 or $_SESSION['head']==4):
                         </select>
                     </td>
                     <td>
-                        <form action="build/php/inc/Add_Service_Location.php" method="post" id="Service_Location_Form">
+                        <form action="././build/php/inc/Add_Service_Location.php" method="post" id="Service_Location_Form">
                             <input name="Service_Location" type="text" class="form-control" id="Service_Location"
                                    placeholder="لطفا قبل از ورود اطلاعات، چک نمایید که قبلا وارد نشده باشد">
                             <br/>
@@ -110,7 +110,7 @@ if ($_SESSION['head']==3 or $_SESSION['head']==4):
                             </center>
                         </form>
                         <br/>
-                        <form action="build/php/inc/Disable_Service_Location.php" method="post" id="Disable_Service_Location_Form">
+                        <form action="./build/php/inc/Disable_Service_Location.php" method="post" id="Disable_Service_Location_Form">
                             <select name="Service_Location" class="form-control select2" style="width: 100%;" id="Disable_Service_Location">
                                 <option disabled selected>انتخاب کنید</option>
                                 <?php
@@ -128,7 +128,7 @@ if ($_SESSION['head']==3 or $_SESSION['head']==4):
                             </center>
                         </form>
                         <br/>
-                        <form action="build/php/inc/Enable_Service_Location.php" method="post" id="Enable_Service_Location_Form">
+                        <form action="./build/php/inc/Enable_Service_Location.php" method="post" id="Enable_Service_Location_Form">
                             <select name="Service_Location" class="form-control select2" style="width: 100%;" id="Enable_Service_Location">
                                 <option disabled selected>انتخاب کنید</option>
                                 <?php
@@ -172,7 +172,7 @@ if ($_SESSION['head']==3 or $_SESSION['head']==4):
                             <?php endforeach; ?>
                     </td>
                     <td>
-                        <form action="build/php/inc/Add_Scientific_Committee.php" method="post" id="Scientific_Committee_Form">
+                        <form action="./build/php/inc/Add_Scientific_Committee.php" method="post" id="Scientific_Committee_Form">
                             <select name="Scientific_Committee_Subject" class="form-control select2" id="Scientific_Committee_Subject" style="width: 100%;">
                                 <option disabled selected>عنوان را انتخاب کنید</option>
                                 <?php
@@ -211,7 +211,7 @@ if ($_SESSION['head']==3 or $_SESSION['head']==4):
                             </center>
                         </form>
                         <br/>
-                        <form action="build/php/inc/Disable_Scientific_Committee.php" method="post" id="Disable_Scientific_Committee_Form">
+                        <form action="./build/php/inc/Disable_Scientific_Committee.php" method="post" id="Disable_Scientific_Committee_Form">
                             <select name="Scientific_Committee" id="Disable_Scientific_Committee" class="form-control select2" style="width: 100%;">
                                 <option disabled selected>کاربر را انتخاب کنید</option>
                                 <?php
@@ -229,7 +229,7 @@ if ($_SESSION['head']==3 or $_SESSION['head']==4):
                             </center>
                         </form>
                         <br/>
-                        <form action="build/php/inc/Enable_Scientific_Committee.php" method="post" id="Enable_Scientific_Committee_Form">
+                        <form action="./build/php/inc/Enable_Scientific_Committee.php" method="post" id="Enable_Scientific_Committee_Form">
                             <select name="Scientific_Committee" id="Enable_Scientific_Committee" class="form-control select2" style="width: 100%;">
                                 <option disabled selected>کاربر را انتخاب کنید</option>
                                 <?php
@@ -259,7 +259,7 @@ if ($_SESSION['head']==3 or $_SESSION['head']==4):
 </div>
 
 <!-- /.content-wrapper -->
-<script src="build/js/Catalogs.js"></script>
+<script src="./build/js/Catalogs.js"></script>
 <?php
 endif;
 include_once __DIR__ . '/footer.php'; ?>

@@ -22,7 +22,7 @@
         <?php
         if (isset($_POST['festival']) and !empty($_POST['festival_id'])):
             $festival = $_POST['festival_id'];
-            $query = mysqli_query($connection_maghalat, "select * from article where festival_id='$festival' order by rate_status");
+            $query = mysqli_query($connection_maghalat, "select * from article where festival_id='$festival' order by rate_status desc ");
             ?>
             <div class="card-body">
                 <?php
@@ -30,7 +30,8 @@
                     echo 'مقاله ای پیدا نشد.';
                 } else {
                     ?>
-                    <table class="table table-bordered table-striped" id="myTable">
+                    <table class="table table-bordered table-striped display" id="report_from_rates">
+                        <thead>
                         <tr style="text-align: center">
                             <th>ردیف</th>
                             <th>نام اثر</th>
@@ -41,6 +42,8 @@
                             <th>رتبه</th>
                             <th>امتیاز نهایی</th>
                         </tr>
+                        </thead>
+                        <tbody>
                         <?php
                         $a = 1;
                         foreach ($query as $articles):
@@ -58,32 +61,68 @@
                                 </td>
                                 <td>
                                     <?php
-                                    $sg1=$articleInfo['scientific_group_1'];
-                                    $query=mysqli_query($connection_maghalat,"select * from scientific_group where id='$sg1'");
-                                    foreach ($query as $sg1Info){}
+                                    $sg1 = $articleInfo['scientific_group_1'];
+                                    $query = mysqli_query($connection_maghalat, "select * from scientific_group where id='$sg1'");
+                                    foreach ($query as $sg1Info) {
+                                    }
                                     echo $sg1Info['name'];
-                                    $sg1Info['name']=null;
+                                    $sg1Info['name'] = null;
                                     ?>
                                 </td>
                                 <td>
                                     <?php
-                                    $sg2=$articleInfo['scientific_group_2'];
-                                    $query=mysqli_query($connection_maghalat,"select * from scientific_group where id='$sg2'");
-                                    foreach ($query as $sg2Info){}
+                                    $sg2 = $articleInfo['scientific_group_2'];
+                                    $query = mysqli_query($connection_maghalat, "select * from scientific_group where id='$sg2'");
+                                    foreach ($query as $sg2Info) {
+                                    }
                                     echo @$sg2Info['name'];
-                                    $sg2Info['name']=null;
+                                    $sg2Info['name'] = null;
                                     ?>
                                 </td>
                                 <td style="white-space: nowrap"><?php echo $articles['rate_status']; ?></td>
-                                <td><?php if ($articles['chosen_status']==1) echo $articles['chosen_subject']; ?></td>
-                                <td><?php if ($articles['chosen_status']==1) echo $articles['grade']; ?></td>
+                                <td><?php if ($articles['chosen_status'] == 1) echo $articles['chosen_subject']; ?></td>
+                                <td><?php if ($articles['chosen_status'] == 1) echo $articles['grade']; ?></td>
                             </tr>
                         <?php endforeach; ?>
+                        </tbody>
                     </table>
+                    <script>
+                        const table = document.getElementById('report_from_rates');
+                        const rows = Array.from(table.tBodies[0].getElementsByTagName('tr'));
+
+                        const getColumnIndex = (headerRow, columnName) => {
+                            const headers = Array.from(headerRow.getElementsByTagName('th'));
+                            return headers.findIndex(header => header.textContent.trim() === columnName);
+                        };
+
+                        const compareText = (a, b, columnIndex) => {
+                            const textA = a.cells[columnIndex].textContent.trim();
+                            const textB = b.cells[columnIndex].textContent.trim();
+                            return textA.localeCompare(textB);
+                        };
+
+                        const sortTable = (columnName) => {
+                            const columnIndex = getColumnIndex(table.querySelector('thead tr'), columnName);
+                            rows.sort((a, b) => compareText(a, b, columnIndex));
+                            rows.forEach((row, index) => {
+                                table.tBodies[0].appendChild(row);
+                                row.cells[0].textContent = index + 1; // Update row number
+                            });
+                        };
+
+                        table.querySelector('thead tr').addEventListener('click', (event) => {
+                            if (event.target.tagName === 'TH') {
+                                sortTable(event.target.textContent);
+                            }
+                        });
+                    </script>
+
+
                 <?php } ?>
             </div>
         <?php endif; ?>
     </div>
+
 </section>
 </div>
 

@@ -75,6 +75,9 @@ if (isset($_POST['article_id']) and isset($_POST['r1']) and isset($_POST['r2']) 
             }
             mysqli_query($connection_maghalat, "update article set ejmali3_g1_done=1 where id='$article_code'");
             break;
+
+
+
         case 'ej1g2':
             $query = mysqli_query($connection_maghalat, "select sum from ejmali where article_code='$article_code' and level='ej2g2'");
             foreach ($query as $ej2g2) {

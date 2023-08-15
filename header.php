@@ -46,6 +46,9 @@ foreach ($query as $User_Info){}
 <!--    <link rel="stylesheet" type="text/css" href="/bower_components/select2/dist/css/select2.min.css">-->
     <!-- jQuery -->
     <script src="./bower_components/jquery-3.3.1.min.js" type="text/javascript"></script>
+<!--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">-->
+<!--    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>-->
     <!-- Select2 JS -->
     <script src="./bower_components/select2/dist/js/select2.min.js" type="text/javascript"></script>
     <!-- Bootstrap time Picker -->
