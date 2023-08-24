@@ -50,6 +50,14 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
             </div>
         </div>
     </section>
+<?php elseif (isset($_GET['Article_File_Set'])): ?>
+    <section class="content">
+        <div class="card card-success">
+            <div class="card-header">
+                <h3 class="card-title" style="text-align: center">فایل مقاله با موفقیت ویرایش شد.</h3>
+            </div>
+        </div>
+    </section>
 <?php endif; ?>
 <!-- Main content -->
 <section class="content">
@@ -380,12 +388,12 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                                 <th>شماره صفحه در نشریه (از)*</th>
                                 <th>شماره صفحه در نشریه (تا)*</th>
                                 <th>زبان</th>
-                                <th>چکیده</th>
+<!--                                <th>چکیده</th>-->
                                 <th>نویسنده</th>
                                 <th>نوع همکاری</th>
                                 <th>همکاران</th>
                                 <th>انتخاب اثر برای شرکت در جشنواره</th>
-                                <th>فایل مقاله</th>
+                                <th>تغییر فایل</th>
                             </tr>
                             <?php
                             $a = 1;
@@ -397,9 +405,14 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                                     <td><?php echo $a;
                                         $a++; ?></td>
                                     <td>
-                                        <?php
-                                        echo $Mag_Articles['subject'];
-                                        ?>
+
+                                        <a id='no-link' style="color: #0a53be" target="_blank" href="<?php
+                                        echo 'Files/Mag_Files/'.$Mag_Articles['file_url'];
+                                        ?>">
+                                            <?php
+                                            echo $Mag_Articles['subject'];
+                                            ?>
+                                        </a>
                                     </td>
                                     <td>
                                         <?php
@@ -417,11 +430,14 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                                     </td>
                                     <td>
                                         <?php
-                                        $group1=$Mag_Articles['scientific_group_2'];
-                                        $query=mysqli_query($connection_maghalat,"select * from scientific_group where id='$group1'");
-                                        foreach ($query as $group){}
-                                        echo $group['name'];
-                                        $group=null;
+                                        if ($Mag_Articles['scientific_group_2']) {
+                                            $group2 = $Mag_Articles['scientific_group_2'];
+                                            $query = mysqli_query($connection_maghalat, "select * from scientific_group where id='$group2'");
+                                            foreach ($query as $group) {
+                                            }
+                                            echo $group['name'];
+                                            $group = null;
+                                        }
                                         ?>
                                     </td>
                                     <td>
@@ -447,11 +463,11 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                                         echo $Mag_Articles['language'];
                                         ?>
                                     </td>
-                                    <td>
-                                        <?php
-                                        echo $Mag_Articles['body'];
-                                        ?>
-                                    </td>
+<!--                                    <td>-->
+<!--                                        --><?php
+//                                        echo $Mag_Articles['body'];
+//                                        ?>
+<!--                                    </td>-->
                                     <td>
                                         <?php
                                         $author=explode('|',$Mag_Articles['author']);
@@ -492,11 +508,11 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                                         ?>
                                     </td>
                                     <td>
-                                        <a id='no-link' style="color: #0a53be" target="_blank" href="<?php
-                                        echo 'Files/Mag_Files/'.$Mag_Articles['file_url'];
-                                        ?>">
-                                            دانلود
-                                        </a>
+                                        <form method="post" enctype="multipart/form-data" action="./build/php/inc/EditArticle.php">
+                                            <input type="hidden" name="ArticleID" value="<?php echo $Mag_Articles['id']; ?>">
+                                            <input type="file" required accept=".pdf , .doc , .docx" name="ArticleFile" id="ArticleFile">
+                                            <button name="UploadArticleFile" class="btn btn-block btn-success">بارگزاری</button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
