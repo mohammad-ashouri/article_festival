@@ -1,10 +1,10 @@
 <?php
 ini_set('display_errors', 1);
-include_once __DIR__.'/config/connection.php';
-include_once __DIR__. '/build/php/functions.php';
+include_once __DIR__ . '/config/connection.php';
+include_once __DIR__ . '/build/php/functions.php';
 session_start();
 
-// $urlofthispage = $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+$urlofthispage = $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
 
 //type=1 => rater
 //type=2 => header
@@ -39,7 +39,7 @@ if (isset($_POST) & !empty($_POST)) {
                 logsend($operation, $urlofthispage, $connection_maghalat);
                 header("location:index.php?NotApprovedUser");
             } else {
-                if ($user==$rows['username']) {
+                if ($user == $rows['username']) {
                     $_SESSION['username'] = $rows['username'];
                     $_SESSION['head'] = $rows['type'];
                     $_SESSION['islogin'] = true;
