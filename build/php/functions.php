@@ -29,7 +29,7 @@ function getIPAddress(){
     return $ip;
 }
 
-function logsend($operation,$urlofthispage,$connection_maghalat){
+function logsend($operation,$urlofthispage=null,$connection_maghalat){
     $year=jdate('Y');
     $month=jdate('n');
     $day=jdate('j');
