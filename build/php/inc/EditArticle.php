@@ -13,7 +13,7 @@ if (isset($_POST['UploadArticleFile']) and !empty($_SESSION['id']) and !empty($_
         $encodedString = bin2hex($bytes);
         $folder_name = $encodedString . 'Article' . ' Mag-Ver ' . $articleInfo['mag_version_id'];
         $file_url_tmpname = $_FILES["ArticleFile"]["tmp_name"];
-        if (!mkdir($concurrentDirectory = __DIR__ . "/../../../Files/Mag_Files/" . $folder[0] . '/' . $folder_name) && !is_dir($concurrentDirectory)) {
+        if (!mkdir($concurrentDirectory =  "../../../Files/Mag_Files/" . $folder[0] . '/' . $folder_name) && !is_dir($concurrentDirectory)) {
             throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
         }
         move_uploaded_file($file_url_tmpname, __DIR__ . "/../../../Files/Mag_Files/$folder[0]/$folder_name/" . $_FILES["ArticleFile"]["name"]);
