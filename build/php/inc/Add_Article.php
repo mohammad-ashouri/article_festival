@@ -68,7 +68,9 @@ if (isset($_POST['Sub_Articles'])) {
                 $encodedString = bin2hex($bytes);
 
                 $folder_name = $encodedString . 'Article' . $i . ' Mag-Ver ' . $mag_version_id;
-                mkdir(__DIR__ . "/../../../Files/Mag_Files/" . $mag_folder_name . '/' . $folder_name);
+                if (!mkdir($concurrentDirectory = __DIR__ . "/../../../Files/Mag_Files/" . $mag_folder_name . '/' . $folder_name) && !is_dir($concurrentDirectory)) {
+                    throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+                }
                 move_uploaded_file($file_url_tmpname, __DIR__ . "/../../../Files/Mag_Files/$mag_folder_name/$folder_name/" . $file_url_name);
                 $body = $_POST['body_' . $i];
                 $author_name = $_POST['author_name_' . $i];
