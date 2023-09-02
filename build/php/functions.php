@@ -41,7 +41,7 @@ function logsend($operation,$urlofthispage,$connection_maghalat){
         $user=$_SESSION['id'];
     }
     else{
-        $user='none';
+        $user=0;
     }
     $ip=getIPAddress();
     $browsername=$_SERVER['HTTP_USER_AGENT'];
