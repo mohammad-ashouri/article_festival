@@ -1,9 +1,21 @@
 <!-- Main content -->
 <section class="content">
-    <div class="card card-success">
+    <?php if (isset($_GET['EjSet'])): ?>
+        <div class="card card-success">
+            <div class="card-header">
+                <h3 class="card-title">ثبت ارزیابی اجمالی با موفقیت انجام شد.</h3>
+            </div>
+        </div>
+    <?php elseif (isset($_GET['RateError'])): ?>
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title">ثبت ارزیابی اجمالی با خطا مواجه شد.</h3>
+            </div>
+        </div>
+    <?php endif; ?>
+    <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">فهرست آثار برای ارزیابی (برای نمایش اثر، بر روی عنوان مقاله کلیک نمایید)</h3>
-            <!-- /.card-tools -->
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -111,14 +123,14 @@
                         </td>
                         <td>
                             <?php
-                            $GroupArray=explode('||',$_SESSION['group']);
-                            if (in_array($article['scientific_group_1'],$GroupArray)) {
+                            $GroupArray = explode('||', $_SESSION['group']);
+                            if (in_array($article['scientific_group_1'], $GroupArray)) {
                                 $groupID = $article['scientific_group_1'];
                                 $query = mysqli_query($connection_maghalat, "Select * from scientific_group where id='$groupID'");
                                 foreach ($query as $groupInfo) {
                                 }
                                 echo $groupInfo['name'];
-                            }elseif ($_SESSION['group']==$article['scientific_group_2']) {
+                            } elseif ($_SESSION['group'] == $article['scientific_group_2']) {
                                 $groupID = $article['scientific_group_1'];
                                 $query = mysqli_query($connection_maghalat, "Select * from scientific_group where id='$groupID'");
                                 foreach ($query as $groupInfo) {

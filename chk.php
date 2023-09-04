@@ -47,6 +47,7 @@ if (isset($_POST) & !empty($_POST)) {
                     $_SESSION['start'] = time();
                     $_SESSION['end'] = $_SESSION['start'] + (36000);
                     if ($rows['type'] == 1) {
+                        $_SESSION['group']=$rows['scientific_group'];
                         $operation = "RaterLoginSuccess";
                         logsend($operation, $urlofthispage, $connection_maghalat);
                         header("location:panel.php");

@@ -126,4 +126,6 @@ if (isset($_POST['article_id']) and isset($_POST['r1']) and isset($_POST['r2']) 
             break;
     }
     header("location: ../../../panel.php?EjSet");
+}else{
+    header("location: ../../../panel.php?RateError");
 }
