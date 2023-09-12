@@ -1,7 +1,7 @@
 <?php
 $Me = $_SESSION['id'];
 $id = $_POST['id'];
-$query = mysqli_query($connection_maghalat, "select * from article where article_id='$id'");
+$query = mysqli_query($connection_maghalat, "select * from article where id='$id'");
 foreach ($query as $item) {
 
 }
