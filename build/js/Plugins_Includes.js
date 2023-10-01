@@ -86,3 +86,12 @@ $(function () {
         }
     );
 })
+
+$('#close_navbar').on('click', function () {
+    let body=document.getElementById('b-main-toggle');
+    if (body.classList.contains('sidebar-collapse')){
+        body.classList.remove('sidebar-collapse');
+    }else{
+        body.classList.add('sidebar-collapse');
+    }
+});

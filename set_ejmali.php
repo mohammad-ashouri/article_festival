@@ -4,13 +4,13 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
     <!-- Main content -->
     <section class="content">
 
-        <div class="card card-success">
-            <div class="card-header">
+        <div class="card card-success"  style="overflow-x: auto">
+            <div class="card-header" style="overflow-x: auto">
                 <h3 class="card-title">اختصاص اثر به ارزیاب اجمالی</h3>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-                <div style="margin-bottom: 20px">
+            <div class="card-body" style="overflow-x: auto">
+                <div style="margin-bottom: 20px; overflow-x: auto">
                     <label>گروه علمی اول</label>
                     <select
                             id="searchInput1" class="form-control select2"
@@ -77,7 +77,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                     </script>
 
                 </div>
-                <table class="table table-bordered table-striped" id="myTable">
+                <table class="table table-bordered table-striped" style="overflow-x: auto" id="myTable">
                     <thead>
                     <tr style="font-size: 15px">
                         <th>ردیف</th>

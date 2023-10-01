@@ -18,8 +18,8 @@
             <h3 class="card-title">فهرست آثار برای ارزیابی (برای نمایش اثر، بر روی عنوان مقاله کلیک نمایید)</h3>
         </div>
         <!-- /.card-header -->
-        <div class="card-body">
-            <table class="table table-bordered table-striped" id="myTable">
+        <div class="card-body" style="overflow-x: auto">
+            <table class="table table-bordered table-striped" id="myTable" style="overflow-x: auto">
                 <tr style="font-size: 15px;">
                     <th>ردیف</th>
                     <th>عنوان مقاله</th>

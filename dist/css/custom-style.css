@@ -292,5 +292,12 @@ option{
     background-color: #dddddd;
 }
 
-
+#close_navbar{
+     display: none;
+}
+@media (max-width: 768px) {
+    #close_navbar {
+        display: block;
+    }
+}
 /*My Customs*/

@@ -13,13 +13,13 @@ foreach ($query as $art_info) {
 <!-- Main content -->
 <form method="post" action="build/php/inc/Ejmali_Rate_Inc.php" onsubmit="return CheckEjmaliForm()">
     <section class="content">
-        <div class="card card-success">
-            <div class="card-header">
+        <div class="card card-success" style="overflow-x: auto">
+            <div class="card-header" style="overflow-x: auto">
                 <h3 class="card-title">ثبت ارزیابی اجمالی</h3>
                 <!-- /.card-tools -->
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
+            <div class="card-body" style="overflow-x: auto">
                 <table class="table table-bordered table-striped" id="myTable">
                     <tbody>
                     <tr>
@@ -176,7 +176,7 @@ foreach ($query as $art_info) {
                 <button type="submit" class="btn btn-block btn-success" style="width:20%" name="subject"
                         onclick="return confirm('آیا از امتیازات وارد شده اطمینان دارید؟');"
                         value="<?php echo $_POST['rate_status'] ?>">
-                    ثبت ارزیابی
+                    ثبت
                 </button>
             </center>
         </div>

@@ -20,14 +20,14 @@ foreach ($query as $art_info) {
     ?>
 )">
     <section class="content">
-        <div class="card card-success">
-            <div class="card-header">
+        <div class="card card-success" style="overflow-x: auto">
+            <div class="card-header" style="overflow-x: auto">
                 <h3 class="card-title">ثبت ارزیابی تفصیلی</h3>
                 <!-- /.card-tools -->
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-                <table class="table table-bordered table-striped" id="myTable">
+            <div class="card-body" style="overflow-x: auto">
+                <table class="table table-bordered table-striped" id="myTable" style="overflow-x: auto">
                     <tbody>
                     <tr>
                         <th>جشنواره</th>

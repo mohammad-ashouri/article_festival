@@ -26,7 +26,7 @@ if ($_SESSION['head'] == 4):
 
     <!-- Main content -->
     <section class="content">
-        <div class="card card-primary">
+        <div class="card card-primary" style="overflow-x: auto">
             <div class="card-header">
                 <h3 class="card-title">ثبت کاربر جدید</h3>
             </div>

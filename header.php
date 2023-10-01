@@ -16,7 +16,7 @@ foreach ($query as $User_Info){}
 <html lang="en" dir="rtl">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>سامانه جشنواره مقالات علمی حوزه</title>
@@ -33,13 +33,13 @@ foreach ($query as $User_Info){}
     <link rel="stylesheet" href="./dist/css/custom-style.css">
 <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
     <!-- daterange picker -->
-    <link rel="stylesheet" href="./plugins/daterangepicker/daterangepicker-bs3.css">
+<!--    <link rel="stylesheet" href="./plugins/daterangepicker/daterangepicker-bs3.css">-->
     <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="./plugins/iCheck/all.css">
+<!--    <link rel="stylesheet" href="./plugins/iCheck/all.css">-->
     <!-- Bootstrap Color Picker -->
-    <link rel="stylesheet" href="./plugins/colorpicker/bootstrap-colorpicker.min.css">
+<!--    <link rel="stylesheet" href="./plugins/colorpicker/bootstrap-colorpicker.min.css">-->
     <!-- Bootstrap time Picker -->
-    <link rel="stylesheet" href="./plugins/timepicker/bootstrap-timepicker.min.css">
+<!--    <link rel="stylesheet" href="./plugins/timepicker/bootstrap-timepicker.min.css">-->
     <!-- Persian Data Picker -->
     <link rel="stylesheet" href="./dist/css/persian-datepicker.min.css">
 <!--    Select2 CSS-->
@@ -59,7 +59,7 @@ foreach ($query as $User_Info){}
     <!-- template rtl version -->
     <link rel="stylesheet" href="./dist/css/custom-style.css">
 </head>
-<body class="hold-transition sidebar-mini">
+<body id="b-main-toggle" class="hold-transition sidebar-mini sidebar-collapse">
 <div class="wrapper">
 <!--    <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">-->
         <!-- Left navbar links -->
@@ -103,8 +103,14 @@ foreach ($query as $User_Info){}
     <div class="content-wrapper">
         <!-- /.content-header -->
         <div class="card card-info">
-            <div class="card-header">
-                <h3 class="card-title"></h3>
+            <div class="card-header" style="height: 55px">
+
+                <button class="btn btn-block btn-primary" id="close_navbar">
+                    منو
+                </button>
+                <script>
+
+                </script>
             </div>
             <!-- /.card-header -->
         </div>
