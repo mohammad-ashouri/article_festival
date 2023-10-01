@@ -10,12 +10,12 @@
         <strong style="position: center;">
             امروز:
             <?php
-            $date=jdate("l Y/n/j");
+            $date = jdate("l Y/n/j");
             echo $date;
             ?>
             مصادف با:
             <?php
-            $arabic_date= arabicDate('hj: l j F Y ',time());
+            $arabic_date = arabicDate('hj: l j F Y ', time());
             echo $arabic_date;
             ?>
             می باشد
@@ -68,5 +68,5 @@
 </html>
 <script src="./build/js/Plugins_Includes.js"></script>
 <?php
-include_once __DIR__.'/config/connection_close.php';
+include_once __DIR__ . '/config/connection_close.php';
 ?>
