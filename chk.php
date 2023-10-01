@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors', 1);
 include_once __DIR__ . '/config/connection.php';
 include_once __DIR__ . '/build/php/functions.php';
 session_start();
@@ -13,10 +12,25 @@ $urlofthispage = $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
 //type=5 => journal-admin
 //approved=0 => کاربر غیر فعال شده
 $dateforinsertloglogins = $year . '/' . $month . '/' . $day . ' ' . $hour . ':' . $min . ':' . $sec;
-
+function convertPersianNumbersToEnglish($text) {
+    $persianToEnglish = array(
+        '۰' => '0',
+        '۱' => '1',
+        '۲' => '2',
+        '۳' => '3',
+        '۴' => '4',
+        '۵' => '5',
+        '۶' => '6',
+        '۷' => '7',
+        '۸' => '8',
+        '۹' => '9'
+    );
+    $englishText = str_replace(array_keys($persianToEnglish), $persianToEnglish, $text);
+    return $englishText;
+}
 if (isset($_POST) & !empty($_POST)) {
-    $user = $_POST['username'];
-    $pass = $_POST['password'];
+    $user = convertPersianNumbersToEnglish($_POST['username']);
+    $pass = convertPersianNumbersToEnglish($_POST['password']);
     if ((!isset($_POST['submit']) and empty($user)) or empty($pass)) {
         $operation = "LoginError";
         logsend($operation, $urlofthispage, $connection_maghalat);
@@ -71,9 +85,14 @@ if (isset($_POST) & !empty($_POST)) {
                         $operation = "SorterLoginSuccess";
                         logsend($operation, $urlofthispage, $connection_maghalat);
                         header("location:panel.php");
+                    }else{
+                        header("location:index?error");
                     }
                 }
             }
         }
     }
+}
+else{
+    header("location:index?error");
 }
