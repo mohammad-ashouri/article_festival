@@ -45,7 +45,7 @@ session_abort();
                     <br/>
 
                     <div class="wrap-input100 validate-input" data-validate="نام کاربری را وارد کنید">
-                        <input class="input100" type="text" name="username">
+                        <input class="input100 username" type="text" name="username" id="username">
                         <span class="focus-input100" data-placeholder="نام کاربری"></span>
                     </div>
 
@@ -53,7 +53,7 @@ session_abort();
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-                        <input class="input100" type="password" name="password">
+                        <input class="input100 password" type="password" name="password">
                         <span class="focus-input100" data-placeholder="رمز عبور"></span>
                     </div>
                     <p align="center" style="font-weight: bold; font-size: 13px">
@@ -105,15 +105,7 @@ session_abort();
     <!--===============================================================================================-->
     <script src="login/vendor/animsition/js/animsition.min.js"></script>
     <!--===============================================================================================-->
-    <script src="login/vendor/bootstrap/js/popper.js"></script>
     <script src="login/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="login/vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="login/vendor/daterangepicker/moment.min.js"></script>
-    <script src="login/vendor/daterangepicker/daterangepicker.js"></script>
-    <!--===============================================================================================-->
-    <script src="login/vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script src="login/js/main.js"></script>
 
