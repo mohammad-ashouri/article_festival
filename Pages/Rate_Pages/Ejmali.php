@@ -106,7 +106,7 @@ foreach ($query as $art_info) {
                             اولویت و روزآمدی مسئله یا موضوع
                         </td>
                         <td style="width: 150px;">
-                            <input type="number" class="form-control" name="r1" style="width: 100%" step="0.25"
+                            <input type="text" class="form-control" name="r1" style="width: 100%" step="0.25"
                                    id="r1" onchange="sum()" value="0">
                         </td>
                         <td style="text-align: center;vertical-align: middle" rowspan="5">
@@ -132,7 +132,7 @@ foreach ($query as $art_info) {
                             ارزش علمی و نو بودن محتوا
                         </td>
                         <td style="width: 150px;">
-                            <input type="number" class="form-control" name="r2" style="width: 100%" step="0.25"
+                            <input type="text" class="form-control" name="r2" style="width: 100%" step="0.25"
                                    id="r2" onchange="sum()" value="0">
                         </td>
                     </tr>
@@ -144,7 +144,7 @@ foreach ($query as $art_info) {
                             استفاده مناسب از منابع معتبر
                         </td>
                         <td style="width: 150px;">
-                            <input type="number" class="form-control" name="r3" style="width: 100%" step="0.25"
+                            <input type="text" class="form-control" name="r3" style="width: 100%" step="0.25"
                                    id="r3" onchange="sum()" value="0">
                         </td>
                     </tr>
@@ -156,7 +156,7 @@ foreach ($query as $art_info) {
                             اثربخشی و میزان تاثیر گذاری در حل مشکلات علمی و کاربردی
                         </td>
                         <td style="width: 150px;">
-                            <input type="number" class="form-control" name="r4" style="width: 100%" step="0.25"
+                            <input type="text" class="form-control" name="r4" style="width: 100%" step="0.25"
                                    id="r4" onchange="sum()" value="0">
                         </td>
                     </tr>
