@@ -33,10 +33,18 @@ if (isset($_POST['article_id']) and isset($_POST['r1']) and isset($_POST['r2']) 
                 mysqli_query($connection_maghalat, "update article set avg_ejmali_g1='$avg',ejmali1_g1_done=1 where id='$article_code'");
                 if ($Mag_Article_Info['scientific_group_2'] != '' and $Mag_Article_Info['scientific_group_2'] != null) {
                     if ($ArticleInfo['avg_ejmali_g2'] != null and $ArticleInfo['avg_ejmali_g2'] != '') {
-                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                        if ($avg>=34){
+                            mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                        } else{
+                            mysqli_query($connection_maghalat, "update article set rate_status='اجمالی ردی' where id='$article_code'");
+                        }
                     }
                 } elseif ($Mag_Article_Info['scientific_group_2'] == '' and $Mag_Article_Info['scientific_group_2'] == null) {
-                    mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                    if ($avg>=34){
+                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                    } else{
+                        mysqli_query($connection_maghalat, "update article set rate_status='اجمالی ردی' where id='$article_code'");
+                    }
                 }
             }
             mysqli_query($connection_maghalat, "update article set ejmali1_g1_done=1 where id='$article_code'");
@@ -53,10 +61,18 @@ if (isset($_POST['article_id']) and isset($_POST['r1']) and isset($_POST['r2']) 
                 mysqli_query($connection_maghalat, "update article set avg_ejmali_g1='$avg',ejmali2_g1_done=1 where id='$article_code'");
                 if ($Mag_Article_Info['scientific_group_2'] != '' and $Mag_Article_Info['scientific_group_2'] != null) {
                     if ($ArticleInfo['avg_ejmali_g2'] != null and $ArticleInfo['avg_ejmali_g2'] != '') {
-                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                        if ($avg>=34){
+                            mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                        } else{
+                            mysqli_query($connection_maghalat, "update article set rate_status='اجمالی ردی' where id='$article_code'");
+                        }
                     }
                 } elseif ($Mag_Article_Info['scientific_group_2'] == '' and $Mag_Article_Info['scientific_group_2'] == null) {
-                    mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                    if ($avg>=34){
+                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                    } else{
+                        mysqli_query($connection_maghalat, "update article set rate_status='اجمالی ردی' where id='$article_code'");
+                    }
                 }
             }
             mysqli_query($connection_maghalat, "update article set ejmali2_g1_done=1 where id='$article_code'");
@@ -73,10 +89,18 @@ if (isset($_POST['article_id']) and isset($_POST['r1']) and isset($_POST['r2']) 
                 mysqli_query($connection_maghalat, "update article set avg_ejmali_g1='$avg',ejmali3_g1_done=1 where id='$article_code'");
                 if ($Mag_Article_Info['scientific_group_2'] != '' and $Mag_Article_Info['scientific_group_2'] != null) {
                     if ($ArticleInfo['avg_ejmali_g2'] != null and $ArticleInfo['avg_ejmali_g2'] != '') {
-                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                        if ($avg>=34){
+                            mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                        } else{
+                            mysqli_query($connection_maghalat, "update article set rate_status='اجمالی ردی' where id='$article_code'");
+                        }
                     }
                 } elseif ($Mag_Article_Info['scientific_group_2'] == '' and $Mag_Article_Info['scientific_group_2'] == null) {
-                    mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                    if ($avg>=34){
+                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                    } else{
+                        mysqli_query($connection_maghalat, "update article set rate_status='اجمالی ردی' where id='$article_code'");
+                    }
                 }
             }
             mysqli_query($connection_maghalat, "update article set ejmali3_g1_done=1 where id='$article_code'");
@@ -94,10 +118,18 @@ if (isset($_POST['article_id']) and isset($_POST['r1']) and isset($_POST['r2']) 
                 mysqli_query($connection_maghalat, "update article set avg_ejmali_g2='$avg',ejmali1_g2_done=1 where id='$article_code'");
                 if ($Mag_Article_Info['scientific_group_1'] != '' and $Mag_Article_Info['scientific_group_1'] != null) {
                     if ($ArticleInfo['avg_ejmali_g1'] != null and $ArticleInfo['avg_ejmali_g1'] != '') {
-                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                        if ($avg>=34){
+                            mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                        } else{
+                            mysqli_query($connection_maghalat, "update article set rate_status='اجمالی ردی' where id='$article_code'");
+                        }
                     }
                 } elseif ($Mag_Article_Info['scientific_group_1'] == '' and $Mag_Article_Info['scientific_group_1'] == null) {
-                    mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                    if ($avg>=34){
+                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                    } else{
+                        mysqli_query($connection_maghalat, "update article set rate_status='اجمالی ردی' where id='$article_code'");
+                    }
                 }
             }
             mysqli_query($connection_maghalat, "update article set ejmali1_g2_done=1 where id='$article_code'");
@@ -114,10 +146,18 @@ if (isset($_POST['article_id']) and isset($_POST['r1']) and isset($_POST['r2']) 
                 mysqli_query($connection_maghalat, "update article set avg_ejmali_g2='$avg',ejmali2_g2_done=1 where id='$article_code'");
                 if ($Mag_Article_Info['scientific_group_1'] != '' and $Mag_Article_Info['scientific_group_1'] != null) {
                     if ($ArticleInfo['avg_ejmali_g1'] != null and $ArticleInfo['avg_ejmali_g1'] != '') {
-                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                        if ($avg>=34){
+                            mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                        } else{
+                            mysqli_query($connection_maghalat, "update article set rate_status='اجمالی ردی' where id='$article_code'");
+                        }
                     }
                 } elseif ($Mag_Article_Info['scientific_group_1'] == '' and $Mag_Article_Info['scientific_group_1'] == null) {
-                    mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                    if ($avg>=34){
+                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                    } else{
+                        mysqli_query($connection_maghalat, "update article set rate_status='اجمالی ردی' where id='$article_code'");
+                    }
                 }
             }
             mysqli_query($connection_maghalat, "update article set ejmali2_g2_done=1 where id='$article_code'");
@@ -134,10 +174,18 @@ if (isset($_POST['article_id']) and isset($_POST['r1']) and isset($_POST['r2']) 
                 mysqli_query($connection_maghalat, "update article set avg_ejmali_g2='$avg',ejmali1_g2_done=1 where id='$article_code'");
                 if ($Mag_Article_Info['scientific_group_1'] != '' and $Mag_Article_Info['scientific_group_1'] != null) {
                     if ($ArticleInfo['avg_ejmali_g1'] != null and $ArticleInfo['avg_ejmali_g1'] != '') {
-                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                        if ($avg>=34){
+                            mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                        } else{
+                            mysqli_query($connection_maghalat, "update article set rate_status='اجمالی ردی' where id='$article_code'");
+                        }
                     }
                 } elseif ($Mag_Article_Info['scientific_group_1'] == '' and $Mag_Article_Info['scientific_group_1'] == null) {
-                    mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                    if ($avg>=34){
+                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی' where id='$article_code'");
+                    } else{
+                        mysqli_query($connection_maghalat, "update article set rate_status='اجمالی ردی' where id='$article_code'");
+                    }
                 }
             }
             mysqli_query($connection_maghalat, "update article set ejmali3_g2_done=1 where id='$article_code'");
