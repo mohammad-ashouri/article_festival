@@ -6,6 +6,12 @@
                 <h3 class="card-title">ثبت ارزیابی اجمالی با موفقیت انجام شد.</h3>
             </div>
         </div>
+    <?php elseif (isset($_GET['TaSet'])): ?>
+        <div class="card card-success">
+            <div class="card-header">
+                <h3 class="card-title">ثبت ارزیابی تفصیلی با موفقیت انجام شد.</h3>
+            </div>
+        </div>
     <?php elseif (isset($_GET['RateError'])): ?>
         <div class="card card-danger">
             <div class="card-header">
