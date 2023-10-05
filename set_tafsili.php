@@ -1,11 +1,8 @@
 <?php include_once __DIR__ . '/header.php';
 if ($_SESSION['head']==4 or $_SESSION['head']==3):
 ?>
-
-
     <!-- Main content -->
     <section class="content">
-
         <div class="card card-success">
             <div class="card-header">
                 <h3 class="card-title">اختصاص اثر به ارزیاب تفصیلی</h3>
@@ -37,7 +34,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                     </tr>
                     <?php
                     $a = 1;
-                    $query = mysqli_query($connection_maghalat, "select * from jashnvareh_maghalat.article c inner join mag_base.mag_articles m on c.article_id = m.id where m.selected_for_jm=1 and c.rate_status='تفصیلی' and (c.avg_ejmali_g1>=34 or c.avg_ejmali_g2>=34) order by m.id asc");
+                    $query = mysqli_query($connection_maghalat, "select * from ssmp_jashnvarehmaghalat.article c inner join ssmp_magbase.mag_articles m on c.article_id = m.id where m.selected_for_jm=1 and c.rate_status='تفصیلی' and (c.avg_ejmali_g1>=34 or c.avg_ejmali_g2>=34) order by m.id asc");
                     foreach ($query as $Tafsili_list):
                         ?>
                         <tr>
@@ -66,11 +63,13 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                             <td>
                                 <?php
                                 $Group2 = $Tafsili_list['scientific_group_2'];
-                                $query = mysqli_query($connection_maghalat, "select * from scientific_group where id='$Group2'");
-                                foreach ($query as $Group2) {
+                                if ($Group2) {
+                                    $query = mysqli_query($connection_maghalat, "select * from scientific_group where id='$Group2'");
+                                    foreach ($query as $Group2) {
+                                    }
+                                    echo $Group2['name'];
+                                    $Group2['name'] = null;
                                 }
-                                echo $Group2['name'];
-                                $Group2['name'] = null;
                                 ?>
                             </td>
                             <td>
@@ -81,10 +80,12 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                             <td>
                                 <?php
                                 $special_type = $Tafsili_list['special_type'];
-                                $query = mysqli_query($connection_maghalat, "select * from special_type where id='$special_type'");
-                                foreach ($query as $Special_Type_Detail) {
+                                if ($special_type) {
+                                    $query = mysqli_query($connection_maghalat, "select * from special_type where id='$special_type'");
+                                    foreach ($query as $Special_Type_Detail) {
+                                    }
+                                    echo $Special_Type_Detail['subject'];
                                 }
-                                echo $Special_Type_Detail['subject'];
                                 ?>
                             </td>
                             <td>
@@ -170,9 +171,6 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
 
                                             ?>
                                         </option>
-                                        <script>
-                                            //$('#rater_group_1_1').val('<?php //echo @$Tafsili_list['tafsili1_ratercode_g1']; ?>//');
-                                        </script>
                                     <?php endforeach;
                                     ?>
 
@@ -209,9 +207,6 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                             <?php echo $raters_info['name'] . ' ' . $raters_info['family'];
                                             ?>
                                         </option>
-                                        <script>
-                                            //$('#rater_group_1_2').val('<?php //echo @$Tafsili_list['tafsili2_ratercode_g1']; ?>//');
-                                        </script>
                                     <?php endforeach;
                                     ?>
                                 </select>
@@ -258,9 +253,6 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                             <?php echo $raters_info['name'] . ' ' . $raters_info['family'];
                                             ?>
                                         </option>
-                                        <script>
-                                            //$('#rater_group_1_3').val('<?php //echo @$Tafsili_list['tafsili3_ratercode_g1']; ?>//');
-                                        </script>
                                     <?php endforeach;
                                     ?>
                                 </select>
