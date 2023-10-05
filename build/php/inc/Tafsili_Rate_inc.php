@@ -36,40 +36,98 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
     for ($i = 1; $i <= $All_ID_nums; $i++) {
         $sum = $_POST['r' . $i] + $sum;
     }
-    mysqli_query($connection_maghalat, "insert into tafsili 
+    $query = mysqli_query($connection_maghalat, "insert into tafsili 
     (article_id, r1,r1_comment, r2,r2_comment, r3,r3_comment, r4,r4_comment,r5,r5_comment,r6,r6_comment,r7,r7_comment,r8,r8_comment,r9_1,r9_1_comment,r9_2,r9_2_comment,general_comment, sum,type, rater, rate_date) values
     ('$article_id','$r1','$comment_r1','$r2','$comment_r2','$r3','$comment_r3','$r4','$comment_r4','$r5','$comment_r5','$r6','$comment_r6','$r7','$comment_r7','$r8','$comment_r8','$r9','$comment_r9','$r10','$comment_r10','$general_comment','$sum','$type','$user','$datewithtime')");
-    switch ($type) {
-        case 'ta1':
-            $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='t2'");
-            foreach ($query as $ta2) {
-            }
-            if (@$ta2 != null) {
-                $avg = ($sum + $ta2['sum']) / 2;
-                mysqli_query($connection_maghalat, "update article set avg_tafsili='$avg' where id='$article_id'");
-            }
-            mysqli_query($connection_maghalat, "update article set tafsili1_done=1,rate_status='منتظر تایید' where id='$article_id'");
-            break;
-        case 'ta2':
-            $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='t1'");
-            foreach ($query as $ta1) {
-            }
-            if (@$ta1 != null) {
-                $avg = ($sum + $ta1['sum']) / 2;
-                mysqli_query($connection_maghalat, "update article set avg_tafsili='$avg' where id='$article_id'");
-            }
-            mysqli_query($connection_maghalat, "update article set tafsili2_done=1,rate_status='منتظر تایید' where id='$article_id'");
-            break;
-        case 'ta3':
-            $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='t1'");
-            foreach ($query as $ta1) {
-            }
-            $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='t2'");
-            foreach ($query as $ta2) {
-            }
-            $sum = ($sum + $ta1['sum'] + $ta2['sum']) / 3;
-            mysqli_query($connection_maghalat, "update article set tafsili3_done=1,rate_status='منتظر تایید' where id='$article_id'");
-            break;
+
+    if ($query) {
+        $articleInfo = mysqli_query($connection_maghalat, "select * from article where id='$article_id'");
+        foreach ($articleInfo as $article) {
+        }
+
+        switch ($type) {
+            case 'ta1':
+                if ($article['tafsili2_done'] == 1) {
+                    $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='ta2'");
+                    foreach ($query as $ta2) {
+                    }
+                    $avg = ($sum + $ta2['sum']) / 2;
+                    if ($sum >= 80 and $ta2['sum'] >= 80) {
+                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی سوم' where id='$article_id'");
+                    } elseif ($sum < 75 or $ta2['sum'] < 75) {
+                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی ردی' where id='$article_id'");
+                    } elseif ($sum >= 75 or $ta2['sum'] >= 75) {
+                        if (abs($sum - $ta2['sum']) >= 12) {
+                            mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی سوم' where id='$article_id'");
+                        } else {
+                            if ($avg >= 80) {
+                                mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی سوم' where id='$article_id'");
+                            } else {
+                                mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی ردی' where id='$article_id'");
+                            }
+                        }
+                    }
+                }
+                mysqli_query($connection_maghalat, "update article set tafsili1_done=1 where id='$article_id'");
+                break;
+            case 'ta2':
+                if ($article['tafsili1_done'] == 1) {
+                    $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='ta1'");
+                    foreach ($query as $ta1) {
+                    }
+                    $avg = ($sum + $ta1['sum']) / 2;
+                    if ($sum >= 80 and $ta1['sum'] >= 80) {
+                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی سوم' where id='$article_id'");
+                    } elseif ($sum < 75 or $ta1['sum'] < 75) {
+                        mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی ردی' where id='$article_id'");
+                    } elseif ($sum >= 75 or $ta1['sum'] >= 75) {
+                        if (abs($sum - $ta1['sum']) >= 12) {
+                            mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی سوم' where id='$article_id'");
+                        } else {
+                            if ($avg >= 80) {
+                                mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی سوم' where id='$article_id'");
+                            } else {
+                                mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی ردی' where id='$article_id'");
+                            }
+                        }
+                    }
+                }
+                mysqli_query($connection_maghalat, "update article set tafsili1_done=1 where id='$article_id'");
+                break;
+            case 'ta3':
+                $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='t1'");
+                foreach ($query as $ta1) {
+                }
+                $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='t2'");
+                foreach ($query as $ta2) {
+                }
+                if ($ta1['sum']>=80 and $ta2['sum']>=80 and $sum>=80){
+                    $finalAVG = ($sum + $ta1['sum'] + $ta2['sum']) / 3;
+                }elseif ((abs($sum-$ta1['sum'])>=12) or (abs($sum-$ta2['sum'])>=12)){
+                    $finalAVG = ($sum + $ta1['sum'] + $ta2['sum']) / 3;
+                }elseif ((abs($sum-$ta1['sum'])<12) or (abs($sum-$ta2['sum'])<12)){
+                    if (abs($sum-$ta1['sum'])<12){
+                        $finalAVG=((($sum-$ta1['sum'])/2)+$ta2['sum'])/2;
+                    }elseif (abs($sum-$ta2['sum'])<12){
+                        $finalAVG=((($sum-$ta2['sum'])/2)+$ta1['sum'])/2;
+                    }
+                }
+
+                if ($finalAVG>=80) {
+                    mysqli_query($connection_maghalat, "update article set tafsili3_done=1,rate_status='منتظر تایید',grade='$finalAVG' where id='$article_id'");
+                    if ($finalAVG>=80 and $finalAVG<85){
+                        mysqli_query($connection_maghalat, "update article set chosen_status=1,chosen_subject='شایسته تقدیر' where id='$article_id'");
+                    }else{
+                        mysqli_query($connection_maghalat, "update article set chosen_status=1,chosen_subject='برگزیده' where id='$article_id'");
+                    }
+                }elseif ($finalAVG<80){
+                    mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی ردی',grade='$finalAVG' where id='$article_id'");
+                }
+
+                break;
+            default:
+                throw new \Exception('Unexpected value');
+        }
     }
-    header("location: ../../../panel.php?EjSet");
+//    header("location: ../../../panel.php?TaSet");
 }
