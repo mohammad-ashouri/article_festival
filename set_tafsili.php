@@ -175,9 +175,6 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                     ?>
 
                                 </select>
-                                <?php
-                                if ($Tafsili_list['tafsili1_ratercode']==null or $Tafsili_list['tafsili1_ratercode']==''):
-                                ?>
                                 <br/>
                                 <p style="margin-bottom: -1px;margin-right: 5px;font-size: 14px">- تفصیلی دوم</p>
                                 <select onchange="SetTafsiliRater2(this.value,<?php echo $id = $Article_id; ?>)"
@@ -211,7 +208,6 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                     ?>
                                 </select>
                                 <?php
-                                    endif;
                                 $query = mysqli_query($connection_maghalat, "select * from tafsili where article_id='$article_id' and type='ta1'");
                                 foreach ($query as $ta1) {
 
