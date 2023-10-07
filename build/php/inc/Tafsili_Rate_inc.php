@@ -69,6 +69,7 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
                     }
                 }
                 mysqli_query($connection_maghalat, "update article set tafsili1_done=1 where id='$article_id'");
+                header("location: ../../../panel.php?TaSet");
                 break;
             case 'ta2':
                 if ($article['tafsili1_done'] == 1) {
@@ -93,6 +94,7 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
                     }
                 }
                 mysqli_query($connection_maghalat, "update article set tafsili1_done=1 where id='$article_id'");
+                header("location: ../../../panel.php?TaSet");
                 break;
             case 'ta3':
                 $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='t1'");
@@ -123,7 +125,7 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
                 }elseif ($finalAVG<80){
                     mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی ردی',grade='$finalAVG' where id='$article_id'");
                 }
-
+                header("location: ../../../panel.php?TaSet");
                 break;
             default:
                 throw new \Exception('Unexpected value');
