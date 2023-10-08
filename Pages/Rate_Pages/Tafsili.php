@@ -12,13 +12,13 @@ foreach ($query as $art_info) {
 ?>
 <!-- Main content -->
 <form method="post" action="build/php/inc/Tafsili_Rate_Inc.php" onsubmit="return CheckTafsiliForm(
-    <?php
-    $query = mysqli_query($connection_variables, "select * from mag_festival_tafsili_options where special_type=0");
-    foreach ($query as $Tafsili_Form) {
-        echo $Tafsili_Form['point_period_from'].','.$Tafsili_Form['point_period_to'].',';
-    }
-    ?>
-)">
+<?php
+$query = mysqli_query($connection_variables, "select * from mag_festival_tafsili_options where special_type=0");
+foreach ($query as $Tafsili_Form) {
+    echo $Tafsili_Form['point_period_from'] . ',' . $Tafsili_Form['point_period_to'] . ',';
+}
+?>
+        )">
     <section class="content">
         <div class="card card-success" style="overflow-x: auto">
             <div class="card-header" style="overflow-x: auto">
@@ -113,7 +113,7 @@ foreach ($query as $art_info) {
                             </td>
                             <td style="width: 150px;">
                                 <input class="form-control" name="r<?php echo $Tafsili_Form['id']; ?>"
-                                       style="width: 100%"
+                                       style="width: 100%" step="0.25"
                                        id="r<?php echo $Tafsili_Form['id']; ?>"
                                        onchange="sum(<?php echo $Tafsili_Form['point_period_from']; ?>,<?php echo $Tafsili_Form['point_period_to']; ?>)"
                                        value="0">
@@ -124,7 +124,10 @@ foreach ($query as $art_info) {
                                 توضیحات
                             </th>
                             <td colspan="3" style="width: 150px;">
-                                <textarea title="چکیده" class="form-control" rows="3" placeholder="توضیحات خود را در مورد شاخص <?php echo $Tafsili_Form['subject']; ?> وارد کنید" id="description_<?php echo $Tafsili_Form['id']; ?>" name="description_<?php echo $Tafsili_Form['id']; ?>"></textarea>
+                                <textarea title="چکیده" class="form-control" rows="3"
+                                          placeholder="توضیحات خود را در مورد شاخص <?php echo $Tafsili_Form['subject']; ?> وارد کنید"
+                                          id="description_<?php echo $Tafsili_Form['id']; ?>"
+                                          name="description_<?php echo $Tafsili_Form['id']; ?>"></textarea>
                             </td>
                         </tr>
                     <?php
@@ -157,7 +160,7 @@ foreach ($query as $art_info) {
                             </td>
                             <td style="width: 150px;">
                                 <input type="number" class="form-control" name="r<?php echo $Tafsili_Form['id']; ?>"
-                                       style="width: 100%"
+                                       style="width: 100%" step="0.25"
                                        id="r<?php echo $Tafsili_Form['id']; ?>"
                                        onchange="sum(<?php echo $Tafsili_Form['point_period_from']; ?>,<?php echo $Tafsili_Form['point_period_to']; ?>)"
                                        value="0">
@@ -168,7 +171,10 @@ foreach ($query as $art_info) {
                                 توضیحات
                             </th>
                             <td colspan="3" style="width: 150px;">
-                                <textarea title="چکیده" class="form-control" rows="3" placeholder="توضیحات خود را در مورد شاخص <?php echo $Tafsili_Form['subject']; ?> وارد کنید" id="description_<?php echo $Tafsili_Form['id']; ?>" name="description_<?php echo $Tafsili_Form['id']; ?>"></textarea>
+                                <textarea title="چکیده" class="form-control" rows="3"
+                                          placeholder="توضیحات خود را در مورد شاخص <?php echo $Tafsili_Form['subject']; ?> وارد کنید"
+                                          id="description_<?php echo $Tafsili_Form['id']; ?>"
+                                          name="description_<?php echo $Tafsili_Form['id']; ?>"></textarea>
                             </td>
                         </tr>
                     <?php
@@ -183,7 +189,9 @@ foreach ($query as $art_info) {
                             اظهار نظر کلی
                         </th>
                         <td colspan="3" style="width: 80%;">
-                            <textarea title="چکیده" class="form-control" rows="3" placeholder="به نظر شما این مقاله شرایط لازم را برای معرفی «مقاله برتر علمی پژوهشی حوزه» دارد؟ (با توضیح)" id="general_comment" name="general_comment"></textarea>
+                            <textarea title="چکیده" class="form-control" rows="3"
+                                      placeholder="به نظر شما این مقاله شرایط لازم را برای معرفی «مقاله برتر علمی پژوهشی حوزه» دارد؟ (با توضیح)"
+                                      id="general_comment" name="general_comment"></textarea>
                         </td>
                     </tr>
                     </tbody>
