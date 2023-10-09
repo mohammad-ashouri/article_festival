@@ -85,7 +85,7 @@
                                     <?php if ($articles['avg_ejmali_g1']) echo 'اجمالی اول: ' . $articles['avg_ejmali_g1'] . '<br>'; ?>
                                     <?php if ($articles['avg_ejmali_g2']) echo 'اجمالی دوم: ' . $articles['avg_ejmali_g2']; ?>
                                 </td>
-                                <td><?php if ($articles['chosen_status'] == 1) echo $articles['grade']; ?></td>
+                                <td><?php echo $articles['grade']; ?></td>
                                 <td><?php if ($articles['chosen_status'] == 1) echo $articles['chosen_subject']; ?></td>
                             </tr>
                         <?php endforeach; ?>
