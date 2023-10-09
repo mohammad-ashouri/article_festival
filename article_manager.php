@@ -247,6 +247,13 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
                                        id="author_national_code_<?php echo $i; ?>"
                                        placeholder="کد ملی"
                                        name="author_national_code_<?php echo $i; ?>">
+                                <select class="form-control select2" title="جنسیت را انتخاب کنید"
+                                        id="author_gender_<?php echo $i; ?>"
+                                        name="author_gender_<?php echo $i; ?>">
+                                    <option disabled selected>انتخاب کنید</option>
+                                    <option value="مرد">مرد</option>
+                                    <option value="زن">زن</option>
+                                </select>
                             </td>
                         </tr>
                         <tr>
@@ -557,6 +564,7 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
         var article_body_<?php echo $i ?> = document.getElementById("article_body_<?php echo $i ?>").value;
         var author_name_<?php echo $i ?> = document.getElementById("author_name_<?php echo $i ?>").value;
         var author_national_code_<?php echo $i ?> = document.getElementById("author_national_code_<?php echo $i ?>").value;
+        var author_gender_<?php echo $i ?> = document.getElementById("author_gender_<?php echo $i ?>").value;
         var cooperation_type_<?php echo $i ?> = document.getElementById("cooperation_type_<?php echo $i ?>").value;
         <?php endfor; ?>
 
@@ -572,6 +580,7 @@ if (isset($_GET['ArticleWrongFileSize>10485760'])):
         document.getElementById("article_body_<?php echo $i ?>").style.backgroundColor = 'white';
         document.getElementById("author_name_<?php echo $i ?>").style.backgroundColor = 'white';
         document.getElementById("author_national_code_<?php echo $i ?>").style.backgroundColor = 'white';
+        document.getElementById("author_gender_<?php echo $i ?>").style.backgroundColor = 'white';
         document.getElementById("cooperation_type_<?php echo $i ?>").style.backgroundColor = 'white';
         <?php endfor; ?>
 

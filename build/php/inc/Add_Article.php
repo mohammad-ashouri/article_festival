@@ -53,7 +53,7 @@ if (isset($_POST['Sub_Articles'])) {
                 $number_of_page_in_mag_to = $_POST['number_of_page_in_mag_to_' . $i];
                 $language = $_POST['language_' . $i];
                 $special_type = @$_POST['special_type_' . $i];
-                if ($special_type == 'انتخاب کنید' or $special_type==null or $special_type=='') {
+                if ($special_type == 'انتخاب کنید' or $special_type == null or $special_type == '') {
                     $special_type = 0;
                 }
                 $festival_id = @$_POST['select_for_jm_' . $i];
@@ -75,7 +75,8 @@ if (isset($_POST['Sub_Articles'])) {
                 $body = $_POST['body_' . $i];
                 $author_name = $_POST['author_name_' . $i];
                 $author_national_code = $_POST['author_national_code_' . $i];
-                $author = $author_name . '|' . $author_national_code;
+                $author_gender = $_POST['author_gender_' . $i];
+                $author = $author_name . '|' . $author_national_code . '|' . $author_gender;
                 $cooperation_type = $_POST['cooperation_type_' . $i];
                 $file_url_table = $mag_folder_name . '/' . $folder_name . '/' . $file_url_name;
 
@@ -85,7 +86,7 @@ if (isset($_POST['Sub_Articles'])) {
                                             values ('$mag_version_id','$subject','$body','$type','$scientific_group1','$scientific_group2','$number_of_page_in_mag_from',
                                             '$number_of_page_in_mag_to','$language','$special_type','$author','$cooperation_type','$file_url_table','$adder','$datewithtime')");
                 } else {
-                  echo $special_type;
+                    echo $special_type;
                     mysqli_query($connection_mag, "insert into mag_articles (mag_version_id,subject,body,type,scientific_group_1,scientific_group_2,
                                             number_of_page_in_mag_from,number_of_page_in_mag_to,language,special_type,author,cooperation_type,selected_for_jm,festival_id,file_url,adder,added_date)
                                             values ('$mag_version_id','$subject','$body','$type','$scientific_group1','$scientific_group2','$number_of_page_in_mag_from',
