@@ -107,7 +107,7 @@
                     </tr>
                 <?php
                 endforeach;
-                $query = mysqli_query($connection_maghalat, "select * from article where rate_status='تفصیلی' and ((tafsili1_ratercode='$Me' and tafsili1_done!=1) or (tafsili2_ratercode='$Me' and tafsili2_done!=1) or (tafsili3_ratercode='$Me' and tafsili3_done!=1)) order by festival_id asc ");
+                $query = mysqli_query($connection_maghalat, "select * from article where (rate_status='تفصیلی' or rate_status='تفصیلی سوم') and ((tafsili1_ratercode='$Me' and tafsili1_done!=1) or (tafsili2_ratercode='$Me' and tafsili2_done!=1) or (tafsili3_ratercode='$Me' and tafsili3_done!=1)) order by festival_id asc ");
                 foreach ($query as $Tafsili_list):
                     $id = $Tafsili_list['article_id'];
                     $query = mysqli_query($connection_mag, "select * from mag_articles where id='$id'");
