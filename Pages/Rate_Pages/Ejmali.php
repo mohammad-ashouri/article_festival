@@ -183,6 +183,6 @@ foreach ($query as $art_info) {
     </section>
 </form>
 </div>
-<script src="build/js/Rate_Ejmali_Incs.js"></script>
+<script src="./build/js/Rate_Ejmali_Incs.js"></script>
 
 
