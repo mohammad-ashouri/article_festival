@@ -34,7 +34,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                     </tr>
                     <?php
                     $a = 1;
-                    $query = mysqli_query($connection_maghalat, "select * from ssmp_jashnvarehmaghalat.article c inner join ssmp_magbase.mag_articles m on c.article_id = m.id where m.selected_for_jm=1 and c.rate_status='تفصیلی' and (c.avg_ejmali_g1>=34 or c.avg_ejmali_g2>=34) order by m.id asc");
+                    $query = mysqli_query($connection_maghalat, "select * from ssmp_jashnvarehmaghalat.article c inner join ssmp_magbase.mag_articles m on c.article_id = m.id where m.selected_for_jm=1 and (c.rate_status='تفصیلی' or c.rate_status='تفصیلی سوم') and (c.avg_ejmali_g1>=34 or c.avg_ejmali_g2>=34) order by m.id asc");
                     foreach ($query as $Tafsili_list):
                         ?>
                         <tr>
@@ -143,7 +143,11 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                 </p>
                                 <hr>
                                 <p style="margin-bottom: -1px;margin-right: 5px;font-size: 14px">
-                                    - تفصیلی اول</p>
+                                    - تفصیلی اول
+                                <?php
+                                if (@$ta1) echo ' - امتیاز: ' . $ta1['sum'];
+                                ?>
+                                </p>
                                 <select onchange="SetTafsiliRater1(this.value,<?php echo $id = $Article_id; ?>)"
                                         id="rater_1" class="form-control select2"
                                     <?php
@@ -176,7 +180,11 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
 
                                 </select>
                                 <br/>
-                                <p style="margin-bottom: -1px;margin-right: 5px;font-size: 14px">- تفصیلی دوم</p>
+                                <p style="margin-bottom: -1px;margin-right: 5px;font-size: 14px">- تفصیلی دوم
+                                    <?php
+                                    if (@$ta2) echo ' - امتیاز: ' . $ta2['sum'];
+                                    ?>
+                                </p>
                                 <select onchange="SetTafsiliRater2(this.value,<?php echo $id = $Article_id; ?>)"
                                         id="rater_2" class="form-control select2"
                                     <?php
@@ -217,7 +225,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
 
                                 }
                                 if (!empty($ta1) and !empty($ta2)){
-                                if (abs($ta1['sum'] - $ta2['sum']) >= 12):
+//                                if (abs($ta1['sum'] - $ta2['sum']) >= 12):
                                 ?>
                                 <br/>
                                 <p style="margin-bottom: -1px;margin-right: 5px;font-size: 14px">- تفصیلی سوم</p>
@@ -255,7 +263,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                             </td>
 
                             <?php
-                            endif;
+//                            endif;
                             }
                             ?>
                         </tr>
