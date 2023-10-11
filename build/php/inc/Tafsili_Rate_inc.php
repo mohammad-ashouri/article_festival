@@ -1,9 +1,6 @@
 <?php
 session_start();
 if (isset($_POST['article_id']) and isset($_POST['subject'])) {
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
     include_once __DIR__ . '/../../../config/connection.php';
     $r = null;
     $sum = null;
