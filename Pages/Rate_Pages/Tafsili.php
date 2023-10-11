@@ -11,9 +11,9 @@ foreach ($query as $art_info) {
 }
 ?>
 <!-- Main content -->
-<form method="post" action="build/php/inc/Tafsili_Rate_Inc.php" onsubmit="return CheckTafsiliForm(
+<form method="post" action="./build/php/inc/Tafsili_Rate_Inc.php" onsubmit="return CheckTafsiliForm(
 <?php
-$query = mysqli_query($connection_variables, "select * from mag_festival_tafsili_options where special_type=0");
+$query = mysqli_query($connection_variables, "select * from mag_festival_tafsili_options");
 foreach ($query as $Tafsili_Form) {
     echo $Tafsili_Form['point_period_from'] . ',' . $Tafsili_Form['point_period_to'] . ',';
 }
