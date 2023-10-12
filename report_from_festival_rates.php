@@ -40,6 +40,7 @@
                             <th>گروه علمی دوم</th>
                             <th>وضعیت</th>
                             <th>امتیاز اجمالی</th>
+                            <th>امتیاز تفصیلی</th>
                             <th>امتیاز نهایی</th>
                             <th>رتبه</th>
                         </tr>
@@ -85,6 +86,34 @@
                                     <?php if ($articles['avg_ejmali_g1']) echo 'اجمالی اول: ' . $articles['avg_ejmali_g1'] . '<br>'; ?>
                                     <?php if ($articles['avg_ejmali_g2']) echo 'اجمالی دوم: ' . $articles['avg_ejmali_g2']; ?>
                                 </td>
+                                <td>
+                                    <?php
+                                    if ($articles['tafsili1_done']) {
+                                        echo 'تفصیلی اول: ';
+                                        $query = mysqli_query($connection_maghalat, "select * from tafsili where type='ta1' and article_id=" . $article_id);
+                                        foreach ($query as $ta1) {
+                                        }
+                                        echo $ta1['sum'];
+                                        echo '<br>';
+                                    }
+                                    if ($articles['tafsili2_done']) {
+                                        echo 'تفصیلی دوم: ';
+                                        $query = mysqli_query($connection_maghalat, "select * from tafsili where type='ta2' and article_id=" . $article_id);
+                                        foreach ($query as $ta2) {
+                                        }
+                                        echo $ta2['sum'];
+                                        echo '<br>';
+                                    }
+                                    if ($articles['tafsili3_done']) {
+                                        echo 'تفصیلی سوم: ';
+                                        $query = mysqli_query($connection_maghalat, "select * from tafsili where type='ta3' and article_id=" . $article_id);
+                                        foreach ($query as $ta3) {
+                                        }
+                                        echo $ta3['sum'];
+                                        echo '<br>';
+                                    }
+                                    ?>
+                                </td>
                                 <td><?php echo $articles['grade']; ?></td>
                                 <td><?php if ($articles['chosen_status'] == 1) echo $articles['chosen_subject']; ?></td>
                             </tr>
@@ -121,8 +150,6 @@
                             }
                         });
                     </script>
-
-
                 <?php } ?>
             </div>
         <?php endif; ?>
