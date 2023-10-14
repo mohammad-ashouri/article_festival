@@ -87,9 +87,10 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                 </div>
                 <table class="table table-bordered table-striped" id="myTable">
                     <tbody>
-                    <tr style="font-size: 15px;">
+                    <tr style="font-size: 15px;" class="text-center">
                         <th>ردیف</th>
                         <th style="width: 200px;">عنوان مقاله</th>
+                        <th>نشریه</th>
                         <th>گروه علمی ۱</th>
                         <th>گروه علمی ۲</th>
                         <th>زبان</th>
@@ -105,7 +106,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                     foreach ($query as $Tafsili_list):
                         ?>
                         <tr>
-                            <td>
+                            <td class="text-center">
                                 <?php echo $a;
                                 $a++; ?>
                             </td>
@@ -116,6 +117,19 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                     echo $Tafsili_list['subject'];
                                     ?>
                                 </a>
+                            </td>
+                            <td>
+                                <?php
+                                $magVersion = $Tafsili_list['mag_version_id'];
+                                $query = mysqli_query($connection_mag, "select * from mag_versions where id='$magVersion'");
+                                foreach ($query as $versionInfo) {
+                                }
+                                $magInfoID=$versionInfo['mag_info_id'];
+                                $query = mysqli_query($connection_mag, "select * from mag_info where id='$magInfoID'");
+                                foreach ($query as $magInfo) {
+                                }
+                                echo $magInfo['name'];
+                                ?>
                             </td>
                             <td>
                                 <?php
