@@ -83,8 +83,8 @@
                                 </td>
                                 <td style="white-space: nowrap"><?php echo $articles['rate_status']; ?></td>
                                 <td>
-                                    <?php if ($articles['avg_ejmali_g1']) echo 'اجمالی اول: ' . $articles['avg_ejmali_g1'] . '<br>'; ?>
-                                    <?php if ($articles['avg_ejmali_g2']) echo 'اجمالی دوم: ' . $articles['avg_ejmali_g2']; ?>
+                                    <?php if ($articles['avg_ejmali_g1']) echo 'اجمالی  گروه اول: ' . $articles['avg_ejmali_g1'] . '<br>'; ?>
+                                    <?php if ($articles['avg_ejmali_g2']) echo 'اجمالی گروه دوم: ' . $articles['avg_ejmali_g2']; ?>
                                 </td>
                                 <td>
                                     <?php
