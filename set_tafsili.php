@@ -174,8 +174,8 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
 
                                         }
                                     }
+                                    $query = mysqli_query($connection_maghalat, "select * from tafsili where article_id='$Article_id' and type='ta2'");
                                     if (mysqli_num_rows($query) > 0) {
-                                        $query = mysqli_query($connection_maghalat, "select * from tafsili where article_id='$Article_id' and type='ta2'");
                                         foreach ($query as $ta2) {
 
                                         }
