@@ -42,8 +42,6 @@ if ($_SESSION['head'] == 4):
                                     <input type="text" class="form-control" id="username"
                                            placeholder="نام کاربری (کد ملی) را وارد کنید" name="username">
                                 </td>
-                            </tr>
-                            <tr>
                                 <th>رمز عبور*</th>
                                 <td>
                                     <input type="password" class="form-control" id="password"
@@ -56,8 +54,6 @@ if ($_SESSION['head'] == 4):
                                     <input type="text" class="form-control" id="name" placeholder="نام را وارد کنید"
                                            name="name">
                                 </td>
-                            </tr>
-                            <tr>
                                 <th>نام خانوادگی*</th>
                                 <td>
                                     <input type="text" class="form-control" id="family"
@@ -77,12 +73,11 @@ if ($_SESSION['head'] == 4):
                                         $query = mysqli_query($connection_maghalat, 'select * from scientific_group order by name asc');
                                         foreach ($query as $group_items):
                                             ?>
-                                            <option se value="<?php echo $group_items['id']; ?>"><?php echo $group_items['name']; ?></option>
+                                            <option se
+                                                    value="<?php echo $group_items['id']; ?>"><?php echo $group_items['name']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </td>
-                            </tr>
-                            <tr>
                                 <th>
                                     محل خدمت
                                 </th>
@@ -107,8 +102,6 @@ if ($_SESSION['head'] == 4):
                                     <input type="text" class="form-control" id="mobile"
                                            placeholder="تلفن همراه را وارد کنید" name="mobile">
                                 </td>
-                            </tr>
-                            <tr>
                                 <th>جنسیت*</th>
                                 <td>
                                     <select class="form-control" id="gender" name="gender">
@@ -123,6 +116,18 @@ if ($_SESSION['head'] == 4):
                                 <td>
                                 <textarea class="form-control" rows="3" placeholder="آدرس را وارد نمایید" id="address"
                                           name="address"></textarea>
+                                </td>
+                                <th>نوع کاربری*</th>
+                                <td>
+                                    <select class="form-control select2" data-placeholder=""
+                                            style="width: 100%;text-align: right" name="type" id="type">
+                                        <option value="1">ارزیاب</option>
+                                        <option value="2">سرگروه</option>
+                                        <option value="3">کارشناس</option>
+                                        <option value="4">مدیر</option>
+                                        <option value="5">کارشناس نشریه</option>
+                                        <option value="6">کارشناس گونه بندی</option>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
@@ -139,19 +144,10 @@ if ($_SESSION['head'] == 4):
                                         <?php endforeach; ?>
                                     </select>
                                 </td>
-                            </tr>
-                            <tr>
                                 <th>شماره حساب</th>
                                 <td>
                                     <input type="text" class="form-control" id="bank_id"
                                            placeholder="شماره حساب را وارد کنید" name="bank_id">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>شماره کارت بانکی 16 رقمی</th>
-                                <td>
-                                    <input type="text" class="form-control" id="debit_card_id"
-                                           placeholder="شماره کارت بانکی 16 رقمی را وارد کنید" name="debit_card_id">
                                 </td>
                             </tr>
                             <tr>
@@ -160,19 +156,10 @@ if ($_SESSION['head'] == 4):
                                     <input type="text" class="form-control" id="shaba"
                                            placeholder="شماره شبا 24 رقمی را وارد کنید" name="shaba">
                                 </td>
-                            </tr>
-                            <tr>
-                                <th>نوع کاربری*</th>
+                                <th>شماره کارت بانکی 16 رقمی</th>
                                 <td>
-                                    <select class="form-control select2" data-placeholder=""
-                                            style="width: 100%;text-align: right" name="type" id="type">
-                                        <option value="1">ارزیاب</option>
-                                        <option value="2">سرگروه</option>
-                                        <option value="3">کارشناس</option>
-                                        <option value="4">مدیر</option>
-                                        <option value="5">کارشناس نشریه</option>
-                                        <option value="6">کارشناس گونه بندی</option>
-                                    </select>
+                                    <input type="text" class="form-control" id="debit_card_id"
+                                           placeholder="شماره کارت بانکی 16 رقمی را وارد کنید" name="debit_card_id">
                                 </td>
                             </tr>
                         </table>
@@ -199,7 +186,7 @@ if ($_SESSION['head'] == 4):
                             <!--                        <div class="input-group input-group-sm" style="width: 150px;">-->
                             <input type="search" class="form-control float-right"
                                    placeholder="لطفا برای جستجو، نام و نام خانوادگی مورد نظر را تایپ نمایید"
-                                    id="search">
+                                   id="search">
                             <!--                        </div>-->
                         </div>
                     </div>
@@ -213,10 +200,6 @@ if ($_SESSION['head'] == 4):
                                 <th>گروه علمی</th>
                                 <th>محل خدمت</th>
                                 <th>شماره همراه</th>
-                                <th>بانک</th>
-                                <th>حساب</th>
-                                <th>شماره کارت</th>
-                                <th>شماره شبا</th>
                                 <th>عملیات</th>
                             </tr>
                             <?php
@@ -239,7 +222,8 @@ if ($_SESSION['head'] == 4):
                                             }
                                         }
                                         ?></td>
-                                    <td><?php
+                                    <td>
+                                        <?php
                                         $service_location = $users['service_location'];
                                         if ($service_location != NULL) {
                                             $query = mysqli_query($connection_variables, "Select * from service_location where id='$service_location'");
@@ -248,12 +232,9 @@ if ($_SESSION['head'] == 4):
                                             echo @$Service_Location_Items['subject'];
                                         }
 
-                                        ?></td>
+                                        ?>
+                                    </td>
                                     <td><?php echo $users['phone'] ?></td>
-                                    <td><?php echo $users['bank_name'] ?></td>
-                                    <td><?php echo $users['bank_id'] ?></td>
-                                    <td><?php echo $users['debit_card_id'] ?></td>
-                                    <td><?php echo $users['shaba'] ?></td>
                                     <td>
                                         <button type="button" class="btn btn-primary d-inline-block"
                                                 data-toggle="modal"
@@ -302,9 +283,11 @@ if ($_SESSION['head'] == 4):
                                                                         گروه علمی*
                                                                     </th>
                                                                     <td>
-                                                                        <select class="form-control select2" multiple="multiple"
+                                                                        <select class="form-control select2"
+                                                                                multiple="multiple"
                                                                                 data-placeholder="گروه (های) علمی را انتخاب کنید"
-                                                                                style="width: 100%;text-align: right" name="scientific_group[]"
+                                                                                style="width: 100%;text-align: right"
+                                                                                name="scientific_group[]"
                                                                                 id="scientific_group">
                                                                             <?php
                                                                             $query = mysqli_query($connection_maghalat, 'select * from scientific_group order by name asc');
@@ -320,9 +303,11 @@ if ($_SESSION['head'] == 4):
                                                                     <td>
                                                                         <select class="form-control select2"
                                                                                 data-placeholder="محل خدمت را انتخاب کنید"
-                                                                                style="width: 100%;text-align: right" name="service_location"
+                                                                                style="width: 100%;text-align: right"
+                                                                                name="service_location"
                                                                                 id="service_location">
-                                                                            <option disabled selected>انتخاب کنید</option>
+                                                                            <option disabled selected>انتخاب کنید
+                                                                            </option>
                                                                             <?php
                                                                             $query = mysqli_query($connection_variables, 'select * from service_location order by subject asc');
                                                                             foreach ($query as $service_location_items):
@@ -330,6 +315,87 @@ if ($_SESSION['head'] == 4):
                                                                                 <option value="<?php echo $service_location_items['id'] ?>"><?php echo $service_location_items['subject']; ?></option>
                                                                             <?php endforeach; ?>
                                                                         </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>تلفن همراه*</th>
+                                                                    <td>
+                                                                        <input type="text" class="form-control"
+                                                                               id="editedMobile"
+                                                                               placeholder="تلفن همراه را وارد کنید"
+                                                                               name="editedMobile">
+                                                                    </td>
+                                                                    <th>جنسیت*</th>
+                                                                    <td>
+                                                                        <select class="form-control" id="editedGender"
+                                                                                name="editedGender">
+                                                                            <option selected disabled>انتخاب کنید
+                                                                            </option>
+                                                                            <option>مرد</option>
+                                                                            <option>زن</option>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>آدرس</th>
+                                                                    <td>
+                                                                        <textarea class="form-control" rows="3" placeholder="آدرس را وارد نمایید" id="editedAddress"
+                                                                                  name="editedAddress"></textarea>
+                                                                    </td>
+                                                                    <th>نوع کاربری*</th>
+                                                                    <td>
+                                                                        <select class="form-control select2"
+                                                                                data-placeholder=""
+                                                                                style="width: 100%;text-align: right"
+                                                                                name="editedType" id="editedType">
+                                                                            <option value="1">ارزیاب</option>
+                                                                            <option value="2">سرگروه</option>
+                                                                            <option value="3">کارشناس</option>
+                                                                            <option value="4">مدیر</option>
+                                                                            <option value="5">کارشناس نشریه</option>
+                                                                            <option value="6">کارشناس گونه بندی</option>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>نام بانک</th>
+                                                                    <td>
+                                                                        <select class="form-control select2"
+                                                                                data-placeholder=""
+                                                                                style="width: 100%;text-align: right"
+                                                                                name="editedBank_name" id="editedBank_name">
+                                                                            <option disabled selected>انتخاب کنید
+                                                                            </option>
+                                                                            <?php
+                                                                            $query = mysqli_query($connection_maghalat, 'select * from bank_list order by name asc');
+                                                                            foreach ($query as $bank_items):
+                                                                                ?>
+                                                                                <option value="<?php echo $bank_items['name'] ?>"><?php echo $bank_items['name']; ?></option>
+                                                                            <?php endforeach; ?>
+                                                                        </select>
+                                                                    </td>
+                                                                    <th>شماره حساب</th>
+                                                                    <td>
+                                                                        <input type="text" class="form-control"
+                                                                               id="editedBank_id"
+                                                                               placeholder="شماره حساب را وارد کنید"
+                                                                               name="editedBank_id">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>شماره شبا 24 رقمی</th>
+                                                                    <td>
+                                                                        <input type="text" class="form-control"
+                                                                               id="shaba"
+                                                                               placeholder="شماره شبا 24 رقمی را وارد کنید"
+                                                                               name="shaba">
+                                                                    </td>
+                                                                    <th>شماره کارت بانکی 16 رقمی</th>
+                                                                    <td>
+                                                                        <input type="text" class="form-control"
+                                                                               id="debit_card_id"
+                                                                               placeholder="شماره کارت بانکی 16 رقمی را وارد کنید"
+                                                                               name="debit_card_id">
                                                                     </td>
                                                                 </tr>
                                                             </table>
