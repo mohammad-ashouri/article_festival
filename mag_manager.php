@@ -97,7 +97,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                         foreach ($query as $group_items):
                                             ?>
                                             <option
-                                                value="<?php echo $group_items['name'] ?>"><?php echo $group_items['name']; ?></option>
+                                                    value="<?php echo $group_items['name'] ?>"><?php echo $group_items['name']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </td>
@@ -113,7 +113,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                         foreach ($query as $international_position_items):
                                             ?>
                                             <option
-                                                value="<?php echo $international_position_items['subject'] ?>"><?php echo $international_position_items['subject']; ?></option>
+                                                    value="<?php echo $international_position_items['subject'] ?>"><?php echo $international_position_items['subject']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </td>
@@ -141,7 +141,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                         foreach ($query as $publication_period_items):
                                             ?>
                                             <option
-                                                value="<?php echo $publication_period_items['subject'] ?>"><?php echo $publication_period_items['subject']; ?></option>
+                                                    value="<?php echo $publication_period_items['subject'] ?>"><?php echo $publication_period_items['subject']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </td>
@@ -244,9 +244,9 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                  style="background-color: transparent; border-bottom: 3px solid #dee2e6">
                                                 <ul class="nav nav-pills ml-auto p-2">
                                                     <li class="nav-item"><a
-                                                            style="background-color: #007bff; color: white"
-                                                            class="nav-link active" href="#tab_1" id="tab1"
-                                                            onclick="ChangeTabs('tab1')" data-toggle="tab">مدیر
+                                                                style="background-color: #007bff; color: white"
+                                                                class="nav-link active" href="#tab_1" id="tab1"
+                                                                onclick="ChangeTabs('tab1')" data-toggle="tab">مدیر
                                                             مسئول</a></li>
                                                     <li class="nav-item"><a style="color: #6c757d;" class="nav-link"
                                                                             href="#tab_2" data-toggle="tab" id="tab2"
@@ -277,7 +277,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                                         foreach ($query as $person_subjects_items):
                                                                             ?>
                                                                             <option
-                                                                                value="<?php echo $person_subjects_items['subject'] ?>"><?php echo $person_subjects_items['subject']; ?></option>
+                                                                                    value="<?php echo $person_subjects_items['subject'] ?>"><?php echo $person_subjects_items['subject']; ?></option>
                                                                         <?php endforeach; ?>
                                                                     </select>
                                                                 </td>
@@ -312,7 +312,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                                         foreach ($query as $degree_items):
                                                                             ?>
                                                                             <option
-                                                                                value="<?php echo $degree_items['subject'] ?>"><?php echo $degree_items['subject']; ?></option>
+                                                                                    value="<?php echo $degree_items['subject'] ?>"><?php echo $degree_items['subject']; ?></option>
                                                                         <?php endforeach; ?>
                                                                     </select>
                                                                 </td>
@@ -363,7 +363,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                                         foreach ($query as $person_subjects_items):
                                                                             ?>
                                                                             <option
-                                                                                value="<?php echo $person_subjects_items['subject'] ?>"><?php echo $person_subjects_items['subject']; ?></option>
+                                                                                    value="<?php echo $person_subjects_items['subject'] ?>"><?php echo $person_subjects_items['subject']; ?></option>
                                                                         <?php endforeach; ?>
                                                                     </select>
                                                                 </td>
@@ -395,7 +395,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                                         foreach ($query as $degree_items):
                                                                             ?>
                                                                             <option
-                                                                                value="<?php echo $degree_items['subject'] ?>"><?php echo $degree_items['subject']; ?></option>
+                                                                                    value="<?php echo $degree_items['subject'] ?>"><?php echo $degree_items['subject']; ?></option>
                                                                         <?php endforeach; ?>
                                                                     </select>
                                                                 </td>
@@ -446,7 +446,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                                         foreach ($query as $person_subjects_items):
                                                                             ?>
                                                                             <option
-                                                                                value="<?php echo $person_subjects_items['subject'] ?>"><?php echo $person_subjects_items['subject']; ?></option>
+                                                                                    value="<?php echo $person_subjects_items['subject'] ?>"><?php echo $person_subjects_items['subject']; ?></option>
                                                                         <?php endforeach; ?>
                                                                     </select>
                                                                 </td>
@@ -482,7 +482,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                                                         foreach ($query as $degree_items):
                                                                             ?>
                                                                             <option
-                                                                                value="<?php echo $degree_items['subject'] ?>"><?php echo $degree_items['subject']; ?></option>
+                                                                                    value="<?php echo $degree_items['subject'] ?>"><?php echo $degree_items['subject']; ?></option>
                                                                         <?php endforeach; ?>
                                                                     </select>
                                                                 </td>
@@ -777,10 +777,10 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                             <tr>
                                 <th>آدرس کامل</th>
                                 <td>
-                                                                        <textarea class="form-control" rows="3"
-                                                                                  placeholder="آدرس کامل را وارد نمایید"
-                                                                                  id="editedMagAddress"
-                                                                                  name="mag_address"></textarea>
+                                    <textarea class="form-control" rows="3"
+                                              placeholder="آدرس کامل را وارد نمایید"
+                                              id="editedMagAddress"
+                                              name="mag_address"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -1108,10 +1108,10 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                 <tr>
                                     <th>آدرس</th>
                                     <td>
-                                                                <textarea class="form-control" rows="3"
-                                                                          placeholder="آدرس مدیر اجرایی را وارد نمایید"
-                                                                          id="editedAdministrationManagerAddress"
-                                                                          name="administration_manager_address"></textarea>
+                                        <textarea class="form-control" rows="3"
+                                                  placeholder="آدرس مدیر اجرایی را وارد نمایید"
+                                                  id="editedAdministrationManagerAddress"
+                                                  name="administration_manager_address"></textarea>
                                     </td>
                                 </tr>
                             </table>
@@ -1135,11 +1135,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
     </form>
     <!-- /.content-wrapper -->
     <script>
-        $(document).ready(function () {
-            $('.modal-toggle').click(function () {
-                $('#editModal').modal('toggle');
-            });
-        });
+
     </script>
 
     <script src="build/js/MagManagerScripts.js"></script>

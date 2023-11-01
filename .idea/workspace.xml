@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e9969ca6-7516-4551-aa79-4a103f6a88c4" name="Changes" comment="Add group filtering in report_from_festival_rates">
+      <change afterPath="$PROJECT_DIR$/build/ajax/GetRateInfo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/js/Report_From_Points.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report_from_points.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rate.php" beforeDir="false" afterPath="$PROJECT_DIR$/Rate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/PHPExcel/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mag_manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/mag_manager.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" notifyAboutMissingVendor="false" synchronizationState="DONT_SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/config/PHPExcel/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\wamp64\bin\php\php8.2.0\php.exe" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2PE6PjkJnqDaH8VTX14NQkGiNyN" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/wamp64/www/helli_rate_system&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;redshift&quot;,
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\article_festival" />
+      <recent name="C:\wamp64\www\article_festival\build\js" />
+      <recent name="C:\wamp64\www\article_festival\build\ajax" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e9969ca6-7516-4551-aa79-4a103f6a88c4" name="Changes" comment="" />
+      <created>1683009871143</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683009871143</updated>
+      <workItem from="1683009872365" duration="11298000" />
+      <workItem from="1683349847715" duration="1691000" />
+      <workItem from="1683358411966" duration="14000" />
+      <workItem from="1683358487847" duration="8255000" />
+      <workItem from="1683368052717" duration="362000" />
+      <workItem from="1683446265727" duration="6359000" />
+      <workItem from="1683518476687" duration="2436000" />
+      <workItem from="1683614070321" duration="5649000" />
+      <workItem from="1683711081695" duration="1177000" />
+      <workItem from="1683791067988" duration="299000" />
+      <workItem from="1686711915583" duration="11658000" />
+      <workItem from="1686813284093" duration="627000" />
+      <workItem from="1686978142247" duration="2934000" />
+      <workItem from="1686984270300" duration="1789000" />
+      <workItem from="1687066376844" duration="24000" />
+      <workItem from="1687162755933" duration="1212000" />
+      <workItem from="1687232520915" duration="463000" />
+      <workItem from="1687407186550" duration="2067000" />
+      <workItem from="1687678905829" duration="346000" />
+      <workItem from="1687880182422" duration="1228000" />
+      <workItem from="1688219966093" duration="9435000" />
+      <workItem from="1688314845779" duration="2879000" />
+      <workItem from="1688319042764" duration="571000" />
+      <workItem from="1688320067567" duration="15000" />
+      <workItem from="1688320097336" duration="4582000" />
+      <workItem from="1688326980697" duration="129000" />
+      <workItem from="1688564528559" duration="1214000" />
+      <workItem from="1689147448417" duration="1236000" />
+      <workItem from="1689393371110" duration="419000" />
+      <workItem from="1689826103402" duration="8827000" />
+      <workItem from="1690093487122" duration="1178000" />
+      <workItem from="1690174517264" duration="806000" />
+      <workItem from="1691306333268" duration="6007000" />
+      <workItem from="1691379249221" duration="5565000" />
+      <workItem from="1691468992668" duration="1240000" />
+      <workItem from="1691551596716" duration="596000" />
+      <workItem from="1692090809443" duration="1810000" />
+      <workItem from="1692587255723" duration="47000" />
+      <workItem from="1692851142124" duration="1818000" />
+      <workItem from="1692854484706" duration="7896000" />
+      <workItem from="1693020408605" duration="939000" />
+      <workItem from="1693645582468" duration="671000" />
+      <workItem from="1693809577356" duration="1295000" />
+      <workItem from="1694410460336" duration="1877000" />
+      <workItem from="1694419811431" duration="16000" />
+      <workItem from="1694498514488" duration="3589000" />
+      <workItem from="1694940879736" duration="16000" />
+      <workItem from="1695107872538" duration="4568000" />
+      <workItem from="1695191811948" duration="63000" />
+      <workItem from="1696135828926" duration="4653000" />
+      <workItem from="1696222624795" duration="30000" />
+      <workItem from="1696400016958" duration="8143000" />
+      <workItem from="1696483917300" duration="4408000" />
+      <workItem from="1696652687829" duration="5864000" />
+      <workItem from="1696752030225" duration="3061000" />
+      <workItem from="1696828069234" duration="6572000" />
+      <workItem from="1696912361994" duration="3991000" />
+      <workItem from="1696999373479" duration="76000" />
+      <workItem from="1697004474142" duration="3493000" />
+      <workItem from="1697091241986" duration="521000" />
+      <workItem from="1697099393933" duration="2661000" />
+      <workItem from="1697271602292" duration="176000" />
+      <workItem from="1697272777714" duration="1722000" />
+      <workItem from="1697344599788" duration="682000" />
+      <workItem from="1697528020711" duration="1028000" />
+      <workItem from="1697536251880" duration="23000" />
+      <workItem from="1697536282747" duration="765000" />
+      <workItem from="1697602586106" duration="4000" />
+      <workItem from="1697617741832" duration="1100000" />
+      <workItem from="1697905874764" duration="1051000" />
+      <workItem from="1697907300657" duration="17000" />
+      <workItem from="1697907324975" duration="1576000" />
+      <workItem from="1698481358640" duration="105000" />
+      <workItem from="1698485199222" duration="2480000" />
+      <workItem from="1698567702733" duration="2191000" />
+      <workItem from="1698640139759" duration="6321000" />
+      <workItem from="1698724069345" duration="16410000" />
+      <workItem from="1698811307771" duration="5146000" />
+    </task>
+    <task id="LOCAL-00001" summary="Work On Edit Journal Part 1&#10;Get Info Completed">
+      <created>1683023060677</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683023060677</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Edit Completed">
+      <created>1683368409098</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683368409098</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fix Numbers In Admin Panel + Get Version Info And Send With Ajax To Edit Version">
+      <created>1683454248186</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683454248186</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Work On Version Manager - Part 3 - Edit Completed + Delete Version Completed + Add Condition To article_manager.php For Showing Just Active Or Not Deleted Version">
+      <created>1683618714569</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683618714569</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Download For Connect Git To Host">
+      <created>1686629468308</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686629468308</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Rename Some Files For Test">
+      <created>1686645254242</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1686645254242</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Remove node_modules To gitignore">
+      <created>1686645587677</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1686645587677</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Adding sorter User + Work On Sorting Page">
+      <created>1686734654201</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686734654201</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fix Sorting Works - Sorting Done">
+      <created>1686983566121</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686983566121</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Delete Junk File">
+      <created>1687408606207</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1687408606207</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Arrange version_manager.php Showing Table + New Science Rank For mag_manager.php">
+      <created>1688220621414</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1688220621414</updated>
+    </task>
+    <task id="LOCAL-00012" summary="New Science Rank For Edit Mag In mag_manager.php">
+      <created>1688220876840</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1688220876840</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Increase Maximum File Size For Version File">
+      <created>1688227425956</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1688227425956</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Making Sorter Panel Completed">
+      <created>1688315902990</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1688315902990</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Working On Ejmali Rating">
+      <created>1688325806879</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1688325806879</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Fix Insert UserID In Log Function">
+      <option name="closed" value="true" />
+      <created>1693645967022</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1693645967022</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Close Ejmali INC Temporary">
+      <option name="closed" value="true" />
+      <created>1693809726175</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1693809726175</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Open Ejmali INC Temporary">
+      <option name="closed" value="true" />
+      <created>1693809952765</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1693809952765</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Set Message After Submit Ejamli Rate + Put Rater Group Into chk.php">
+      <option name="closed" value="true" />
+      <created>1693810870026</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1693810870026</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Fix Showing Post In Ejmali Rate">
+      <option name="closed" value="true" />
+      <created>1694411596057</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1694411596057</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fix Ejmali Rate">
+      <option name="closed" value="true" />
+      <created>1694514503669</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1694514503669</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Fix Search Into Ejmali Table">
+      <option name="closed" value="true" />
+      <created>1695113815455</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1695113815455</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Make Ejmali Form Steps To 0.25">
+      <option name="closed" value="true" />
+      <created>1696137036239</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1696137036239</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Make Ejmali Form Types To Text">
+      <option name="closed" value="true" />
+      <created>1696137128682</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1696137128682</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Fix Users Search">
+      <option name="closed" value="true" />
+      <created>1696137451078</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1696137451078</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Convert Persian Numbers To English In Login">
+      <option name="closed" value="true" />
+      <created>1696149754671</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1696149754671</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Fix Ejmali Rate Bugs">
+      <option name="closed" value="true" />
+      <created>1696401867699</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1696401867699</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Fix Ejmali Rate Bugs (Part2)">
+      <option name="closed" value="true" />
+      <created>1696403098979</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1696403098979</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Fix rater after tafsili submitted">
+      <option name="closed" value="true" />
+      <created>1696497061035</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1696497061035</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Tafsili rate inc fixed">
+      <option name="closed" value="true" />
+      <created>1696497080009</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1696497080009</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Fix set tafsili raters bugs">
+      <option name="closed" value="true" />
+      <created>1696497103432</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1696497103432</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Fix set tafsili raters showing group2">
+      <option name="closed" value="true" />
+      <created>1696653798330</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1696653798330</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Fix report from festival rates (add grades and avgs)">
+      <option name="closed" value="true" />
+      <created>1696656539498</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1696656539498</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Fix tafsili inc header">
+      <option name="closed" value="true" />
+      <created>1696671193401</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1696671193401</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Add step to tafsili form =&gt; 0.25">
+      <option name="closed" value="true" />
+      <created>1696760384495</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1696760384495</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Add author gender to article manager">
+      <option name="closed" value="true" />
+      <created>1696830513839</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1696830513839</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Fix report_from_festival_rates bugs">
+      <option name="closed" value="true" />
+      <created>1696830607896</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1696830607896</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Fix showing tafsili3 to rater panel">
+      <option name="closed" value="true" />
+      <created>1696830861213</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1696830861213</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Fix ejmali check fields js scripts address">
+      <option name="closed" value="true" />
+      <created>1696915705823</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1696915705823</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Fix showing rater rate list">
+      <option name="closed" value="true" />
+      <created>1696915736675</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1696915736676</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Fix showing tafsili3 rate list in set tafsili">
+      <option name="closed" value="true" />
+      <created>1696915757224</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1696915757224</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Fix Tafsili Rate Incs">
+      <option name="closed" value="true" />
+      <created>1697019215537</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1697019215538</updated>
+    </task>
+    <task id="LOCAL-00053" summary="add tafsili rates to report_from_festival_rates">
+      <option name="closed" value="true" />
+      <created>1697101070147</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1697101070148</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Add group filtering in set tafsili">
+      <option name="closed" value="true" />
+      <created>1697271634956</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1697271634956</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Add mag name in set tafsili">
+      <option name="closed" value="true" />
+      <created>1697277856534</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1697277856534</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Fix showing ejmali subjects in report_from_festival_rates">
+      <option name="closed" value="true" />
+      <created>1697277917734</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1697277917734</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Fix search table script">
+      <option name="closed" value="true" />
+      <created>1697344675128</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1697344675128</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Fix showing tafsili2 query">
+      <option name="closed" value="true" />
+      <created>1697528145788</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1697528145788</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Add group filtering in report_from_festival_rates">
+      <option name="closed" value="true" />
+      <created>1697908045976</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1697908045977</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Fix Users Search" />
+    <MESSAGE value="Convert Persian Numbers To English In Login" />
+    <MESSAGE value="Fix Ejmali Rate Bugs" />
+    <MESSAGE value="Fix Ejmali Rate Bugs (Part2)" />
+    <MESSAGE value="Fix rater after tafsili submitted" />
+    <MESSAGE value="Tafsili rate inc fixed" />
+    <MESSAGE value="Fix set tafsili raters bugs" />
+    <MESSAGE value="Fix set tafsili raters showing group2" />
+    <MESSAGE value="Fix report from festival rates (add grades and avgs)" />
+    <MESSAGE value="Fix tafsili inc header" />
+    <MESSAGE value="Add step to tafsili form =&gt; 0.25" />
+    <MESSAGE value="Add author gender to article manager" />
+    <MESSAGE value="Fix report_from_festival_rates bugs" />
+    <MESSAGE value="Fix showing tafsili3 to rater panel" />
+    <MESSAGE value="Fix ejmali check fields js scripts address" />
+    <MESSAGE value="Fix showing rater rate list" />
+    <MESSAGE value="Fix showing tafsili3 rate list in set tafsili" />
+    <MESSAGE value="Fix Tafsili Rate Incs" />
+    <MESSAGE value="add tafsili rates to report_from_festival_rates" />
+    <MESSAGE value="Add group filtering in set tafsili" />
+    <MESSAGE value="Add mag name in set tafsili" />
+    <MESSAGE value="Fix showing ejmali subjects in report_from_festival_rates" />
+    <MESSAGE value="Fix search table script" />
+    <MESSAGE value="Fix showing tafsili2 query" />
+    <MESSAGE value="Add group filtering in report_from_festival_rates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add group filtering in report_from_festival_rates" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
