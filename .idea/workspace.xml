@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9969ca6-7516-4551-aa79-4a103f6a88c4" name="Changes" comment="Fix rate point report cards (ejmali and tafsili)">
+    <list default="true" id="e9969ca6-7516-4551-aa79-4a103f6a88c4" name="Changes" comment="Fix button value">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/js/Report_From_Points.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/js/Report_From_Points.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report_from_points.php" beforeDir="false" afterPath="$PROJECT_DIR$/report_from_points.php" afterDir="false" />
     </list>
@@ -160,7 +161,7 @@
       <workItem from="1698567702733" duration="2191000" />
       <workItem from="1698640139759" duration="6321000" />
       <workItem from="1698724069345" duration="16410000" />
-      <workItem from="1698811307771" duration="5817000" />
+      <workItem from="1698811307771" duration="6528000" />
     </task>
     <task id="LOCAL-00001" summary="Work On Edit Journal Part 1&#10;Get Info Completed">
       <created>1683023060677</created>
@@ -266,14 +267,6 @@
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
       <updated>1688325806879</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Close Ejmali INC Temporary">
-      <option name="closed" value="true" />
-      <created>1693809726175</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1693809726175</updated>
     </task>
     <task id="LOCAL-00028" summary="Open Ejmali INC Temporary">
       <option name="closed" value="true" />
@@ -539,7 +532,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698823091681</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Fix button value">
+      <option name="closed" value="true" />
+      <created>1698827595171</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1698827595171</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -560,7 +561,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Convert Persian Numbers To English In Login" />
     <MESSAGE value="Fix Ejmali Rate Bugs" />
     <MESSAGE value="Fix Ejmali Rate Bugs (Part2)" />
     <MESSAGE value="Fix rater after tafsili submitted" />
@@ -585,7 +585,8 @@
     <MESSAGE value="Fix showing tafsili2 query" />
     <MESSAGE value="Add group filtering in report_from_festival_rates" />
     <MESSAGE value="Fix rate point report cards (ejmali and tafsili)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix rate point report cards (ejmali and tafsili)" />
+    <MESSAGE value="Fix button value" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix button value" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
