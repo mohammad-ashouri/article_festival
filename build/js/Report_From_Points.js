@@ -124,9 +124,9 @@ $(document).ready(function () {
                 $("#description_10Tafsili").val(response.r9_2_comment);
                 $("#general_commentTafsili").val(response.general_comment);
                 $("#sumTafsili").text(response.sum);
-                $("#title").text(response.title);
-                $("#rater").text('ارزیابی شده توسط استاد ' + response.rater);
-                $("#rateSubject").text(response.rateSubject);
+                $("#titleTafsili").text(response.title);
+                $("#raterTafsili").text('ارزیابی شده توسط استاد ' + response.rater);
+                $("#rateSubjectTafsili").text(response.rateSubject);
             }
         })
     });

@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9969ca6-7516-4551-aa79-4a103f6a88c4" name="Changes" comment="Add group filtering in report_from_festival_rates">
-      <change afterPath="$PROJECT_DIR$/build/ajax/GetRateInfo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/js/Report_From_Points.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/report_from_points.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rate.php" beforeDir="false" afterPath="$PROJECT_DIR$/Rate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/PHPExcel/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mag_manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/mag_manager.php" afterDir="false" />
+    <list default="true" id="e9969ca6-7516-4551-aa79-4a103f6a88c4" name="Changes" comment="Fix rate point report cards (ejmali and tafsili)">
+      <change beforePath="$PROJECT_DIR$/build/js/Report_From_Points.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/js/Report_From_Points.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report_from_points.php" beforeDir="false" afterPath="$PROJECT_DIR$/report_from_points.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +160,7 @@
       <workItem from="1698567702733" duration="2191000" />
       <workItem from="1698640139759" duration="6321000" />
       <workItem from="1698724069345" duration="16410000" />
-      <workItem from="1698811307771" duration="5146000" />
+      <workItem from="1698811307771" duration="5817000" />
     </task>
     <task id="LOCAL-00001" summary="Work On Edit Journal Part 1&#10;Get Info Completed">
       <created>1683023060677</created>
@@ -270,14 +266,6 @@
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
       <updated>1688325806879</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Fix Insert UserID In Log Function">
-      <option name="closed" value="true" />
-      <created>1693645967022</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1693645967022</updated>
     </task>
     <task id="LOCAL-00027" summary="Close Ejmali INC Temporary">
       <option name="closed" value="true" />
@@ -543,7 +531,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697908045977</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Fix rate point report cards (ejmali and tafsili)">
+      <option name="closed" value="true" />
+      <created>1698823091681</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1698823091681</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,7 +560,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix Users Search" />
     <MESSAGE value="Convert Persian Numbers To English In Login" />
     <MESSAGE value="Fix Ejmali Rate Bugs" />
     <MESSAGE value="Fix Ejmali Rate Bugs (Part2)" />
@@ -589,7 +584,8 @@
     <MESSAGE value="Fix search table script" />
     <MESSAGE value="Fix showing tafsili2 query" />
     <MESSAGE value="Add group filtering in report_from_festival_rates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add group filtering in report_from_festival_rates" />
+    <MESSAGE value="Fix rate point report cards (ejmali and tafsili)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix rate point report cards (ejmali and tafsili)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

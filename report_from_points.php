@@ -7,7 +7,9 @@
         <div class="modal-content" style="width: 800px">
             <div class="pt-4 pr-3">
                 <h5 class="modal-title" id="title"></h5>
+                <hr/>
                 <h5 class="modal-title" id="rater"></h5>
+                <hr/>
                 <h5 class="modal-title" id="rateSubject"></h5>
             </div>
             <div class="modal-body">
@@ -103,9 +105,11 @@
     <div class="modal-dialog">
         <div class="modal-content" style="width: 800px">
             <div class="pt-4 pr-3">
-                <h5 class="modal-title" id="title"></h5>
-                <h5 class="modal-title" id="rater"></h5>
-                <h5 class="modal-title" id="rateSubject"></h5>
+                <h5 id="titleTafsili"></h5>
+                <hr/>
+                <h5 id="raterTafsili"></h5>
+                <hr/>
+                <h5 id="rateSubjectTafsili"></h5>
             </div>
             <div class="modal-body">
                 <table class="table table-bordered table-striped" id="myTable">
@@ -361,7 +365,7 @@
                                                     data-rate-level="ej2g1"
                                                     data-rate-type="ejmali"
                                                     data-target="#ejmaliModal">
-                                                اجمالی اول گروه دوم
+                                                اجمالی دوم گروه اول
                                             </button>
                                         </div>
                                     <?php
