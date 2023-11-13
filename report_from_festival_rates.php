@@ -55,43 +55,58 @@
                                 <option value="<?php echo $Group['name']?>"><?php echo $Group['name'];?></option>
                             <?php } ?>
                         </select>
+                        <label>وضعیت</label>
+                        <select
+                                id="searchInput3" class="form-control select2"
+                                style="width: 20%;display: inline-block;margin-bottom: 8px">
+                            <option value="" selected>بدون فیلتر</option>
+                                <option value="اجمالی">اجمالی</option>
+                                <option value="تفصیلی">تفصیلی</option>
+                                <option value="تفصیلی سوم">تفصیلی سوم</option>
+                                <option value="اجمالی ردی">اجمالی ردی</option>
+                        </select>
                         <button class="btn btn-primary" onclick="searchTable()">فیلتر کردن</button>
 
                         <script>
                             function searchTable() {
-                                var input1, input2, filter1, filter2, table, tr, td1, td2, i;
+                                var input1, input2, input3, filter1, filter2, filter3, table, tr, td1, td2, td3, i;
                                 input1 = document.getElementById("searchInput1");
                                 input2 = document.getElementById("searchInput2");
+                                input3 = document.getElementById("searchInput3");
                                 filter1 = input1.value.toUpperCase();
                                 filter2 = input2.value.toUpperCase();
+                                filter3 = input3.value.toUpperCase();
                                 table = document.querySelector("table");
                                 tr = table.querySelectorAll("tbody tr");
 
-                                for (i = 0; i < tr.length; i++) {
-                                    td1 = tr[i].getElementsByTagName("td")[3];
-                                    td2 = tr[i].getElementsByTagName("td")[4];
-                                    if (td1 && td2) {
+                                for (var i = 0; i < tr.length; i++) {
+                                    var td1 = tr[i].getElementsByTagName("td")[3];
+                                    var td2 = tr[i].getElementsByTagName("td")[4];
+                                    var td3 = tr[i].getElementsByTagName("td")[5];
+
+                                    if (td1 && td2 && td3) {
                                         var showRow = true;
 
-                                        if (filter1 !== "" && td1.textContent.toUpperCase().indexOf(filter1) === -1) {
+                                        if (filter1 !== "" && td1.textContent.trim().toUpperCase().indexOf(filter1.trim().toUpperCase()) === -1) {
                                             showRow = false;
                                         }
 
-                                        if (filter2 !== "" && td2.textContent.toUpperCase().indexOf(filter2) === -1) {
+                                        if (filter2 !== "" && td2.textContent.trim().toUpperCase().indexOf(filter2.trim().toUpperCase()) === -1) {
                                             showRow = false;
                                         }
 
-                                        if (filter1 === "" && filter2 === "") {
+                                        if (filter3 !== "" && td3.textContent.trim().toUpperCase().indexOf(filter3.trim().toUpperCase()) === -1) {
+                                            showRow = false;
+                                        }
+
+                                        if (filter1 === "" && filter2 === "" && filter3 === "") {
                                             showRow = true;
                                         }
 
-                                        if (showRow) {
-                                            tr[i].style.display = "";
-                                        } else {
-                                            tr[i].style.display = "none";
-                                        }
+                                        tr[i].style.display = showRow ? "" : "none";
                                     }
                                 }
+
                             }
 
                         </script>
