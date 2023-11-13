@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9969ca6-7516-4551-aa79-4a103f6a88c4" name="Changes" comment="Fix button value">
+    <list default="true" id="e9969ca6-7516-4551-aa79-4a103f6a88c4" name="Changes" comment="Fix search point report table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/js/Report_From_Points.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/js/Report_From_Points.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report_from_points.php" beforeDir="false" afterPath="$PROJECT_DIR$/report_from_points.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,30 +44,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/wamp64/www/helli_rate_system&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/wamp64/www/article_festival",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;redshift&quot;,
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "redshift",
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\article_festival" />
@@ -161,7 +160,9 @@
       <workItem from="1698567702733" duration="2191000" />
       <workItem from="1698640139759" duration="6321000" />
       <workItem from="1698724069345" duration="16410000" />
-      <workItem from="1698811307771" duration="6528000" />
+      <workItem from="1698811307771" duration="7169000" />
+      <workItem from="1699177286514" duration="906000" />
+      <workItem from="1699242304291" duration="728000" />
     </task>
     <task id="LOCAL-00001" summary="Work On Edit Journal Part 1&#10;Get Info Completed">
       <created>1683023060677</created>
@@ -267,14 +268,6 @@
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
       <updated>1688325806879</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Open Ejmali INC Temporary">
-      <option name="closed" value="true" />
-      <created>1693809952765</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1693809952765</updated>
     </task>
     <task id="LOCAL-00029" summary="Set Message After Submit Ejamli Rate + Put Rater Group Into chk.php">
       <option name="closed" value="true" />
@@ -540,7 +533,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698827595171</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Fix search point report table">
+      <option name="closed" value="true" />
+      <created>1698828066269</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1698828066269</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,7 +562,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix Ejmali Rate Bugs" />
     <MESSAGE value="Fix Ejmali Rate Bugs (Part2)" />
     <MESSAGE value="Fix rater after tafsili submitted" />
     <MESSAGE value="Tafsili rate inc fixed" />
@@ -586,7 +586,8 @@
     <MESSAGE value="Add group filtering in report_from_festival_rates" />
     <MESSAGE value="Fix rate point report cards (ejmali and tafsili)" />
     <MESSAGE value="Fix button value" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix button value" />
+    <MESSAGE value="Fix search point report table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix search point report table" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

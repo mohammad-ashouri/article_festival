@@ -74,7 +74,7 @@ if (isset($_POST) & !empty($_POST)) {
                         logsend($operation, $urlofthispage, $connection_maghalat);
                         header("location:panel.php");
                     } elseif ($rows['type'] == 4) {
-                        $operation = "CityAdminLoginSuccess";
+                        $operation = "SuperAdminLoginSuccess";
                         logsend($operation, $urlofthispage, $connection_maghalat);
                         header("location:panel.php");
                     } elseif ($rows['type'] == 5) {
