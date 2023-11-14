@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9969ca6-7516-4551-aa79-4a103f6a88c4" name="Changes" comment="Fix admin log title">
-      <change beforePath="$PROJECT_DIR$/report_from_festival_rates.php" beforeDir="false" afterPath="$PROJECT_DIR$/report_from_festival_rates.php" afterDir="false" />
+    <list default="true" id="e9969ca6-7516-4551-aa79-4a103f6a88c4" name="Changes" comment="Add status to filter in report from festival rates">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/js/Customs.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/js/Customs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/js/Report_From_Points.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/js/Report_From_Points.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report_from_points.php" beforeDir="false" afterPath="$PROJECT_DIR$/report_from_points.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +166,8 @@
       <workItem from="1698811307771" duration="7169000" />
       <workItem from="1699177286514" duration="906000" />
       <workItem from="1699242304291" duration="728000" />
-      <workItem from="1699869466727" duration="371000" />
+      <workItem from="1699869466727" duration="1192000" />
+      <workItem from="1699938440673" duration="6047000" />
     </task>
     <task id="LOCAL-00001" summary="Work On Edit Journal Part 1&#10;Get Info Completed">
       <created>1683023060677</created>
@@ -269,14 +273,6 @@
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
       <updated>1688325806879</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Fix Showing Post In Ejmali Rate">
-      <option name="closed" value="true" />
-      <created>1694411596057</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1694411596057</updated>
     </task>
     <task id="LOCAL-00031" summary="Fix Ejmali Rate">
       <option name="closed" value="true" />
@@ -542,7 +538,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699869717516</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Add status to filter in report from festival rates">
+      <option name="closed" value="true" />
+      <created>1699870065717</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1699870065717</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -563,7 +567,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix rater after tafsili submitted" />
     <MESSAGE value="Tafsili rate inc fixed" />
     <MESSAGE value="Fix set tafsili raters bugs" />
     <MESSAGE value="Fix set tafsili raters showing group2" />
@@ -588,7 +591,8 @@
     <MESSAGE value="Fix button value" />
     <MESSAGE value="Fix search point report table" />
     <MESSAGE value="Fix admin log title" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix admin log title" />
+    <MESSAGE value="Add status to filter in report from festival rates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add status to filter in report from festival rates" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -57,8 +57,6 @@ foreach ($query as $User_Info) {
 
     <!-- bootstrap rtl -->
     <link rel="stylesheet" href="./dist/css/bootstrap-rtl.min.css">
-    <!-- template rtl version -->
-    <link rel="stylesheet" href="./dist/css/custom-style.css">
 </head>
 <body id="b-main-toggle" class="hold-transition sidebar-mini sidebar-collapse">
 <div class="wrapper">

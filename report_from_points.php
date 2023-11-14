@@ -4,13 +4,11 @@
 <!--Ejmali Modal-->
 <div class="modal fade" id="ejmaliModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" style="width: 800px">
+        <div class="modal-content" style="width: 700px">
             <div class="pt-4 pr-3">
-                <h5 class="modal-title" id="title"></h5>
-                <hr/>
-                <h5 class="modal-title" id="rater"></h5>
-                <hr/>
-                <h5 class="modal-title" id="rateSubject"></h5>
+                <h6 class="modal-title" style="padding-bottom: 3px" id="title"></h6>
+                <h6 class="modal-title" style="padding-bottom: 3px" id="rater"></h6>
+                <h6 class="modal-title" id="rateSubject"></h6>
             </div>
             <div class="modal-body">
                 <table class="table table-bordered table-striped" id="myTable">
@@ -18,19 +16,20 @@
                     <tr>
                         <th style="width: 50px;">ردیف</th>
                         <th style="text-align: center">نام شاخص</th>
-                        <th style="text-align: center">امتیاز</th>
-                        <th style="width: 250px;text-align: center">راهنمای امتیازدهی</th>
+                        <th style="width: 50px; text-align: center">امتیاز</th>
+                        <th style="width: 150px;text-align: center">راهنمای امتیازدهی</th>
                     </tr>
                     <tr>
                         <td>
                             1
                         </td>
                         <td>
-                            اولویت و روزآمدی مسئله یا موضوع
+                            <p style="font-size: 13px; font-weight: bold">اولویت و روزآمدی مسئله یا موضوع</p>
                         </td>
-                        <td style="width: 150px;">
-                            <input type="text" class="form-control" name="r1Ejmali" style="width: 100%" step="0.25"
-                                   id="r1Ejmali" disabled value="0">
+                        <td style=" text-align: center">
+                            <label id="r1Ejmali"></label>
+<!--                            <input type="text" class="form-control" name="r1Ejmali" style="width: 100%" step="0.25"-->
+<!--                                   id="r1Ejmali" >-->
                         </td>
                         <td style="text-align: center;vertical-align: middle" rowspan="5">
                             <label>
@@ -52,11 +51,12 @@
                             2
                         </td>
                         <td>
-                            ارزش علمی و نو بودن محتوا
+                            <p style="font-size: 13px; font-weight: bold">ارزش علمی و نو بودن محتوا</p>
                         </td>
-                        <td style="width: 150px;">
-                            <input type="text" class="form-control" name="r2Ejmali" style="width: 100%" step="0.25"
-                                   id="r2Ejmali" disabled value="0">
+                        <td class="text-center" style=" text-align: center">
+                            <label id="r2Ejmali"></label>
+<!--                            <input type="text" class="form-control" name="r2Ejmali" style="width: 100%" step="0.25"-->
+<!--                                   id="r2Ejmali" >-->
                         </td>
                     </tr>
                     <tr>
@@ -64,11 +64,12 @@
                             3
                         </td>
                         <td>
-                            استفاده مناسب از منابع معتبر
+                            <p style="font-size: 13px; font-weight: bold">استفاده مناسب از منابع معتبر</p>
                         </td>
-                        <td style="width: 150px;">
-                            <input type="text" class="form-control" name="r3Ejmali" style="width: 100%" step="0.25"
-                                   id="r3Ejmali" disabled value="0">
+                        <td class="text-center" style="text-align: center">
+                            <label id="r3Ejmali"></label>
+<!--                            <input type="text" class="form-control" name="r3Ejmali" style="width: 100%" step="0.25"-->
+<!--                                   id="r3Ejmali" >-->
                         </td>
                     </tr>
                     <tr>
@@ -76,29 +77,43 @@
                             4
                         </td>
                         <td>
-                            اثربخشی و میزان تاثیر گذاری در حل مشکلات علمی و کاربردی
+                            <p style="font-size: 13px; font-weight: bold">اثربخشی و میزان تاثیر گذاری در حل مشکلات علمی و کاربردی</p>
                         </td>
-                        <td style="width: 150px;">
-                            <input type="text" class="form-control" name="r4Ejmali" style="width: 100%" step="0.25"
-                                   id="r4Ejmali" disabled value="0">
+                        <td class="text-center" style="text-align: center">
+                            <label id="r4Ejmali"></label>
+<!--                            <input type="text" class="form-control" name="r4Ejmali" style="width: 100%" step="0.25"-->
+<!--                                   id="r4Ejmali" >-->
                         </td>
                     </tr>
                     <tr>
-                        <th colspan="2" style="text-align: left">جمع امتیاز</th>
+                        <th colspan="2" style="text-align: left;font-size: 13px">جمع امتیاز</th>
                         <td style="text-align: center"><label id="sumEjmali">0</label></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-            <!--            <div class="modal-footer">-->
-            <!--                <button type="button" class="btn btn-secondary"-->
-            <!--                        aria-hidden="true" id="closeModal"-->
-            <!--                        data-bs-dismiss="modal">بستن-->
-            <!--                </button>-->
-            <!--            </div>-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger"
+                        aria-hidden="true" id="printButton"
+                        data-bs-dismiss="modal">چاپ کارنامه
+                </button>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    document.getElementById('printButton').addEventListener('click', function () {
+        var printWindow = window.open('', '_blank');
+        printWindow.document.write("<html dir='rtl'><head><title>Print</title>");
+        printWindow.document.write("<link rel='stylesheet' href='dist/css/custom-style.css'>");
+        printWindow.document.write('</head><body>');
+        printWindow.document.write(document.getElementById('ejmaliModal').innerHTML);
+        printWindow.document.getElementById('printButton').style.display='none';
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    });
+</script>
 
 <!--Tafsili Modal-->
 <div class="modal fade" id="tafsiliModal" tabindex="-1" aria-hidden="true">
@@ -465,20 +480,22 @@
                                 </td>
                                 <td>
                                     <?php
-                                    if ($articles['tafsili1_done']==1):
-                                    ?>
-                                    <button type="button" class="btn btn-primary d-inline-block mb-1 getTafsiliPoint"
-                                            data-toggle="modal"
-                                            data-post-id="<?php echo $articles['id'] ?>"
-                                            data-rate-level="ta1"
-                                            data-rate-type="tafsili"
-                                            data-target="#tafsiliModal">
-                                        تفصیلی اول
-                                    </button>
+                                    if ($articles['tafsili1_done'] == 1):
+                                        ?>
+                                        <button type="button"
+                                                class="btn btn-primary d-inline-block mb-1 getTafsiliPoint"
+                                                data-toggle="modal"
+                                                data-post-id="<?php echo $articles['id'] ?>"
+                                                data-rate-level="ta1"
+                                                data-rate-type="tafsili"
+                                                data-target="#tafsiliModal">
+                                            تفصیلی اول
+                                        </button>
                                     <?php
                                     endif;
-                                    if ($articles['tafsili2_done']==1) : ?>
-                                        <button type="button" class="btn btn-primary d-inline-block mb-1 getTafsiliPoint"
+                                    if ($articles['tafsili2_done'] == 1) : ?>
+                                        <button type="button"
+                                                class="btn btn-primary d-inline-block mb-1 getTafsiliPoint"
                                                 data-toggle="modal"
                                                 data-post-id="<?php echo $articles['id'] ?>"
                                                 data-rate-level="ta2"
@@ -488,15 +505,16 @@
                                         </button>
                                     <?php
                                     endif;
-                                    if ($articles['tafsili3_done']==1) :
-                                    ?>
-                                        <button type="button" class="btn btn-primary d-inline-block mb-1 getTafsiliPoint"
+                                    if ($articles['tafsili3_done'] == 1) :
+                                        ?>
+                                        <button type="button"
+                                                class="btn btn-primary d-inline-block mb-1 getTafsiliPoint"
                                                 data-toggle="modal"
                                                 data-post-id="<?php echo $articles['id'] ?>"
                                                 data-rate-level="ta3"
                                                 data-rate-type="tafsili"
                                                 data-target="#tafsiliModal">
-                                            تفصیلی اول
+                                            تفصیلی سوم
                                         </button>
                                     <?php endif; ?>
                                 </td>

@@ -31,6 +31,15 @@ table.querySelector('thead tr').addEventListener('click', (event) => {
 // ------------------------------------------------------------------------------------------------
 // Report from points scripts
 $(document).ready(function () {
+    function convertToPersianNumber(number) {
+        const persianDigits = [
+            '۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'
+        ];
+
+        return String(number).replace(/\d/g, function (match) {
+            return persianDigits[parseInt(match)];
+        });
+    }
     $('.ejmaliModal').click(function () {
         $('#ejmaliModal').modal('toggle');
     });
@@ -45,11 +54,11 @@ $(document).ready(function () {
                 form: $(this).data('rate-type')
             },
             success: function (response) {
-                $("#r1Ejmali").val(response.r1);
-                $("#r2Ejmali").val(response.r2);
-                $("#r3Ejmali").val(response.r3);
-                $("#r4Ejmali").val(response.r4);
-                $("#sumEjmali").text(response.sum);
+                $("#r1Ejmali").text(convertToPersianNumber(response.r1));
+                $("#r2Ejmali").text(convertToPersianNumber(response.r2));
+                $("#r3Ejmali").text(convertToPersianNumber(response.r3));
+                $("#r4Ejmali").text(convertToPersianNumber(response.r4));
+                $("#sumEjmali").text(convertToPersianNumber(response.sum));
                 $("#title").text(response.title);
                 $("#rater").text('ارزیابی شده توسط استاد ' + response.rater);
                 $("#rateSubject").text(response.rateSubject);
