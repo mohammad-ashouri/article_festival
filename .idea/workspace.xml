@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9969ca6-7516-4551-aa79-4a103f6a88c4" name="Changes" comment="Add status to filter in report from festival rates">
+    <list default="true" id="e9969ca6-7516-4551-aa79-4a103f6a88c4" name="Changes" comment="Fix print ejmali report point">
+      <change afterPath="$PROJECT_DIR$/build/ajax/ChangeRateInfos.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/js/Report_From_Festival_Rates.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e43a870c-e0a8-4756-8f8b-7da5eeb723f8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e43a870c-e0a8-4756-8f8b-7da5eeb723f8.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e9b45d99-c392-4aaf-8133-46abe4c3a263.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e9b45d99-c392-4aaf-8133-46abe4c3a263.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ed1be86e-2984-46cc-87fb-4f8d715c9f71.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ed1be86e-2984-46cc-87fb-4f8d715c9f71.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/js/Customs.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/js/Customs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/js/Report_From_Points.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/js/Report_From_Points.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report_from_points.php" beforeDir="false" afterPath="$PROJECT_DIR$/report_from_points.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report_from_festival_rates.php" beforeDir="false" afterPath="$PROJECT_DIR$/report_from_festival_rates.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +78,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\article_festival" />
       <recent name="C:\wamp64\www\article_festival\build\js" />
+      <recent name="C:\wamp64\www\article_festival\build\ajax" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\article_festival\build\ajax" />
     </key>
   </component>
@@ -167,7 +173,8 @@
       <workItem from="1699177286514" duration="906000" />
       <workItem from="1699242304291" duration="728000" />
       <workItem from="1699869466727" duration="1192000" />
-      <workItem from="1699938440673" duration="6047000" />
+      <workItem from="1699938440673" duration="6293000" />
+      <workItem from="1700024418269" duration="7296000" />
     </task>
     <task id="LOCAL-00001" summary="Work On Edit Journal Part 1&#10;Get Info Completed">
       <created>1683023060677</created>
@@ -273,14 +280,6 @@
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
       <updated>1688325806879</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Fix Ejmali Rate">
-      <option name="closed" value="true" />
-      <created>1694514503669</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1694514503669</updated>
     </task>
     <task id="LOCAL-00032" summary="Fix Search Into Ejmali Table">
       <option name="closed" value="true" />
@@ -546,7 +545,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699870065717</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Fix print ejmali report point">
+      <option name="closed" value="true" />
+      <created>1699954623296</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1699954623297</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,7 +574,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Tafsili rate inc fixed" />
     <MESSAGE value="Fix set tafsili raters bugs" />
     <MESSAGE value="Fix set tafsili raters showing group2" />
     <MESSAGE value="Fix report from festival rates (add grades and avgs)" />
@@ -592,7 +598,8 @@
     <MESSAGE value="Fix search point report table" />
     <MESSAGE value="Fix admin log title" />
     <MESSAGE value="Add status to filter in report from festival rates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add status to filter in report from festival rates" />
+    <MESSAGE value="Fix print ejmali report point" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix print ejmali report point" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

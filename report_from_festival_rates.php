@@ -126,6 +126,7 @@
                             <th>امتیاز تفصیلی</th>
                             <th>امتیاز نهایی</th>
                             <th>رتبه</th>
+                            <th>عملیات</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -199,8 +200,34 @@
                                 </td>
                                 <td><?php echo $articles['grade']; ?></td>
                                 <td><?php if ($articles['chosen_status'] == 1) echo $articles['chosen_subject']; ?></td>
+                                <td>
+                                    <?php
+                                    if ($articles['rate_status']=='تفصیلی ردی' and ($ta3['sum']==null)){
+                                        switch ($author[2]){
+                                            case 'مرد':
+                                                $max_sum=80;
+                                                break;
+                                            case 'زن':
+                                                $max_sum=75;
+                                                break;
+                                        }
+                                        $difference=abs($ta1['sum']-$ta2['sum']);
+                                        if (($ta1>=$max_sum and $difference>=12) or ($ta2>=$max_sum and $difference>=12)):
+                                            ?>
+                                        <form id="change-rate-status">
+                                            <button class="btn btn-danger changeratestatus" data-article-id="<?php echo $articleInfo['id']; ?>" data-work="ChangeRateStatus" onclick="return confirm('این اثر به مرحله تفصیلی سوم راه پیدا خواهد کرد. آیا مطمئن هستید؟')">ارسال به تفصیلی سوم</button>
+                                        </form>
+                                            <?php
+                                        endif;
+                                    }
+                                    ?>
+                                </td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php
+                            $ta1['sum']=null;
+                            $ta2['sum']=null;
+                            $ta3['sum']=null;
+                        endforeach; ?>
                         </tbody>
                     </table>
                     <script>
@@ -240,5 +267,5 @@
 
 </section>
 </div>
-
+<script src="build/js/Report_From_Festival_Rates.js"></script>
 <?php include_once __DIR__ . '/footer.php'; ?>
