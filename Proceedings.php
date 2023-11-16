@@ -95,19 +95,19 @@ if (@$_POST['festival_id'] and @$_POST['scientific_group']):
                     </tr>
                     <?php
                     $a=1;
-                    $query=mysqli_query($connection_maghalat,"select * from jashnvareh_maghalat.article c inner join mag_base.mag_articles m on c.article_id = m.id where m.festival_id='$festival_id' and c.rate_status='منتظر تایید' and (m.scientific_group_1='$scientific_group' or m.scientific_group_2='$scientific_group') order by m.id asc");
-                    foreach ($query as $Arts):
+                    $query=mysqli_query($connection_maghalat,"select * from ssmp_jashnvarehmaghalat.article c inner join ssmp_magbase.mag_articles m on c.article_id = m.id where m.festival_id='$festival_id' and c.rate_status='منتظر تایید' and (m.scientific_group_1='$scientific_group' or m.scientific_group_2='$scientific_group') order by m.id asc");
+                    foreach ($query as $Articles):
                     ?>
                     <td><?php echo $a;$a++; ?></td>
-                    <td><?php echo $Arts['id']; ?></td>
-                    <td><?php echo $Arts['subject']; ?></td>
+                    <td><?php echo $Articles['id']; ?></td>
+                    <td><?php echo $Articles['subject']; ?></td>
                     <td><?php
-                        $Author=explode('|',$Arts['author']);
+                        $Author=explode('|',$Articles['author']);
                         echo $Author[0];
                         ?>
                     </td>
                     <td></td>
-                    <td><?php echo $Arts['grade']; ?></td>
+                    <td><?php echo $Articles['grade']; ?></td>
                     <td>
 
                     </td>
