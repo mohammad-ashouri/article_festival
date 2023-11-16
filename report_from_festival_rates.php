@@ -35,24 +35,24 @@
                         <select
                                 id="searchInput1" class="form-control select2"
                                 style="width: 20%;display: inline-block;margin-bottom: 8px">
-                            <option value=""  selected>بدون فیلتر</option>
+                            <option value="" selected>بدون فیلتر</option>
                             <?php
                             $groups = mysqli_query($connection_maghalat, "select * from scientific_group order by name asc");
                             foreach ($groups as $Group) {
                                 ?>
-                                <option value="<?php echo $Group['name']?>"><?php echo $Group['name'];?></option>
+                                <option value="<?php echo $Group['name'] ?>"><?php echo $Group['name']; ?></option>
                             <?php } ?>
                         </select>
                         <label>گروه علمی دوم</label>
                         <select
                                 id="searchInput2" class="form-control select2"
                                 style="width: 20%;display: inline-block;margin-bottom: 8px">
-                            <option value=""  selected>بدون فیلتر</option>
+                            <option value="" selected>بدون فیلتر</option>
                             <?php
                             $groups = mysqli_query($connection_maghalat, "select * from scientific_group order by name asc");
                             foreach ($groups as $Group) {
                                 ?>
-                                <option value="<?php echo $Group['name']?>"><?php echo $Group['name'];?></option>
+                                <option value="<?php echo $Group['name'] ?>"><?php echo $Group['name']; ?></option>
                             <?php } ?>
                         </select>
                         <label>وضعیت</label>
@@ -60,10 +60,10 @@
                                 id="searchInput3" class="form-control select2"
                                 style="width: 20%;display: inline-block;margin-bottom: 8px">
                             <option value="" selected>بدون فیلتر</option>
-                                <option value="اجمالی">اجمالی</option>
-                                <option value="تفصیلی">تفصیلی</option>
-                                <option value="تفصیلی سوم">تفصیلی سوم</option>
-                                <option value="اجمالی ردی">اجمالی ردی</option>
+                            <option value="اجمالی">اجمالی</option>
+                            <option value="تفصیلی">تفصیلی</option>
+                            <option value="تفصیلی سوم">تفصیلی سوم</option>
+                            <option value="اجمالی ردی">اجمالی ردی</option>
                         </select>
                         <button class="btn btn-primary" onclick="searchTable()">فیلتر کردن</button>
 
@@ -202,31 +202,34 @@
                                 <td><?php if ($articles['chosen_status'] == 1) echo $articles['chosen_subject']; ?></td>
                                 <td>
                                     <?php
-                                    if ($articles['rate_status']=='تفصیلی ردی' and ($ta3['sum']==null)){
-                                        switch ($author[2]){
+                                    if ($articles['rate_status'] == 'تفصیلی ردی' and ($ta3['sum'] == null)) {
+                                        switch ($author[2]) {
                                             case 'مرد':
-                                                $max_sum=80;
+                                                $max_sum = 80;
                                                 break;
                                             case 'زن':
-                                                $max_sum=75;
+                                                $max_sum = 75;
                                                 break;
                                         }
-                                        $difference=abs($ta1['sum']-$ta2['sum']);
-                                        if (($ta1>=$max_sum and $difference>=12) or ($ta2>=$max_sum and $difference>=12)):
+                                        $difference = abs($ta1['sum'] - $ta2['sum']);
+                                        if (($ta1 >= $max_sum and $difference >= 12) or ($ta2 >= $max_sum and $difference >= 12)):
                                             ?>
-                                        <form id="change-rate-status">
-                                            <button class="btn btn-danger changeratestatus" data-article-id="<?php echo $articleInfo['id']; ?>" data-work="ChangeRateStatus" onclick="return confirm('این اثر به مرحله تفصیلی سوم راه پیدا خواهد کرد. آیا مطمئن هستید؟')">ارسال به تفصیلی سوم</button>
-                                        </form>
-                                            <?php
+                                            <form class="change-rate-status"
+                                                  data-article-id="<?php echo $articleInfo['id']; ?>"
+                                                  data-work="ChangeRateStatus">
+                                                <button class="btn btn-danger changeratestatus">ارسال به تفصیلی سوم
+                                                </button>
+                                            </form>
+                                        <?php
                                         endif;
                                     }
                                     ?>
                                 </td>
                             </tr>
-                        <?php
-                            $ta1['sum']=null;
-                            $ta2['sum']=null;
-                            $ta3['sum']=null;
+                            <?php
+                            $ta1['sum'] = null;
+                            $ta2['sum'] = null;
+                            $ta3['sum'] = null;
                         endforeach; ?>
                         </tbody>
                     </table>
