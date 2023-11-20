@@ -36,9 +36,9 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
         }
         $sum = $_POST['r' . $i] + $sum;
     }
-    $query = mysqli_query($connection_maghalat, "insert into tafsili
-    (article_id, r1,r1_comment, r2,r2_comment, r3,r3_comment, r4,r4_comment,r5,r5_comment,r6,r6_comment,r7,r7_comment,r8,r8_comment,r9_1,r9_1_comment,r9_2,r9_2_comment,general_comment, sum,type, rater, rate_date) values
-    ('$article_id','$r1','$comment_r1','$r2','$comment_r2','$r3','$comment_r3','$r4','$comment_r4','$r5','$comment_r5','$r6','$comment_r6','$r7','$comment_r7','$r8','$comment_r8','$r9','$comment_r9','$r10','$comment_r10','$general_comment','$sum','$type','$user','$datewithtime')");
+//    $query = mysqli_query($connection_maghalat, "insert into tafsili
+//    (article_id, r1,r1_comment, r2,r2_comment, r3,r3_comment, r4,r4_comment,r5,r5_comment,r6,r6_comment,r7,r7_comment,r8,r8_comment,r9_1,r9_1_comment,r9_2,r9_2_comment,general_comment, sum,type, rater, rate_date) values
+//    ('$article_id','$r1','$comment_r1','$r2','$comment_r2','$r3','$comment_r3','$r4','$comment_r4','$r5','$comment_r5','$r6','$comment_r6','$r7','$comment_r7','$r8','$comment_r8','$r9','$comment_r9','$r10','$comment_r10','$general_comment','$sum','$type','$user','$datewithtime')");
 
     if ($query) {
         $articleInfo = mysqli_query($connection_maghalat, "select * from article where id='$article_id'");
@@ -164,20 +164,24 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
                     $finalAVG = ($sum + $ta1['sum'] + $ta2['sum']) / 3;
                 } elseif ((abs($sum - $ta1['sum']) >= 12) and (abs($sum - $ta2['sum']) >= 12) and (abs($ta1['sum'] - $ta2['sum']) >= 12)) {
                     $finalAVG = ($sum + $ta1['sum'] + $ta2['sum']) / 3;
-                } elseif ((abs($sum - $ta1['sum']) >= 12) xor (abs($sum - $ta2['sum']) >= 12)) {
-                    $difference1 = abs($sum - $ta1['sum']);
-                    $difference2 = abs($sum - $ta2['sum']);
-                    if ($difference1 > $difference2) {
-                        $finalAVG = ($sum + $ta2['sum']) / 2;
-                    } elseif ($difference1 < $difference2) {
-                        $finalAVG = ($sum + $ta1['sum']) / 2;
-                    } elseif ($difference1 == $difference2) {
-                        $finalAVG = ($sum + $ta1['sum']) / 2;
+                } elseif ((abs($sum - $ta1['sum']) >= 12) or (abs($sum - $ta2['sum']) >= 12)) {
+                    $difference3v1 = abs($sum - $ta1['sum']);
+                    $difference3v2 = abs($sum - $ta2['sum']);
+                    $difference1v2 = abs($ta1['sum'] - $ta2['sum']);
+                    if ($difference1v2 < 12 and ($ta1['sum'] + $ta2['sum'] / 2) >= 80) {
+                        $finalAVG = ($ta1['sum'] + $ta2['sum']) / 2;
+                    } else {
+                        if ($difference3v1 > $difference3v2) {
+                            $finalAVG = ($sum + $ta2['sum']) / 2;
+                        } elseif ($difference3v1 < $difference3v2) {
+                            $finalAVG = ($sum + $ta1['sum']) / 2;
+                        } elseif ($difference3v1 == $difference3v2) {
+                            $finalAVG = ($sum + $ta1['sum']) / 2;
+                        }
                     }
                 } elseif ((abs($sum - $ta1['sum']) < 12) or (abs($sum - $ta2['sum']) < 12)) {
                     $finalAVG = ($sum + $ta1['sum'] + $ta2['sum']) / 3;
                 }
-
                 if ($finalAVG >= 80) {
                     mysqli_query($connection_maghalat, "update article set tafsili3_done=1,rate_status='منتظر تایید',grade='$finalAVG' where id='$article_id'");
                     if ($finalAVG >= 80 and $finalAVG < 85) {
