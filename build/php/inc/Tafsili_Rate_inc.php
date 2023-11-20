@@ -49,6 +49,14 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
         }
         $authorGender = explode('|', $magArticle['author']);
         $authorGender = $authorGender[2];
+        switch ($authorGender) {
+            case 'مرد':
+                $maxPoint = 80;
+                break;
+            case 'زن':
+                $maxPoint = 75;
+                break;
+        }
 
         switch ($type) {
             case 'ta1':
@@ -59,9 +67,9 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
                     $avg = ($sum + $ta2['sum']) / 2;
                     switch ($authorGender) {
                         case 'مرد':
-                            if ($avg >= 80) {
+                            if ($avg >= $maxPoint) {
                                 $status = 'تفصیلی سوم';
-                            } elseif ($avg >= 75 and $avg < 80) {
+                            } elseif ($avg >= 75 and $avg < $maxPoint) {
                                 if (abs($sum - $ta2['sum']) >= 12) {
                                     $status = 'تفصیلی سوم';
                                 } else {
@@ -79,9 +87,9 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
 
                             break;
                         case 'زن':
-                            if ($avg >= 75) {
+                            if ($avg >= $maxPoint) {
                                 $status = 'تفصیلی سوم';
-                            } elseif ($avg >= 70 and $avg < 75) {
+                            } elseif ($avg >= 70 and $avg < $maxPoint) {
                                 if (abs($sum - $ta2['sum']) >= 12) {
                                     $status = 'تفصیلی سوم';
                                 } else {
@@ -110,9 +118,9 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
                     $avg = ($sum + $ta1['sum']) / 2;
                     switch ($authorGender) {
                         case 'مرد':
-                            if ($avg >= 80) {
+                            if ($avg >= $maxPoint) {
                                 $status = 'تفصیلی سوم';
-                            } elseif ($avg >= 75 and $avg < 80) {
+                            } elseif ($avg >= 75 and $avg < $maxPoint) {
                                 if (abs($sum - $ta1['sum']) >= 12) {
                                     $status = 'تفصیلی سوم';
                                 } else {
@@ -130,9 +138,9 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
 
                             break;
                         case 'زن':
-                            if ($avg >= 75) {
+                            if ($avg >= $maxPoint) {
                                 $status = 'تفصیلی سوم';
-                            } elseif ($avg >= 70 and $avg < 75) {
+                            } elseif ($avg >= 70 and $avg < $maxPoint) {
                                 if (abs($sum - $ta1['sum']) >= 12) {
                                     $status = 'تفصیلی سوم';
                                 } else {
@@ -160,7 +168,8 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
                 $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='ta2'");
                 foreach ($query as $ta2) {
                 }
-                if ($ta1['sum'] >= 80 and $ta2['sum'] >= 80 and $sum >= 80) {
+
+                if ($ta1['sum'] >= $maxPoint and $ta2['sum'] >= $maxPoint and $sum >= $maxPoint) {
                     $finalAVG = ($sum + $ta1['sum'] + $ta2['sum']) / 3;
                 } elseif ((abs($sum - $ta1['sum']) >= 12) and (abs($sum - $ta2['sum']) >= 12) and (abs($ta1['sum'] - $ta2['sum']) >= 12)) {
                     $finalAVG = ($sum + $ta1['sum'] + $ta2['sum']) / 3;
@@ -168,7 +177,7 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
                     $difference3v1 = abs($sum - $ta1['sum']);
                     $difference3v2 = abs($sum - $ta2['sum']);
                     $difference1v2 = abs($ta1['sum'] - $ta2['sum']);
-                    if ($difference1v2 < 12 and ($ta1['sum'] + $ta2['sum'] / 2) >= 80) {
+                    if ($difference1v2 < 12 and ($ta1['sum'] + $ta2['sum'] / 2) >= $maxPoint) {
                         $finalAVG = ($ta1['sum'] + $ta2['sum']) / 2;
                     } else {
                         if ($difference3v1 > $difference3v2) {
@@ -182,14 +191,14 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
                 } elseif ((abs($sum - $ta1['sum']) < 12) or (abs($sum - $ta2['sum']) < 12)) {
                     $finalAVG = ($sum + $ta1['sum'] + $ta2['sum']) / 3;
                 }
-                if ($finalAVG >= 80) {
+                if ($finalAVG >= $maxPoint) {
                     mysqli_query($connection_maghalat, "update article set tafsili3_done=1,rate_status='منتظر تایید',grade='$finalAVG' where id='$article_id'");
-                    if ($finalAVG >= 80 and $finalAVG < 85) {
+                    if ($finalAVG >= 80 and $finalAVG < $maxPoint) {
                         mysqli_query($connection_maghalat, "update article set chosen_status=1,chosen_subject='شایسته تقدیر' where id='$article_id'");
                     } else {
                         mysqli_query($connection_maghalat, "update article set chosen_status=1,chosen_subject='برگزیده' where id='$article_id'");
                     }
-                } elseif ($finalAVG < 80) {
+                } elseif ($finalAVG < $maxPoint) {
                     mysqli_query($connection_maghalat, "update article set rate_status='تفصیلی ردی',grade='$finalAVG' where id='$article_id'");
                 }
                 mysqli_query($connection_maghalat, "update article set tafsili3_done=1 where id='$article_id'");
