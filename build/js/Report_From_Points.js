@@ -40,6 +40,7 @@ $(document).ready(function () {
             return persianDigits[parseInt(match)];
         });
     }
+
     $('.ejmaliModal').click(function () {
         $('#ejmaliModal').modal('toggle');
     });
@@ -76,27 +77,67 @@ $(document).ready(function () {
                 form: $(this).data('rate-type')
             },
             success: function (response) {
-                $("#r1Tafsili").val(response.r1);
-                $("#r2Tafsili").val(response.r2);
-                $("#r3Tafsili").val(response.r3);
-                $("#r4Tafsili").val(response.r4);
-                $("#r5Tafsili").val(response.r5);
-                $("#r6Tafsili").val(response.r6);
-                $("#r7Tafsili").val(response.r7);
-                $("#r8Tafsili").val(response.r8);
-                $("#r9Tafsili").val(response.r9_1);
-                $("#r10Tafsili").val(response.r9_2);
-                $("#description_1Tafsili").val(response.r1_comment);
-                $("#description_2Tafsili").val(response.r2_comment);
-                $("#description_3Tafsili").val(response.r3_comment);
-                $("#description_4Tafsili").val(response.r4_comment);
-                $("#description_5Tafsili").val(response.r5_comment);
-                $("#description_6Tafsili").val(response.r6_comment);
-                $("#description_7Tafsili").val(response.r7_comment);
-                $("#description_8Tafsili").val(response.r8_comment);
-                $("#description_9Tafsili").val(response.r9_1_comment);
-                $("#description_10Tafsili").val(response.r9_2_comment);
-                $("#general_commentTafsili").val(response.general_comment);
+                $("#r1Tafsili").text(response.r1);
+                $("#r2Tafsili").text(response.r2);
+                $("#r3Tafsili").text(response.r3);
+                $("#r4Tafsili").text(response.r4);
+                $("#r5Tafsili").text(response.r5);
+                $("#r6Tafsili").text(response.r6);
+                $("#r7Tafsili").text(response.r7);
+                $("#r8Tafsili").text(response.r8);
+                $("#r9Tafsili").text(response.r9_1);
+                $("#r10Tafsili").text(response.r9_2);
+                if (response.r1_comment != '' && response.r1_comment != null) {
+                    $("#description_1Tafsili").text(response.r1_comment);
+                } else {
+                    $("#description_1Tafsili").text('ندارد');
+                }
+                if (response.r2_comment != '' && response.r2_comment != null) {
+                    $("#description_2Tafsili").text(response.r2_comment);
+                } else {
+                    $("#description_2Tafsili").text('ندارد');
+                }
+                if (response.r3_comment != '' && response.r3_comment != null) {
+                    $("#description_3Tafsili").text(response.r3_comment);
+                } else {
+                    $("#description_3Tafsili").text('ندارد');
+                }
+                if (response.r4_comment != '' && response.r4_comment != null) {
+                    $("#description_4Tafsili").text(response.r4_comment);
+                } else {
+                    $("#description_4Tafsili").text('ندارد');
+                }
+                if (response.r5_comment != '' && response.r5_comment != null) {
+                    $("#description_5Tafsili").text(response.r5_comment);
+                } else {
+                    $("#description_5Tafsili").text('ندارد');
+                }
+                if (response.r6_comment != '' && response.r6_comment != null) {
+                    $("#description_6Tafsili").text(response.r6_comment);
+                } else {
+                    $("#description_6Tafsili").text('ندارد');
+                }
+                if (response.r7_comment != '' && response.r7_comment != null) {
+                    $("#description_7Tafsili").text(response.r7_comment);
+                } else {
+                    $("#description_7Tafsili").text('ندارد');
+                }
+                if (response.r8_comment != '' && response.r8_comment != null) {
+                    $("#description_8Tafsili").text(response.r8_comment);
+                } else {
+                    $("#description_8Tafsili").text('ندارد');
+                }
+                if (response.r9_1_comment != '' && response.r9_1_comment != null) {
+                    $("#description_9Tafsili").text(response.r9_1_comment);
+                } else {
+                    $("#description_9Tafsili").text('ندارد');
+                }
+                if (response.r9_2_comment != '' && response.r9_2_comment != null) {
+                    $("#description_10Tafsili").text(response.r9_2_comment);
+                } else {
+                    $("#description_10Tafsili").text('ندارد');
+                }
+                $("#general_commentTafsili").text(response.general_comment);
                 $("#sumTafsili").text(response.sum);
                 $("#titleTafsili").text(response.title);
                 $("#raterTafsili").text('ارزیابی شده توسط استاد ' + response.rater);

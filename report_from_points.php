@@ -28,8 +28,8 @@
                         </td>
                         <td style=" text-align: center">
                             <label id="r1Ejmali"></label>
-<!--                            <input type="text" class="form-control" name="r1Ejmali" style="width: 100%" step="0.25"-->
-<!--                                   id="r1Ejmali" >-->
+                            <!--                            <input type="text" class="form-control" name="r1Ejmali" style="width: 100%" step="0.25"-->
+                            <!--                                   id="r1Ejmali" >-->
                         </td>
                         <td style="text-align: center;vertical-align: middle" rowspan="5">
                             <label>
@@ -55,8 +55,8 @@
                         </td>
                         <td class="text-center" style=" text-align: center">
                             <label id="r2Ejmali"></label>
-<!--                            <input type="text" class="form-control" name="r2Ejmali" style="width: 100%" step="0.25"-->
-<!--                                   id="r2Ejmali" >-->
+                            <!--                            <input type="text" class="form-control" name="r2Ejmali" style="width: 100%" step="0.25"-->
+                            <!--                                   id="r2Ejmali" >-->
                         </td>
                     </tr>
                     <tr>
@@ -68,8 +68,8 @@
                         </td>
                         <td class="text-center" style="text-align: center">
                             <label id="r3Ejmali"></label>
-<!--                            <input type="text" class="form-control" name="r3Ejmali" style="width: 100%" step="0.25"-->
-<!--                                   id="r3Ejmali" >-->
+                            <!--                            <input type="text" class="form-control" name="r3Ejmali" style="width: 100%" step="0.25"-->
+                            <!--                                   id="r3Ejmali" >-->
                         </td>
                     </tr>
                     <tr>
@@ -77,12 +77,13 @@
                             4
                         </td>
                         <td>
-                            <p style="font-size: 13px; font-weight: bold">اثربخشی و میزان تاثیر گذاری در حل مشکلات علمی و کاربردی</p>
+                            <p style="font-size: 13px; font-weight: bold">اثربخشی و میزان تاثیر گذاری در حل مشکلات علمی
+                                و کاربردی</p>
                         </td>
                         <td class="text-center" style="text-align: center">
                             <label id="r4Ejmali"></label>
-<!--                            <input type="text" class="form-control" name="r4Ejmali" style="width: 100%" step="0.25"-->
-<!--                                   id="r4Ejmali" >-->
+                            <!--                            <input type="text" class="form-control" name="r4Ejmali" style="width: 100%" step="0.25"-->
+                            <!--                                   id="r4Ejmali" >-->
                         </td>
                     </tr>
                     <tr>
@@ -94,7 +95,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger"
-                        aria-hidden="true" id="printButton"
+                        aria-hidden="true" id="printEjmaliButton"
                         data-bs-dismiss="modal">چاپ کارنامه
                 </button>
             </div>
@@ -102,13 +103,13 @@
     </div>
 </div>
 <script>
-    document.getElementById('printButton').addEventListener('click', function () {
+    document.getElementById('printEjmaliButton').addEventListener('click', function () {
         var printWindow = window.open('', '_blank');
         printWindow.document.write("<html dir='rtl'><head><title>Print</title>");
         printWindow.document.write("<link rel='stylesheet' href='dist/css/custom-style.css'>");
         printWindow.document.write('</head><body>');
         printWindow.document.write(document.getElementById('ejmaliModal').innerHTML);
-        printWindow.document.getElementById('printButton').style.display='none';
+        printWindow.document.getElementById('printEjmaliButton').style.display = 'none';
         printWindow.document.write('</body></html>');
         printWindow.document.close();
         printWindow.print();
@@ -121,19 +122,17 @@
         <div class="modal-content" style="width: 800px">
             <div class="pt-4 pr-3">
                 <h5 id="titleTafsili"></h5>
-                <hr/>
                 <h5 id="raterTafsili"></h5>
-                <hr/>
                 <h5 id="rateSubjectTafsili"></h5>
             </div>
             <div class="modal-body">
                 <table class="table table-bordered table-striped" id="myTable">
                     <tbody>
                     <tr>
-                        <th style="width: 50px;">ردیف</th>
-                        <th style="text-align: center">نام شاخص</th>
+                        <th style="width: 1%;">ردیف</th>
+                        <th style="text-align: center;width: 40%">نام شاخص</th>
                         <th style="text-align: center;width: 10%">بازه امتیاز</th>
-                        <th style="width: 15%;text-align: center">امتیاز</th>
+                        <th style="width: 10%;text-align: center">امتیاز</th>
                     </tr>
                     <?php
                     $query = mysqli_query($connection_variables, "select * from mag_festival_tafsili_options where special_type=0");
@@ -144,7 +143,9 @@
                                 <?php echo $Tafsili_Form['id']; ?>
                             </td>
                             <td>
-                                <?php echo $Tafsili_Form['subject']; ?>
+                                <p style="font-size: 14px">
+                                    <?php echo $Tafsili_Form['subject']; ?>
+                                </p>
                             </td>
                             <td style="text-align: center;vertical-align: middle">
                                 <label>
@@ -155,11 +156,15 @@
                                 </label>
                             </td>
                             <td style="width: 150px;">
-                                <input class="form-control" name="r<?php echo $Tafsili_Form['id']; ?>"
-                                       style="width: 100%" step="0.25"
-                                       disabled
-                                       id="r<?php echo $Tafsili_Form['id']; ?>Tafsili"
-                                       value="0">
+                                <!--                                <input class="form-control" name="r-->
+                                <?php //echo $Tafsili_Form['id'];
+                                ?><!--"-->
+                                <!--                                       style="width: 100%" step="0.25"-->
+                                <!--                                       disabled-->
+                                <!--                                       id="r--><?php //echo $Tafsili_Form['id'];
+                                ?><!--Tafsili"-->
+                                <!--                                       value="0">-->
+                                <label style="font-size: 13px" id="r<?php echo $Tafsili_Form['id']; ?>Tafsili"></label>
                             </td>
                         </tr>
                         <tr>
@@ -167,18 +172,27 @@
                                 توضیحات
                             </th>
                             <td colspan="3" style="width: 150px;">
-                                <textarea title="چکیده" class="form-control" rows="3"
-                                          disabled
-                                          placeholder="توضیحات خود را در مورد شاخص <?php echo $Tafsili_Form['subject']; ?> وارد کنید"
-                                          id="description_<?php echo $Tafsili_Form['id']; ?>Tafsili"
-                                          name="description_<?php echo $Tafsili_Form['id']; ?>"></textarea>
+                                <!--                                <textarea title="چکیده" class="form-control" rows="3"-->
+                                <!--                                          disabled-->
+                                <!--                                          placeholder="توضیحات خود را در مورد شاخص -->
+                                <?php //echo $Tafsili_Form['subject'];
+                                ?><!-- وارد کنید"-->
+                                <!--                                          id="description_-->
+                                <?php //echo $Tafsili_Form['id'];
+                                ?><!--Tafsili"-->
+                                <!--                                          name="description_-->
+                                <?php //echo $Tafsili_Form['id'];
+                                ?><!--"></textarea>-->
+                                <p style="font-size: 13px" id="description_<?php echo $Tafsili_Form['id']; ?>Tafsili">
+                                    ندارد</p>
+
                             </td>
                         </tr>
                     <?php
                     endforeach;
                     ?>
                     <tr>
-                        <th colspan="4" style="text-align: center">
+                        <th colspan="4" style="text-align: center; font-weight: normal; font-size: 12px">
                             امتیاز ویژه: امتیاز این شاخص جزء 100 امتیاز فرم نیست؛ ولی امتیازی که در این شاخص کسب می شود،
                             به جمع امتیازات افزوده خواهد شد.
                         </th>
@@ -192,7 +206,9 @@
                                 <?php echo $Tafsili_Form['id']; ?>
                             </td>
                             <td>
-                                <?php echo $Tafsili_Form['subject']; ?>
+                                <p style="font-size: 14px">
+                                    <?php echo $Tafsili_Form['subject']; ?>
+                                </p>
                             </td>
                             <td style="text-align: center;vertical-align: middle">
                                 <label>
@@ -203,21 +219,33 @@
                                 </label>
                             </td>
                             <td style="width: 150px;">
-                                <input type="number" class="form-control" name="r<?php echo $Tafsili_Form['id']; ?>"
-                                       style="width: 100%" step="0.25"
-                                       id="r<?php echo $Tafsili_Form['id']; ?>Tafsili"
-                                       disabled>
+                                <!--                                <input type="number" class="form-control" name="r-->
+                                <?php //echo $Tafsili_Form['id'];
+                                ?><!--"-->
+                                <!--                                       style="width: 100%" step="0.25"-->
+                                <!--                                       id="r--><?php //echo $Tafsili_Form['id'];
+                                ?><!--Tafsili"-->
+                                <!--                                       disabled>-->
+                                <label style="font-size: 13px" id="r<?php echo $Tafsili_Form['id']; ?>Tafsili"></label>
                             </td>
                         </tr>
                         <tr>
                             <th>
                                 توضیحات
                             </th>
-                            <td colspan="3" style="width: 150px;">
-                                <textarea title="چکیده" class="form-control" rows="3" disabled
-                                          placeholder="توضیحات خود را در مورد شاخص <?php echo $Tafsili_Form['subject']; ?> وارد کنید"
-                                          id="description_<?php echo $Tafsili_Form['id']; ?>Tafsili"
-                                          name="description_<?php echo $Tafsili_Form['id']; ?>"></textarea>
+                            <td colspan="3" style="width: 30%;">
+                                <!--                                <textarea title="چکیده" class="form-control" rows="3" disabled-->
+                                <!--                                          placeholder="توضیحات خود را در مورد شاخص -->
+                                <?php //echo $Tafsili_Form['subject'];
+                                ?><!-- وارد کنید"-->
+                                <!--                                          id="description_-->
+                                <?php //echo $Tafsili_Form['id'];
+                                ?><!--Tafsili"-->
+                                <!--                                          name="description_-->
+                                <?php //echo $Tafsili_Form['id'];
+                                ?><!--"></textarea>-->
+                                <p style="font-size: 13px; " id="description_<?php echo $Tafsili_Form['id']; ?>Tafsili">
+                                    ندارد</p>
                             </td>
                         </tr>
                     <?php
@@ -225,31 +253,46 @@
                     ?>
                     <tr>
                         <th colspan="3" style="text-align: left">جمع امتیاز</th>
-                        <td style="text-align: center"><label id="sumTafsili">0</label></td>
+                        <td style="text-align: right"><label id="sumTafsili">0</label></td>
                     </tr>
                     <tr>
                         <th>
                             اظهار نظر کلی
                         </th>
                         <td colspan="3" style="width: 80%;">
-                            <textarea title="چکیده" class="form-control" rows="3" disabled
-                                      placeholder="به نظر شما این مقاله شرایط لازم را برای معرفی «مقاله برتر علمی پژوهشی حوزه» دارد؟ (با توضیح)"
-                                      id="general_commentTafsili" name="general_comment"></textarea>
+                            <!--                            <textarea title="چکیده" class="form-control" rows="3" disabled-->
+                            <!--                                      placeholder="به نظر شما این مقاله شرایط لازم را برای معرفی «مقاله برتر علمی پژوهشی حوزه» دارد؟ (با توضیح)"-->
+                            <!--                                      id="general_commentTafsili" name="general_comment"></textarea>-->
+                            <div style="width: 90%;">
+                                <p style="font-size: 13px" id="general_commentTafsili"></p>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-            <!--            <div class="modal-footer">-->
-            <!--                <button type="button" class="btn btn-secondary"-->
-            <!--                        aria-hidden="true" id="closeModal"-->
-            <!--                        data-bs-dismiss="modal">بستن-->
-            <!--                </button>-->
-            <!--            </div>-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger"
+                        aria-hidden="true" id="printTafsiliButton"
+                        data-bs-dismiss="modal">چاپ کارنامه
+                </button>
+            </div>
         </div>
     </div>
 </div>
-
+<script>
+    document.getElementById('printTafsiliButton').addEventListener('click', function () {
+        var printWindow = window.open('', '_blank');
+        printWindow.document.write("<html dir='rtl'><head><title>Print</title>");
+        printWindow.document.write("<link rel='stylesheet' href='dist/css/custom-style.css'>");
+        printWindow.document.write('</head><body>');
+        printWindow.document.write(document.getElementById('tafsiliModal').innerHTML);
+        printWindow.document.getElementById('printTafsiliButton').style.display = 'none';
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    });
+</script>
 <section class="content">
     <div class="card card-success">
         <form method="post">
