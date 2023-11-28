@@ -129,7 +129,7 @@
                 <table class="table table-bordered table-striped" id="myTable">
                     <tbody>
                     <tr>
-                        <th style="width: 1%;">ردیف</th>
+                        <th style="width: 1%">ردیف</th>
                         <th style="text-align: center;width: 40%">نام شاخص</th>
                         <th style="text-align: center;width: 10%">بازه امتیاز</th>
                         <th style="width: 10%;text-align: center">امتیاز</th>
@@ -139,7 +139,7 @@
                     foreach ($query as $Tafsili_Form):
                         ?>
                         <tr>
-                            <td>
+                            <td style=" text-align: center">
                                 <?php echo $Tafsili_Form['id']; ?>
                             </td>
                             <td>
