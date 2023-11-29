@@ -163,11 +163,11 @@ if ($_SESSION['head']==3 or $_SESSION['head']==4):
                                     foreach ($query as $Subject_Items){}
                                     $query=mysqli_query($connection_variables,"select * from   mag_festival_position where id='$position_id'");
                                     foreach ($query as $Position_Items){}
-                                    echo $Subject_Items['subject'].' '.$mag_festival_scientific_committee['name'].' '.$mag_festival_scientific_committee['family'].'<br/>'.$Position_Items['subject'].'<br>'.' با کد کاربری '.$mag_festival_scientific_committee['id'];
+                                    echo $Subject_Items['subject'].' '.$mag_festival_scientific_committee['name'].' '.$mag_festival_scientific_committee['family'].'<br/>'.$Position_Items['subject'];
                                     if ($mag_festival_scientific_committee['active']==0) {
                                         echo ' (غیرفعال)' . '<hr>';}
                                     else{
-                                        echo '<hr>';
+                                        echo '<hr class="mt-0">';
                                     }?>
                             <?php endforeach; ?>
                     </td>
