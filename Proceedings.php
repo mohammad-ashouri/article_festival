@@ -124,13 +124,17 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                         <?php endforeach; ?>
                     </table>
 
-                    <div class=" pt-3" style="display: flex">
+                    <div class="flex text-center mt-2">
+                        <button class="btn btn-success" type="button" id="showingJury">نمایش اسامی هیئت داوری</button>
+                        <button class="btn btn-success" type="button" id="showingCommittee">نمایش اسامی شورای علمی</button>
+                    </div>
+                    <div class=" pt-3" style="display: none" id="jury">
                         <div id="pro1DIV">
                             <label for="pro1">هیئت داوری اول</label>
                             <select class="form-control select2" id="pro1" style="font-size: 13px">
                                 <option selected>انتخاب کنید</option>
                                 <?php
-                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 and (position=4 or position=5) order by family asc");
+                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 order by family asc");
                                 foreach ($query as $mag_festival_scientific_committee):
                                     $subjects = mysqli_query($connection_variables, "select * from person_subjects where id=" . $mag_festival_scientific_committee['subject']);
                                     foreach ($subjects as $subject) {
@@ -145,7 +149,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                             <select class="form-control select2" id="pro2" style="font-size: 13px">
                                 <option selected>انتخاب کنید</option>
                                 <?php
-                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 and (position=4 or position=5) order by family asc");
+                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 order by family asc");
                                 foreach ($query as $mag_festival_scientific_committee):
                                     $subjects = mysqli_query($connection_variables, "select * from person_subjects where id=" . $mag_festival_scientific_committee['subject']);
                                     foreach ($subjects as $subject) {
@@ -160,7 +164,7 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                             <select class="form-control select2" id="pro3" style="font-size: 13px">
                                 <option selected>انتخاب کنید</option>
                                 <?php
-                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 and (position=4 or position=5) order by family asc");
+                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 order by family asc");
                                 foreach ($query as $mag_festival_scientific_committee):
                                     $subjects = mysqli_query($connection_variables, "select * from person_subjects where id=" . $mag_festival_scientific_committee['subject']);
                                     foreach ($subjects as $subject) {
@@ -175,7 +179,131 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                             <select class="form-control select2" id="pro4" style="font-size: 13px">
                                 <option selected>انتخاب کنید</option>
                                 <?php
-                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 and (position=4 or position=5) order by family asc");
+                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 order by family asc");
+                                foreach ($query as $mag_festival_scientific_committee):
+                                    $subjects = mysqli_query($connection_variables, "select * from person_subjects where id=" . $mag_festival_scientific_committee['subject']);
+                                    foreach ($subjects as $subject) {
+                                    }
+                                    ?>
+                                    <option><?php echo $subject['subject'] . ' ' . $mag_festival_scientific_committee['name'] . ' ' . $mag_festival_scientific_committee['family']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="committee pt-3" style="display: none">
+                        <div id="com1DIV">
+                            <label for="com1">شورای علمی اول</label>
+                            <select class="form-control select2" id="com1" style="font-size: 13px">
+                                <option selected>انتخاب کنید</option>
+                                <?php
+                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 order by family asc");
+                                foreach ($query as $mag_festival_scientific_committee):
+                                    $subjects = mysqli_query($connection_variables, "select * from person_subjects where id=" . $mag_festival_scientific_committee['subject']);
+                                    foreach ($subjects as $subject) {
+                                    }
+                                    ?>
+                                    <option><?php echo $subject['subject'] . ' ' . $mag_festival_scientific_committee['name'] . ' ' . $mag_festival_scientific_committee['family']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div id="com2DIV">
+                            <label for="com2">شورای علمی دوم</label>
+                            <select class="form-control select2" id="com2" style="font-size: 13px">
+                                <option selected>انتخاب کنید</option>
+                                <?php
+                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 order by family asc");
+                                foreach ($query as $mag_festival_scientific_committee):
+                                    $subjects = mysqli_query($connection_variables, "select * from person_subjects where id=" . $mag_festival_scientific_committee['subject']);
+                                    foreach ($subjects as $subject) {
+                                    }
+                                    ?>
+                                    <option><?php echo $subject['subject'] . ' ' . $mag_festival_scientific_committee['name'] . ' ' . $mag_festival_scientific_committee['family']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div id="com3DIV">
+                            <label for="com3">شورای علمی سوم</label>
+                            <select class="form-control select2" id="com3" style="font-size: 13px">
+                                <option selected>انتخاب کنید</option>
+                                <?php
+                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 order by family asc");
+                                foreach ($query as $mag_festival_scientific_committee):
+                                    $subjects = mysqli_query($connection_variables, "select * from person_subjects where id=" . $mag_festival_scientific_committee['subject']);
+                                    foreach ($subjects as $subject) {
+                                    }
+                                    ?>
+                                    <option><?php echo $subject['subject'] . ' ' . $mag_festival_scientific_committee['name'] . ' ' . $mag_festival_scientific_committee['family']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div id="com4DIV">
+                            <label for="com4">شورای علمی چهارم</label>
+                            <select class="form-control select2" id="com4" style="font-size: 13px">
+                                <option selected>انتخاب کنید</option>
+                                <?php
+                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 order by family asc");
+                                foreach ($query as $mag_festival_scientific_committee):
+                                    $subjects = mysqli_query($connection_variables, "select * from person_subjects where id=" . $mag_festival_scientific_committee['subject']);
+                                    foreach ($subjects as $subject) {
+                                    }
+                                    ?>
+                                    <option><?php echo $subject['subject'] . ' ' . $mag_festival_scientific_committee['name'] . ' ' . $mag_festival_scientific_committee['family']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="committee pt-3" style="display: none">
+                        <div id="com5DIV">
+                            <label for="com5">شورای علمی پنجم</label>
+                            <select class="form-control select2" id="com5" style="font-size: 13px">
+                                <option selected>انتخاب کنید</option>
+                                <?php
+                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 order by family asc");
+                                foreach ($query as $mag_festival_scientific_committee):
+                                    $subjects = mysqli_query($connection_variables, "select * from person_subjects where id=" . $mag_festival_scientific_committee['subject']);
+                                    foreach ($subjects as $subject) {
+                                    }
+                                    ?>
+                                    <option><?php echo $subject['subject'] . ' ' . $mag_festival_scientific_committee['name'] . ' ' . $mag_festival_scientific_committee['family']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div id="com6DIV">
+                            <label for="com6">شورای علمی ششم</label>
+                            <select class="form-control select2" id="com6" style="font-size: 13px">
+                                <option selected>انتخاب کنید</option>
+                                <?php
+                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 order by family asc");
+                                foreach ($query as $mag_festival_scientific_committee):
+                                    $subjects = mysqli_query($connection_variables, "select * from person_subjects where id=" . $mag_festival_scientific_committee['subject']);
+                                    foreach ($subjects as $subject) {
+                                    }
+                                    ?>
+                                    <option><?php echo $subject['subject'] . ' ' . $mag_festival_scientific_committee['name'] . ' ' . $mag_festival_scientific_committee['family']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div id="com7DIV">
+                            <label for="com7">شورای علمی هفتم</label>
+                            <select class="form-control select2" id="com7" style="font-size: 13px">
+                                <option selected>انتخاب کنید</option>
+                                <?php
+                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 order by family asc");
+                                foreach ($query as $mag_festival_scientific_committee):
+                                    $subjects = mysqli_query($connection_variables, "select * from person_subjects where id=" . $mag_festival_scientific_committee['subject']);
+                                    foreach ($subjects as $subject) {
+                                    }
+                                    ?>
+                                    <option><?php echo $subject['subject'] . ' ' . $mag_festival_scientific_committee['name'] . ' ' . $mag_festival_scientific_committee['family']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div id="com8DIV">
+                            <label for="com8">شورای علمی هشتم</label>
+                            <select class="form-control select2" id="com8" style="font-size: 13px">
+                                <option selected>انتخاب کنید</option>
+                                <?php
+                                $query = mysqli_query($connection_variables, "select * from mag_festival_scientific_committee where active=1 order by family asc");
                                 foreach ($query as $mag_festival_scientific_committee):
                                     $subjects = mysqli_query($connection_variables, "select * from person_subjects where id=" . $mag_festival_scientific_committee['subject']);
                                     foreach ($subjects as $subject) {
@@ -191,6 +319,12 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                         <label style="width: 23%;text-align: center" id="forPro2"></label>
                         <label style="width: 23%;text-align: center" id="forPro3"></label>
                         <label style="width: 23%;text-align: center" id="forPro4"></label>
+                    </div>
+                    <div class="mt-5">
+                        <label style="width: 23%;text-align: center" id="forPro5"></label>
+                        <label style="width: 23%;text-align: center" id="forPro6"></label>
+                        <label style="width: 23%;text-align: center" id="forPro7"></label>
+                        <label style="width: 23%;text-align: center" id="forPro8"></label>
                     </div>
                 </div>
                 <!-- /.card-body -->

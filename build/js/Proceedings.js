@@ -12,19 +12,32 @@ document.getElementById("Proceedings_Search").onsubmit = function Search_Validat
     }
 }
 
-document.getElementById("pro1").onchange = function () {
-    forPro1.textContent = this.value;
-    pro1DIV.style.display = "none";
+document.getElementById("showingJury").onclick = function () {
+    showingJury.style.display = "none";
+    showingCommittee.style.display = "none";
+    jury.style.display='flex';
 }
-document.getElementById("pro2").onchange = function () {
-    forPro2.textContent = this.value;
-    pro2DIV.style.display = "none";
+
+document.getElementById("showingCommittee").onclick = function () {
+    showingJury.style.display = "none";
+    showingCommittee.style.display = "none";
+    var elements = document.getElementsByClassName('committee');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display='flex';
+    }
+
 }
-document.getElementById("pro3").onchange = function () {
-    forPro3.textContent = this.value;
-    pro3DIV.style.display = "none";
+
+for (let i = 1; i <= 4; i++) {
+    document.getElementById(`pro${i}`).onchange = function () {
+        document.getElementById(`forPro${i}`).textContent = this.value;
+        document.getElementById(`pro${i}DIV`).style.display = "none";
+    }
 }
-document.getElementById("pro4").onchange = function () {
-    forPro4.textContent = this.value;
-    pro4DIV.style.display = "none";
+
+for (let i = 1; i <= 8; i++) {
+    document.getElementById(`com${i}`).onchange = function () {
+        document.getElementById(`forPro${i}`).textContent = this.value;
+        document.getElementById(`com${i}DIV`).style.display = "none";
+    };
 }
