@@ -38,6 +38,7 @@
                             <th>گروه علمی اول</th>
                             <th>گروه علمی دوم</th>
                             <th>نشریه</th>
+                            <th>تعداد صفحه</th>
                             <th>سال انتشار</th>
                             <th>دوره انتشار (سال)</th>
                             <th>نوبت انتشار در سال</th>
@@ -50,11 +51,11 @@
                             $query = mysqli_query($connection_mag, "select * from mag_articles where id='$article_id'");
                             foreach ($query as $articleInfo) {
                             }
-                            $mag_version_id=$articleInfo['mag_version_id'];
+                            $mag_version_id = $articleInfo['mag_version_id'];
                             $query = mysqli_query($connection_mag, "select * from mag_versions where id='$mag_version_id'");
                             foreach ($query as $versionInfo) {
                             }
-                            $mag_info_id=$versionInfo['mag_info_id'];
+                            $mag_info_id = $versionInfo['mag_info_id'];
                             $query = mysqli_query($connection_mag, "select * from mag_info where id='$mag_info_id'");
                             foreach ($query as $magInfo) {
                             }
@@ -68,23 +69,26 @@
                                 </td>
                                 <td>
                                     <?php
-                                    $sg1=$articleInfo['scientific_group_1'];
-                                    $query=mysqli_query($connection_maghalat,"select * from scientific_group where id='$sg1'");
-                                    foreach ($query as $sg1Info){}
+                                    $sg1 = $articleInfo['scientific_group_1'];
+                                    $query = mysqli_query($connection_maghalat, "select * from scientific_group where id='$sg1'");
+                                    foreach ($query as $sg1Info) {
+                                    }
                                     echo $sg1Info['name'];
-                                    $sg1Info['name']=null;
+                                    $sg1Info['name'] = null;
                                     ?>
                                 </td>
                                 <td>
                                     <?php
-                                    $sg2=$articleInfo['scientific_group_2'];
-                                    $query=mysqli_query($connection_maghalat,"select * from scientific_group where id='$sg2'");
-                                    foreach ($query as $sg2Info){}
+                                    $sg2 = $articleInfo['scientific_group_2'];
+                                    $query = mysqli_query($connection_maghalat, "select * from scientific_group where id='$sg2'");
+                                    foreach ($query as $sg2Info) {
+                                    }
                                     echo @$sg2Info['name'];
-                                    $sg2Info['name']=null;
+                                    $sg2Info['name'] = null;
                                     ?>
                                 </td>
                                 <td><?php echo $magInfo['name']; ?></td>
+                                <td><?php echo $articleInfo['number_of_page_in_mag_to'] - $articleInfo['number_of_page_in_mag_from']; ?></td>
                                 <td><?php echo $versionInfo['publication_year']; ?></td>
                                 <td><?php echo $versionInfo['publication_period_year']; ?></td>
                                 <td><?php echo $versionInfo['publication_period_number']; ?></td>
