@@ -44,16 +44,16 @@ if (isset($_POST) & !empty($_POST)) {
             if (empty($rows)) {
                 $operation = "NotFoundUser - Entered User=$user";
                 logsend($operation, $urlofthispage, $connection_maghalat);
-                header("location:index.php?NotFoundUser-UserWrong");
+                header("location:index?NotFoundUser-UserWrong");
             } elseif (!password_verify($pass, $rows['password'])) {
                 $operation = "WrongPassword - Entered User=$user";
                 logsend($operation, $urlofthispage, $connection_maghalat);
-                header("location:index.php?WrongPassword-UserWrong");
+                header("location:index?WrongPassword-UserWrong");
             } else {
                 if ($rows['approved'] == 0) {
                     $operation = "NotApproved - Entered User=$user";
                     logsend($operation, $urlofthispage, $connection_maghalat);
-                    header("location:index.php?NotApprovedUser");
+                    header("location:index?NotApprovedUser");
                 } else {
                     if ($user == $rows['username']) {
                         $_SESSION['username'] = $rows['username'];
@@ -66,27 +66,27 @@ if (isset($_POST) & !empty($_POST)) {
                             $_SESSION['group'] = $rows['scientific_group'];
                             $operation = "RaterLoginSuccess";
                             logsend($operation, $urlofthispage, $connection_maghalat);
-                            header("location:panel.php");
+                            header("location:panel");
                         } elseif ($rows['type'] == 2) {
                             $operation = "AdminLoginSuccess";
                             logsend($operation, $urlofthispage, $connection_maghalat);
-                            header("location:panel.php");
+                            header("location:panel");
                         } elseif ($rows['type'] == 3) {
                             $operation = "HeaderLoginSuccess";
                             logsend($operation, $urlofthispage, $connection_maghalat);
-                            header("location:panel.php");
+                            header("location:panel");
                         } elseif ($rows['type'] == 4) {
                             $operation = "SuperAdminLoginSuccess";
                             logsend($operation, $urlofthispage, $connection_maghalat);
-                            header("location:panel.php");
+                            header("location:panel");
                         } elseif ($rows['type'] == 5) {
                             $operation = "JournalAdminLoginSuccess";
                             logsend($operation, $urlofthispage, $connection_maghalat);
-                            header("location:panel.php");
+                            header("location:panel");
                         } elseif ($rows['type'] == 6) {
                             $operation = "SorterLoginSuccess";
                             logsend($operation, $urlofthispage, $connection_maghalat);
-                            header("location:panel.php");
+                            header("location:panel");
                         } else {
                             header("location:index?error");
                         }
@@ -98,7 +98,7 @@ if (isset($_POST) & !empty($_POST)) {
         $captcha = $_POST['captcha'];
         $operation = "InvalidCaptcha(CaptchaEntered=$captcha)";
         logsend($operation, $urlofthispage, $connection_maghalat);
-        header("location:index.php?invalidcaptcha");
+        header("location:index?invalidcaptcha");
     }
 } else {
     header("location:index?error");

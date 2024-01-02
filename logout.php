@@ -13,4 +13,4 @@ unset($_SESSION["islogin"]);
 unset($_SESSION["username"]);
 unset($_SESSION['head']);
 
-header("Location: index.php");
+header("Location: /");
