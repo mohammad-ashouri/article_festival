@@ -86,12 +86,13 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                             <th>کد اثر</th>
                             <th>عنوان اثر</th>
                             <th>پدیدآورنده</th>
-                            <th>امتیازهای خاص</th>
+                            <th>کد محور ویژه</th>
+                            <th>امتیاز ویژه</th>
                             <th>امتیاز نهایی</th>
+                            <th>نوع برگزیدگی</th>
                             <th>نظر هیئت داوری</th>
                             <th>نوع کاندیداتوری</th>
                             <th>نظر شورای علمی</th>
-                            <th>نوع برگزیدگی</th>
                         </tr>
                         <?php
                         $a = 1;
@@ -109,17 +110,18 @@ if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
                                     ?>
                                 </td>
                                 <td></td>
+                                <td></td>
                                 <td><?php echo $Articles['grade']; ?></td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
                                 <td><?php echo $Articles['chosen_subject']; ?></td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
