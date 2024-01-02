@@ -408,12 +408,20 @@
                             $query = mysqli_query($connection_mag, "select * from mag_articles where id='$article_id'");
                             foreach ($query as $articleInfo) {
                             }
+                            $mag_version_id = $articleInfo['mag_version_id'];
+                            $query = mysqli_query($connection_mag, "select * from mag_versions where id='$mag_version_id'");
+                            foreach ($query as $versionInfo) {
+                            }
+                            $mag_info_id = $versionInfo['mag_info_id'];
+                            $query = mysqli_query($connection_mag, "select * from mag_info where id='$mag_info_id'");
+                            foreach ($query as $magInfo) {
+                            }
                             ?>
                             <tr>
                                 <td><?php echo $a++; ?></td>
                                 <td><?php
                                     $author = explode('|', $articleInfo['author']);
-                                    echo $articleInfo['subject'] . '<br>' . 'نوشته ' . $author[0];; ?></td>
+                                    echo "$articleInfo[subject] <br> نویسنده:  $author[0] <br> نشریه: $magInfo[publication_period] $magInfo[name]"; ?></td>
                                 <td>
                                     <?php
                                     $sg1 = $articleInfo['scientific_group_1'];
