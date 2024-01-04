@@ -382,7 +382,7 @@
                         <thead>
                             <tr style="text-align: center">
                                 <th>ردیف</th>
-                                <th>نام اثر و نویسنده</th>
+                                <th>مشخصات اثر</th>
                                 <th>گروه علمی اول</th>
                                 <th>گروه علمی دوم</th>
                                 <th>وضعیت</th>
