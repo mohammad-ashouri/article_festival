@@ -24,6 +24,8 @@
             <?php
             if (isset($_POST['festival']) and !empty($_POST['festival_id'])) :
                 $festival = $_POST['festival_id'];
+                $query = mysqli_query($connection_maghalat, "select * from fees where festival_id=$festival");
+                $fee = mysqli_fetch_array($query);
                 $query = mysqli_query($connection_maghalat, "select * from article where festival_id='$festival' order by rate_status desc,grade desc ,avg_ejmali_g1 desc ,avg_ejmali_g2 desc");
                 ?>
                 <div class="card-body">
@@ -53,10 +55,12 @@
                                 <th>مشخصات اثر</th>
                                 <th>تعداد صفحه</th>
                                 <th>وضعیت ارزیابی</th>
+                                <th>مبلغ</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
+                            $totalPagesNumberEjmaliForEndOfPage = $totalPagesNumberTafsiliForEndOfPage = $totalPagesNumberForEndOfPage = null;
                             foreach ($raters as $rater):
                                 $rates = mysqli_query($connection_maghalat, "select * from ssmp_jashnvarehmaghalat.article jma inner join ssmp_magbase.mag_articles ssmpa on jma.article_id=ssmpa.id where
                                                                                                                             ssmpa.festival_id=$festival and
@@ -86,9 +90,9 @@
                                         ?>
                                     </td>
                                     <?php
-                                    $totalPagesNumberEjmali = null;
-                                    $totalPagesNumberTafsili = null;
-                                    $totalPagesNumber = null;
+                                    $totalPagesNumberEjmali = $totalPagesNumberTafsili = $totalPagesNumber = null;
+                                    $totalFee = $totalPrice = null;
+                                    $totalFeeEjmali = $totalFeeTafsili = $totalRaterPrice = null;
                                     foreach ($rates as $rate):
                                         $totalPagesNumber = abs($rate['number_of_page_in_mag_to'] - $rate['number_of_page_in_mag_from']) + $totalPagesNumber;
                                         ?>
@@ -124,19 +128,58 @@
                                                 $totalPagesNumberTafsili += abs($rate['number_of_page_in_mag_to'] - $rate['number_of_page_in_mag_from']);
                                             }
                                             ?></td>
+                                        <td class="text-center">
+                                            <?php
+                                            if ($rate['ejmali1_ratercode_g1'] == $rater['id'] or $rate['ejmali2_ratercode_g1'] == $rater['id'] or $rate['ejmali3_ratercode_g1'] == $rater['id'] or
+                                                $rate['ejmali1_ratercode_g2'] == $rater['id'] or $rate['ejmali2_ratercode_g2'] == $rater['id'] or $rate['ejmali3_ratercode_g2'] == $rater['id']) {
+                                                $priceType = 'ejmali';
+                                                $totalFee = abs($rate['number_of_page_in_mag_to'] - $rate['number_of_page_in_mag_from']) * $fee[$priceType];
+                                                echo number_format($totalFee);
+                                            } elseif ($rate['tafsili1_ratercode'] == $rater['id'] or $rate['tafsili2_ratercode'] == $rater['id'] or $rate['tafsili3_ratercode'] == $rater['id']) {
+                                                $priceType = 'tafsili';
+                                                 $totalFee = abs($rate['number_of_page_in_mag_to'] - $rate['number_of_page_in_mag_from']) * $fee[$priceType];
+                                                echo number_format($totalFee);
+                                            }
+                                            ?>
+                                        </td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php
+                                    endforeach; ?>
                                     <tr class="bg-dark">
                                         <td class="text-left">مجموع صفحات ارزیابی شده اجمالی</td>
-                                        <td class="text-center"><?php echo $totalPagesNumberEjmali; ?></td>
+                                        <td class="text-center"><?php
+                                            echo $totalPagesNumberEjmali;
+                                            $totalPagesNumberEjmaliForEndOfPage += $totalPagesNumberEjmali;
+                                            ?></td>
+                                        <td class="text-left">مبلغ اجمالی</td>
+                                        <td class="text-center">
+                                            <?php  $totalFeeEjmali = $totalPagesNumberEjmali * $fee[$priceType];
+                                                echo number_format($totalFeeEjmali);
+                                            ?></td>
                                     </tr>
                                     <tr class="bg-dark">
                                         <td class="text-left">مجموع صفحات ارزیابی شده تفصیلی</td>
-                                        <td class="text-center"><?php echo $totalPagesNumberTafsili; ?></td>
+                                        <td class="text-center"><?php echo $totalPagesNumberTafsili;
+                                            $totalPagesNumberTafsiliForEndOfPage += $totalPagesNumberTafsili;
+                                            ?></td>
+                                        <td class="text-left">مبلغ تفصیلی</td>
+                                        <td class="text-center">
+                                            <?php $totalFeeTafsili = $totalPagesNumberTafsili * $fee[$priceType];
+                                            echo number_format($totalFeeTafsili);
+                                            ?></td>
                                     </tr>
                                     <tr class="bg-dark">
                                         <td class="text-left">مجموع صفحات ارزیابی شده (اجمالی و تفصیلی)</td>
-                                        <td class="text-center"><?php echo $totalPagesNumber; ?></td>
+                                        <td class="text-center"><?php echo $totalPagesNumber;
+                                            $totalPagesNumberForEndOfPage += $totalPagesNumber;
+                                            ?></td>
+                                        <td class="text-left">مبلغ کل</td>
+                                        <td class="text-center"><?php
+                                            $totalRaterPrice = $totalFeeEjmali + $totalFeeTafsili;
+                                            echo number_format($totalRaterPrice);
+                                            $totalPrice += $totalRaterPrice;
+                                            ?>
+                                        </td>
                                     </tr>
                                 <?php else: ?>
                                     <tr>
@@ -150,7 +193,28 @@
                             ?>
                             </tbody>
                         </table>
-
+                        <table class="table table-bordered table-striped display mt-3">
+                            <tr class="text-center">
+                                <td>تعداد صفحات کل اجمالی</td>
+                                <td>تعداد صفحات کل تفصیلی</td>
+                                <td>تعداد صفحات کل اجمالی + تفصیلی</td>
+                            </tr>
+                            <tr class="text-center">
+                                <td><?php echo $totalPagesNumberEjmaliForEndOfPage; ?></td>
+                                <td><?php echo $totalPagesNumberTafsiliForEndOfPage; ?></td>
+                                <td><?php echo $totalPagesNumberForEndOfPage; ?></td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>جمع کل مبلغ حق الزحمه اجمالی</td>
+                                <td>تعداد مبلغ حق الزحمه تفصیلی</td>
+                                <td>تعداد مبالغ حق الزحمه اجمالی + تفصیلی</td>
+                            </tr>
+                            <tr class="text-center">
+                                <td><?php echo number_format($totalPagesNumberEjmaliForEndOfPage * $fee['ejmali']) . ' ریال'; ?></td>
+                                <td><?php echo number_format($totalPagesNumberTafsiliForEndOfPage * $fee['tafsili']) . ' ریال'; ?></td>
+                                <td><?php echo number_format(($totalPagesNumberEjmaliForEndOfPage * $fee['ejmali']) + ($totalPagesNumberTafsiliForEndOfPage * $fee['tafsili'])) . ' ریال'; ?></td>
+                            </tr>
+                        </table>
                     <?php } ?>
                 </div>
             <?php endif; ?>
