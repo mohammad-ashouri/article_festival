@@ -36,9 +36,14 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
         }
         $sum = $_POST['r' . $i] + $sum;
     }
+    $query = mysqli_query($connection_maghalat, "select * from article where id='$article_code'");
+    foreach ($query as $ArticleInfo) {
+
+    }
+    $ArticleID = $ArticleInfo['article_id'];
     $query = mysqli_query($connection_maghalat, "insert into tafsili
     (article_id, r1,r1_comment, r2,r2_comment, r3,r3_comment, r4,r4_comment,r5,r5_comment,r6,r6_comment,r7,r7_comment,r8,r8_comment,r9_1,r9_1_comment,r9_2,r9_2_comment,general_comment, sum,type, rater, rate_date) values
-    ('$article_id','$r1','$comment_r1','$r2','$comment_r2','$r3','$comment_r3','$r4','$comment_r4','$r5','$comment_r5','$r6','$comment_r6','$r7','$comment_r7','$r8','$comment_r8','$r9','$comment_r9','$r10','$comment_r10','$general_comment','$sum','$type','$user','$datewithtime')");
+    ('$ArticleID','$r1','$comment_r1','$r2','$comment_r2','$r3','$comment_r3','$r4','$comment_r4','$r5','$comment_r5','$r6','$comment_r6','$r7','$comment_r7','$r8','$comment_r8','$r9','$comment_r9','$r10','$comment_r10','$general_comment','$sum','$type','$user','$datewithtime')");
 
     if ($query) {
         $articleInfo = mysqli_query($connection_maghalat, "select * from article where id='$article_id'");

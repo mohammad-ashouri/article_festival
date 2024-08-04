@@ -14,12 +14,13 @@ if (isset($_POST['article_id']) and isset($_POST['r1']) and isset($_POST['r2']) 
     foreach ($query as $ArticleInfo) {
 
     }
+
     $ArticleID = $ArticleInfo['article_id'];
     $query = mysqli_query($connection_mag, "select * from mag_articles where id='$ArticleID'");
     foreach ($query as $Mag_Article_Info) {
 
     }
-    mysqli_query($connection_maghalat, "insert into ejmali (article_code, r1, r2, r3, r4, sum,level, rater, rate_date) values ('$article_code','$r1','$r2','$r3','$r4','$sum','$level','$user','$datewithtime')");
+    mysqli_query($connection_maghalat, "insert into ejmali (article_code, r1, r2, r3, r4, sum,level, rater, rate_date) values ('$ArticleID','$r1','$r2','$r3','$r4','$sum','$level','$user','$datewithtime')");
     switch ($level) {
         case 'ej1g1':
             if ($ArticleInfo['ejmali2_g1_done'] != 0 and $ArticleInfo['ejmali3_g1_done'] != null) {
