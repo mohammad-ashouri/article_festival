@@ -81,7 +81,7 @@
                         </td>
                         <td>
                             <form action="Rate.php" method="post">
-                                <input type="hidden" name="id" value="<?php echo $article['id']; ?>">
+                                <input type="hidden" name="id" value="<?php echo $Ejmali_list['id']; ?>">
                                 <input type="hidden" name="rate_status"
                                        value="<?php
                                        if ($Ejmali_list['ejmali1_ratercode_g1'] == $Me and $Ejmali_list['ejmali1_g1_done'] == 0) {
@@ -152,7 +152,7 @@
                         </td>
                         <td>
                             <form action="Rate.php" method="post">
-                                <input type="hidden" name="id" value="<?php echo $article['id']; ?>">
+                                <input type="hidden" name="id" value="<?php echo $Tafsili_list['id']; ?>">
                                 <input type="hidden" name="rate_status"
                                        value="<?php
                                        if ($Tafsili_list['tafsili1_ratercode'] == $Me) {
