@@ -439,7 +439,7 @@
                                         if ($articles['ejmali1_g1_done'] == 1) :
                                         ?>
                                             <div class="flex-1 mb-1">
-                                                <button type="button" class="btn btn-primary d-inline-block getEjmaliPoint" data-toggle="modal" data-post-id="<?php echo $articles['id'] ?>" data-rate-level="ej1g1" data-rate-type="ejmali" data-target="#ejmaliModal">
+                                                <button type="button" class="btn btn-primary d-inline-block getEjmaliPoint" data-toggle="modal" data-post-id="<?php echo $articles['article_id'] ?>" data-rate-level="ej1g1" data-rate-type="ejmali" data-target="#ejmaliModal">
                                                     اجمالی اول گروه اول
                                                 </button>
                                             </div>
@@ -448,7 +448,7 @@
                                         if ($articles['ejmali2_g1_done'] == 1) :
                                         ?>
                                             <div class="flex-1 mb-1">
-                                                <button type="button" class="btn btn-primary d-inline-block getEjmaliPoint" data-toggle="modal" data-post-id="<?php echo $articles['id'] ?>" data-rate-level="ej2g1" data-rate-type="ejmali" data-target="#ejmaliModal">
+                                                <button type="button" class="btn btn-primary d-inline-block getEjmaliPoint" data-toggle="modal" data-post-id="<?php echo $articles['article_id'] ?>" data-rate-level="ej2g1" data-rate-type="ejmali" data-target="#ejmaliModal">
                                                     اجمالی دوم گروه اول
                                                 </button>
                                             </div>
@@ -457,7 +457,7 @@
                                         if ($articles['ejmali3_g1_done'] == 1) :
                                         ?>
                                             <div class="flex-1 mb-1">
-                                                <button type="button" class="btn btn-primary d-inline-block getEjmaliPoint" data-toggle="modal" data-post-id="<?php echo $articles['id'] ?>" data-rate-level="ej3g1" data-rate-type="ejmali" data-target="#ejmaliModal">
+                                                <button type="button" class="btn btn-primary d-inline-block getEjmaliPoint" data-toggle="modal" data-post-id="<?php echo $articles['article_id'] ?>" data-rate-level="ej3g1" data-rate-type="ejmali" data-target="#ejmaliModal">
                                                     اجمالی سوم گروه اول
                                                 </button>
                                             </div>
@@ -466,7 +466,7 @@
                                         if ($articles['ejmali1_g2_done'] == 1) :
                                         ?>
                                             <div class="flex-1 mb-1">
-                                                <button type="button" class="btn btn-primary d-inline-block getEjmaliPoint" data-toggle="modal" data-post-id="<?php echo $articles['id'] ?>" data-rate-level="ej1g2" data-rate-type="ejmali" data-target="#ejmaliModal">
+                                                <button type="button" class="btn btn-primary d-inline-block getEjmaliPoint" data-toggle="modal" data-post-id="<?php echo $articles['article_id'] ?>" data-rate-level="ej1g2" data-rate-type="ejmali" data-target="#ejmaliModal">
                                                     اجمالی اول گروه دوم
                                                 </button>
                                             </div>
@@ -475,7 +475,7 @@
                                         if ($articles['ejmali2_g2_done'] == 1) :
                                         ?>
                                             <div class="flex-1 mb-1">
-                                                <button type="button" class="btn btn-primary d-inline-block getEjmaliPoint" data-toggle="modal" data-post-id="<?php echo $articles['id'] ?>" data-rate-level="ej2g2" data-rate-type="ejmali" data-target="#ejmaliModal">
+                                                <button type="button" class="btn btn-primary d-inline-block getEjmaliPoint" data-toggle="modal" data-post-id="<?php echo $articles['article_id'] ?>" data-rate-level="ej2g2" data-rate-type="ejmali" data-target="#ejmaliModal">
                                                     اجمالی دوم گروه دوم
                                                 </button>
                                             </div>
@@ -484,7 +484,7 @@
                                         if ($articles['ejmali3_g2_done'] == 1) :
                                         ?>
                                             <div class="flex-1 mb-1">
-                                                <button type="button" class="btn btn-primary d-inline-block getEjmaliPoint" data-toggle="modal" data-post-id="<?php echo $articles['id'] ?>" data-rate-level="ej3g2" data-rate-type="ejmali" data-target="#ejmaliModal">
+                                                <button type="button" class="btn btn-primary d-inline-block getEjmaliPoint" data-toggle="modal" data-post-id="<?php echo $articles['article_id'] ?>" data-rate-level="ej3g2" data-rate-type="ejmali" data-target="#ejmaliModal">
                                                     اجمالی سوم گروه دوم
                                                 </button>
                                             </div>
@@ -495,7 +495,7 @@
                                         if ($articles['tafsili1_done'] == 1) :
                                         ?>
                                             <div>
-                                                <button type="button" class="btn btn-primary d-inline-block mb-1 getTafsiliPoint" data-toggle="modal" data-post-id="<?php echo $articles['id'] ?>" data-rate-level="ta1" data-rate-type="tafsili" data-target="#tafsiliModal">
+                                                <button type="button" class="btn btn-primary d-inline-block mb-1 getTafsiliPoint" data-toggle="modal" data-post-id="<?php echo $articles['article_id'] ?>" data-rate-level="ta1" data-rate-type="tafsili" data-target="#tafsiliModal">
                                                     تفصیلی اول
                                                 </button>
                                             </div>
@@ -503,7 +503,7 @@
                                         endif;
                                         if ($articles['tafsili2_done'] == 1) : ?>
                                             <div>
-                                                <button type="button" class="btn btn-primary d-inline-block mb-1 getTafsiliPoint" data-toggle="modal" data-post-id="<?php echo $articles['id'] ?>" data-rate-level="ta2" data-rate-type="tafsili" data-target="#tafsiliModal">
+                                                <button type="button" class="btn btn-primary d-inline-block mb-1 getTafsiliPoint" data-toggle="modal" data-post-id="<?php echo $articles['article_id'] ?>" data-rate-level="ta2" data-rate-type="tafsili" data-target="#tafsiliModal">
                                                     تفصیلی دوم
                                                 </button>
                                             </div>
@@ -512,7 +512,7 @@
                                         if ($articles['tafsili3_done'] == 1) :
                                         ?>
                                             <div>
-                                                <button type="button" class="btn btn-primary d-inline-block mb-1 getTafsiliPoint" data-toggle="modal" data-post-id="<?php echo $articles['id'] ?>" data-rate-level="ta3" data-rate-type="tafsili" data-target="#tafsiliModal">
+                                                <button type="button" class="btn btn-primary d-inline-block mb-1 getTafsiliPoint" data-toggle="modal" data-post-id="<?php echo $articles['article_id'] ?>" data-rate-level="ta3" data-rate-type="tafsili" data-target="#tafsiliModal">
                                                     تفصیلی سوم
                                                 </button>
                                             </div>
