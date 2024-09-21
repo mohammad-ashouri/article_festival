@@ -41,8 +41,7 @@
                 foreach ($query as $Ejmali_list):
                     $id = $Ejmali_list['article_id'];
                     $query = mysqli_query($connection_mag, "select * from mag_articles where id='$id'");
-                    foreach ($query as $article) {
-                    }
+                    $article=mysqli_fetch_array($query);
                     ?>
                     <tr>
                         <td>
@@ -62,14 +61,12 @@
                             if (($Ejmali_list['ejmali1_ratercode_g1'] == $Me and $Ejmali_list['ejmali1_g1_done'] == 0) or ($Ejmali_list['ejmali2_ratercode_g1'] == $Me and $Ejmali_list['ejmali2_g1_done'] == 0) or ($Ejmali_list['ejmali3_ratercode_g1'] == $Me and $Ejmali_list['ejmali3_g1_done'] == 0)) {
                                 $groupID = $article['scientific_group_1'];
                                 $query = mysqli_query($connection_maghalat, "Select * from scientific_group where id='$groupID'");
-                                foreach ($query as $groupInfo) {
-                                }
+                                $groupInfo=mysqli_fetch_array($query);
                                 echo $groupInfo['name'];
                             } elseif (($Ejmali_list['ejmali1_ratercode_g2'] == $Me and $Ejmali_list['ejmali1_g2_done'] == 0) or ($Ejmali_list['ejmali2_ratercode_g2'] == $Me and $Ejmali_list['ejmali2_g2_done'] == 0) or ($Ejmali_list['ejmali3_ratercode_g2'] == $Me and $Ejmali_list['ejmali3_g2_done'] == 0)) {
                                 $groupID = $article['scientific_group_2'];
                                 $query = mysqli_query($connection_maghalat, "Select * from scientific_group where id='$groupID'");
-                                foreach ($query as $groupInfo) {
-                                }
+                                $groupInfo=mysqli_fetch_array($query);
                                 echo $groupInfo['name'];
                             }
                             ?>
@@ -111,8 +108,7 @@
                 foreach ($query as $Tafsili_list):
                     $id = $Tafsili_list['article_id'];
                     $query = mysqli_query($connection_mag, "select * from mag_articles where id='$id'");
-                    foreach ($query as $article) {
-                    }
+                    $article=mysqli_fetch_array($query);
                     ?>
                     <tr>
                         <td>
@@ -133,14 +129,12 @@
                             if (in_array($article['scientific_group_1'], $GroupArray)) {
                                 $groupID = $article['scientific_group_1'];
                                 $query = mysqli_query($connection_maghalat, "Select * from scientific_group where id='$groupID'");
-                                foreach ($query as $groupInfo) {
-                                }
+                                $groupInfo=mysqli_fetch_array($query);
                                 echo $groupInfo['name'];
                             } elseif ($_SESSION['group'] == $article['scientific_group_2']) {
                                 $groupID = $article['scientific_group_1'];
                                 $query = mysqli_query($connection_maghalat, "Select * from scientific_group where id='$groupID'");
-                                foreach ($query as $groupInfo) {
-                                }
+                                $groupInfo=mysqli_fetch_array($query);
                                 echo $groupInfo['name'];
                             }
                             ?>
@@ -152,7 +146,7 @@
                         </td>
                         <td>
                             <form action="Rate.php" method="post">
-                                <input type="hidden" name="id" value="<?php echo $Tafsili_list['id']; ?>">
+                                <input type="hidden" name="id" value="<?php echo $Tafsili_list['article_id']; ?>">
                                 <input type="hidden" name="rate_status"
                                        value="<?php
                                        if ($Tafsili_list['tafsili1_ratercode'] == $Me) {

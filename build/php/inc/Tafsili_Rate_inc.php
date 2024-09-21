@@ -36,10 +36,8 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
         }
         $sum = $_POST['r' . $i] + $sum;
     }
-    $query = mysqli_query($connection_maghalat, "select * from article where id='$article_code'");
-    foreach ($query as $ArticleInfo) {
-
-    }
+    $query = mysqli_query($connection_maghalat, "select * from article where article_id='$article_id'");
+    $ArticleInfo = mysqli_fetch_array($query);
     $ArticleID = $ArticleInfo['article_id'];
     $query = mysqli_query($connection_maghalat, "insert into tafsili
     (article_id, r1,r1_comment, r2,r2_comment, r3,r3_comment, r4,r4_comment,r5,r5_comment,r6,r6_comment,r7,r7_comment,r8,r8_comment,r9_1,r9_1_comment,r9_2,r9_2_comment,general_comment, sum,type, rater, rate_date) values
@@ -47,11 +45,9 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
 
     if ($query) {
         $articleInfo = mysqli_query($connection_maghalat, "select * from article where id='$article_id'");
-        foreach ($articleInfo as $article) {
-        }
+        $article = mysqli_fetch_array($articleInfo);
         $magArticleInfo = mysqli_query($connection_mag, "select * from mag_articles where id='$article_id'");
-        foreach ($magArticleInfo as $magArticle) {
-        }
+        $magArticle = mysqli_fetch_array($magArticleInfo);
         $authorGender = explode('|', $magArticle['author']);
         $authorGender = $authorGender[2];
         switch ($authorGender) {
@@ -67,8 +63,7 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
             case 'ta1':
                 if ($article['tafsili2_done'] == 1) {
                     $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='ta2'");
-                    foreach ($query as $ta2) {
-                    }
+                    $ta2 = mysqli_fetch_array($query);
                     $avg = ($sum + $ta2['sum']) / 2;
                     switch ($authorGender) {
                         case 'مرد':
@@ -118,8 +113,7 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
             case 'ta2':
                 if ($article['tafsili1_done'] == 1) {
                     $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='ta1'");
-                    foreach ($query as $ta1) {
-                    }
+                    $ta1 = mysqli_fetch_array($query);
                     $avg = ($sum + $ta1['sum']) / 2;
                     switch ($authorGender) {
                         case 'مرد':
@@ -168,12 +162,9 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
                 break;
             case 'ta3':
                 $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='ta1'");
-                foreach ($query as $ta1) {
-                }
+                $ta1 = mysqli_fetch_array($query);
                 $query = mysqli_query($connection_maghalat, "select sum from tafsili where article_id='$article_id' and type='ta2'");
-                foreach ($query as $ta2) {
-                }
-
+                $ta2 = mysqli_fetch_array($query);
                 if ($ta1['sum'] >= $maxPoint and $ta2['sum'] >= $maxPoint and $sum >= $maxPoint) {
                     $finalAVG = ($sum + $ta1['sum'] + $ta2['sum']) / 3;
                 } elseif ((abs($sum - $ta1['sum']) >= 12) and (abs($sum - $ta2['sum']) >= 12) and (abs($ta1['sum'] - $ta2['sum']) >= 12)) {

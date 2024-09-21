@@ -1,6 +1,6 @@
 <?php include_once __DIR__ . '/header.php';
-if ($_SESSION['head']==4 or $_SESSION['head']==3):
-?>
+if ($_SESSION['head'] == 4 or $_SESSION['head'] == 3):
+    ?>
     <!-- Main content -->
     <section class="content">
         <div class="card card-success">
@@ -23,24 +23,24 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                     <select
                             id="searchInput1" class="form-control select2"
                             style="width: 20%;display: inline-block;margin-bottom: 8px">
-                        <option value=""  selected>بدون فیلتر</option>
+                        <option value="" selected>بدون فیلتر</option>
                         <?php
                         $query = mysqli_query($connection_maghalat, "select * from scientific_group order by name asc");
                         foreach ($query as $Group) {
                             ?>
-                            <option value="<?php echo $Group['name']?>"><?php echo $Group['name'];?></option>
+                            <option value="<?php echo $Group['name'] ?>"><?php echo $Group['name']; ?></option>
                         <?php } ?>
                     </select>
                     <label>گروه علمی دوم</label>
                     <select
                             id="searchInput2" class="form-control select2"
                             style="width: 20%;display: inline-block;margin-bottom: 8px">
-                        <option value=""  selected>بدون فیلتر</option>
+                        <option value="" selected>بدون فیلتر</option>
                         <?php
                         $query = mysqli_query($connection_maghalat, "select * from scientific_group order by name asc");
                         foreach ($query as $Group) {
                             ?>
-                            <option value="<?php echo $Group['name']?>"><?php echo $Group['name'];?></option>
+                            <option value="<?php echo $Group['name'] ?>"><?php echo $Group['name']; ?></option>
                         <?php } ?>
                     </select>
                     <button class="btn btn-primary" onclick="searchTable()">فیلتر کردن</button>
@@ -82,12 +82,10 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                 <?php
                                 $magVersion = $Tafsili_list['mag_version_id'];
                                 $query = mysqli_query($connection_mag, "select * from mag_versions where id='$magVersion'");
-                                foreach ($query as $versionInfo) {
-                                }
-                                $magInfoID=$versionInfo['mag_info_id'];
+                                $versionInfo = mysqli_fetch_array($query);
+                                $magInfoID = $versionInfo['mag_info_id'];
                                 $query = mysqli_query($connection_mag, "select * from mag_info where id='$magInfoID'");
-                                foreach ($query as $magInfo) {
-                                }
+                                $magInfo = mysqli_fetch_array($query);
                                 echo $magInfo['name'];
                                 ?>
                             </td>
@@ -95,8 +93,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                 <?php
                                 $Group1 = $Tafsili_list['scientific_group_1'];
                                 $query = mysqli_query($connection_maghalat, "select * from scientific_group where id='$Group1'");
-                                foreach ($query as $Group1) {
-                                }
+                                $Group1 = mysqli_fetch_array($query);
                                 echo $Group1['name'];
                                 $Group1['name'] = null;
                                 ?>
@@ -106,8 +103,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                 $Group2 = $Tafsili_list['scientific_group_2'];
                                 if ($Group2) {
                                     $query = mysqli_query($connection_maghalat, "select * from scientific_group where id='$Group2'");
-                                    foreach ($query as $Group2) {
-                                    }
+                                    $Group2 = mysqli_fetch_array($query);
                                     echo $Group2['name'];
                                     $Group2['name'] = null;
                                 }
@@ -123,8 +119,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                 $special_type = $Tafsili_list['special_type'];
                                 if ($special_type) {
                                     $query = mysqli_query($connection_maghalat, "select * from special_type where id='$special_type'");
-                                    foreach ($query as $Special_Type_Detail) {
-                                    }
+                                    $Special_Type_Detail = mysqli_fetch_array($query);
                                     echo $Special_Type_Detail['subject'];
                                 }
                                 ?>
@@ -165,29 +160,24 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                     endif;
                                     $article_id = $Tafsili_list['id'];
                                     $query = mysqli_query($connection_maghalat, "select * from article where article_id='$article_id'");
-                                    foreach ($query as $Article_info) {
-                                    }
+                                    $Article_info = mysqli_fetch_array($query);
                                     $Article_id = $Article_info['id'];
                                     $query = mysqli_query($connection_maghalat, "select * from tafsili where article_id='$Article_id' and type='ta1'");
                                     if (mysqli_num_rows($query) > 0) {
-                                        foreach ($query as $ta1) {
-
-                                        }
+                                        $ta1 = mysqli_fetch_array($query);
                                     }
                                     $query = mysqli_query($connection_maghalat, "select * from tafsili where article_id='$Article_id' and type='ta2'");
                                     if (mysqli_num_rows($query) > 0) {
-                                        foreach ($query as $ta2) {
-
-                                        }
+                                        $ta2 = mysqli_fetch_array($query);
                                     }
                                     ?>
                                 </p>
                                 <hr>
                                 <p style="margin-bottom: -1px;margin-right: 5px;font-size: 14px">
                                     - تفصیلی اول
-                                <?php
-                                if (@$ta1) echo ' - امتیاز: ' . $ta1['sum'];
-                                ?>
+                                    <?php
+                                    if (@$ta1) echo ' - امتیاز: ' . $ta1['sum'];
+                                    ?>
                                 </p>
                                 <select onchange="SetTafsiliRater1(this.value,<?php echo $id = $Article_id; ?>)"
                                         id="rater_1" class="form-control select2"
@@ -205,8 +195,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                         <option <?php
                                         $rater1 = $raters_info['id'];
                                         $query = mysqli_query($connection_maghalat, "select * from article where id='$id'");
-                                        foreach ($query as $rater1_info) {
-                                        }
+                                        $rater1_info = mysqli_fetch_array($query);
                                         if ($raters_info['id'] == @$rater1_info['tafsili1_ratercode']) {
                                             echo 'selected';
                                         }
@@ -218,7 +207,6 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                         </option>
                                     <?php endforeach;
                                     ?>
-
                                 </select>
                                 <br/>
                                 <p style="margin-bottom: -1px;margin-right: 5px;font-size: 14px">- تفصیلی دوم
@@ -243,8 +231,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                         <option <?php
                                         $rater2 = $raters_info['id'];
                                         $query = mysqli_query($connection_maghalat, "select * from article where id='$id'");
-                                        foreach ($query as $rater2_info) {
-                                        }
+                                        $rater2_info = mysqli_fetch_array($query);
                                         if ($raters_info['id'] == @$rater2_info['tafsili2_ratercode']) {
                                             echo 'selected';
                                         }
@@ -258,15 +245,11 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                 </select>
                                 <?php
                                 $query = mysqli_query($connection_maghalat, "select * from tafsili where article_id='$article_id' and type='ta1'");
-                                foreach ($query as $ta1) {
-
-                                }
+                                $ta1 = mysqli_fetch_array($query);
                                 $query = mysqli_query($connection_maghalat, "select * from tafsili where article_id='$article_id' and type='ta2'");
-                                foreach ($query as $ta2) {
-
-                                }
+                                $ta2 = mysqli_fetch_array($query);
                                 if (!empty($ta1) and !empty($ta2)){
-//                                if (abs($ta1['sum'] - $ta2['sum']) >= 12):
+                                //                                if (abs($ta1['sum'] - $ta2['sum']) >= 12):
                                 ?>
                                 <br/>
                                 <p style="margin-bottom: -1px;margin-right: 5px;font-size: 14px">- تفصیلی سوم</p>
@@ -288,8 +271,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                                         <option <?php
                                         $rater3 = $raters_info['id'];
                                         $query = mysqli_query($connection_maghalat, "select * from article where id='$id'");
-                                        foreach ($query as $rater3_info) {
-                                        }
+                                        $rater3_info = mysqli_fetch_array($query);
                                         if ($raters_info['id'] == @$rater3_info['tafsili3_ratercode']) {
                                             echo 'selected';
                                         }
@@ -304,7 +286,7 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
                             </td>
 
                             <?php
-//                            endif;
+                            //                            endif;
                             }
                             ?>
                         </tr>
@@ -333,5 +315,5 @@ if ($_SESSION['head']==4 or $_SESSION['head']==3):
 
     <script src="build/js/Set_Tafsili_Inc.js"></script>
 <?php
-    endif;
-    include_once __DIR__ . '/footer.php'; ?>
+endif;
+include_once __DIR__ . '/footer.php'; ?>

@@ -2,13 +2,10 @@
 $Me = $_SESSION['id'];
 $id = $_POST['id'];
 $query = mysqli_query($connection_maghalat, "select * from article where id='$id'");
-foreach ($query as $item) {
-
-}
+$item = mysqli_fetch_array($query);
 $art_id = $item['article_id'];
 $query = mysqli_query($connection_mag, "select * from mag_articles where id='$art_id'");
-foreach ($query as $art_info) {
-}
+$art_info = mysqli_fetch_array($query);
 ?>
 <!-- Main content -->
 <form method="post" action="build/php/inc/Tafsili_Rate_inc.php" onsubmit="return CheckTafsiliForm(
@@ -42,8 +39,7 @@ foreach ($query as $Tafsili_Form) {
                             <?php
                             $festival_id = $art_info['festival_id'];
                             $query = mysqli_query($connection_maghalat, "select * from festival where id='$festival_id'");
-                            foreach ($query as $festival_info) {
-                            }
+                            $festival_info = mysqli_fetch_array($query);
                             echo $festival_info['name'];
                             ?>
                         </td>
@@ -58,8 +54,7 @@ foreach ($query as $Tafsili_Form) {
                             if ($item['tafsili1_ratercode'] == $Me or $item['tafsili2_ratercode'] == $Me or $item['tafsili3_ratercode'] == $Me) {
                                 $groupID = $art_info['scientific_group_1'];
                                 $query = mysqli_query($connection_maghalat, "Select * from scientific_group where id='$groupID'");
-                                foreach ($query as $groupInfo) {
-                                }
+                                $groupInfo = mysqli_fetch_array($query);
                                 echo $groupInfo['name'];
                             }
                             ?>
