@@ -135,7 +135,7 @@
                     <div class="small-box bg-warning">
                         <div class="inner">
                             <h3><?php
-                                $AllArticles=mysqli_query($connection_maghalat,"Select * from article where festival_id='$LastFestivalID' and rate_status='تفصیلی'");
+                                $AllArticles=mysqli_query($connection_maghalat,"Select * from article where festival_id='$LastFestivalID' and (rate_status='تفصیلی' or rate_status='تفصیلی سوم')");
                                 echo mysqli_num_rows($AllArticles);
                                 ?></h3>
 
