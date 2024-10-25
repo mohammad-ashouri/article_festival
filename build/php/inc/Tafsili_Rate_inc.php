@@ -188,7 +188,7 @@ if (isset($_POST['article_id']) and isset($_POST['subject'])) {
                     $finalAVG = ($sum + $ta1['sum'] + $ta2['sum']) / 3;
                 }
                 if ($finalAVG >= $maxPoint) {
-                    mysqli_query($connection_maghalat, "update article set rate_status='اتمام ارزیابی',tafsili3_done=1,rate_status='منتظر تایید',grade='$finalAVG' where id='$article_id'");
+                    mysqli_query($connection_maghalat, "update article set rate_status='اتمام ارزیابی',tafsili3_done=1,grade='$finalAVG' where id='$article_id'");
                     if ($finalAVG >= 80 and $finalAVG < $maxPoint) {
                         mysqli_query($connection_maghalat, "update article set rate_status='اتمام ارزیابی',chosen_status=1,chosen_subject='شایسته تقدیر' where id='$article_id'");
                     } else {
